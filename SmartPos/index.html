@@ -36,7 +36,7 @@
     
     
       
-        <title>四. 语录 - Luis Docs</title>
+        <title>语录 - Luis Docs</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                四. 语录
+                语录
               
             </span>
           
@@ -163,7 +163,7 @@
   <li class="md-tabs__item">
     
       <a href=".." class="md-tabs__link md-tabs__link--active">
-        一. 介绍
+        介绍
       </a>
     
   </li>
@@ -206,8 +206,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="一. 介绍" class="md-nav__link">
-      一. 介绍
+    <a href=".." title="介绍" class="md-nav__link">
+      介绍
     </a>
   </li>
 
@@ -218,8 +218,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../things/" title="二. 事迹" class="md-nav__link">
-      二. 事迹
+    <a href="../things/" title="事迹" class="md-nav__link">
+      事迹
     </a>
   </li>
 
@@ -230,8 +230,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../contact/" title="三. 丑照" class="md-nav__link">
-      三. 丑照
+    <a href="../contact/" title="丑照" class="md-nav__link">
+      丑照
     </a>
   </li>
 
@@ -251,11 +251,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        四. 语录
+        语录
       </label>
     
-    <a href="./" title="四. 语录" class="md-nav__link md-nav__link--active">
-      四. 语录
+    <a href="./" title="语录" class="md-nav__link md-nav__link--active">
+      语录
     </a>
     
       
@@ -299,8 +299,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../show_money/" title="五. 爱好" class="md-nav__link">
-      五. 爱好
+    <a href="../show_money/" title="爱好" class="md-nav__link">
+      爱好
     </a>
   </li>
 
@@ -356,10 +356,10 @@
               
                 
                 
-                <h1 id="smartpos">SmartPos</h1>
-<h2 id="_1">项目依赖关系图</h2>
+                <h1 id="smartpos">SmartPos<a class="headerlink" href="#smartpos" title="Permanent link">&para;</a></h1>
+<h2 id="_1">项目依赖关系图<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><img alt="posstructure" src="https://i.loli.net/2019/04/11/5caf069822108.png" />  </p>
-<h2 id="_2">激活模块</h2>
+<h2 id="_2">激活模块<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ol>
 <li>build.gradle里面的depandence中<ul>
 <li>implementation project(':PosSDK')</li>
@@ -431,8 +431,8 @@
 </li>
 <li>银行卡交易  </li>
 </ul>
-<h1 id="api">api</h1>
-<h2 id="_3">收单服务平台</h2>
+<h1 id="api">api<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="_3">收单服务平台<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
 <li>getMerName   终端注册码获取商户信息接口    <ul>
 <li>ActiveActivity的onActivityResult中调用</li>
@@ -449,12 +449,12 @@
 </li>
 </ol>
 <p>graph TD;<br />
-    A--&gt;B;
-    A--&gt;C;
-    B--&gt;D;
-    C--&gt;D;</p>
-<h3 id="sdk">sdk功能点整理</h3>
-<h4 id="app">激活模块（在录入终端的时候需要选择方式）  app~收单服务平台</h4>
+    A&rarr;B;
+    A&rarr;C;
+    B&rarr;D;
+    C&rarr;D;</p>
+<h3 id="sdk">sdk功能点整理<a class="headerlink" href="#sdk" title="Permanent link">&para;</a></h3>
+<h4 id="app">激活模块（在录入终端的时候需要选择方式）  app~收单服务平台<a class="headerlink" href="#app" title="Permanent link">&para;</a></h4>
 <ol>
 <li>传统输入商户号和终端号的方式激活（重置的方法是清空sn号然后点击确定）<ul>
 <li>调用sdk激活接口<br />
@@ -493,7 +493,7 @@ CILSDK.downloadParamWithProgress(callback);</li>
 </ul>
 </li>
 </ol>
-<h4 id="_4">终端密钥下载</h4>
+<h4 id="_4">终端密钥下载<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>终端密钥下载只需要成功执行一次即可，密钥会被转载到POS的硬件模块<br />
 * 下载RSA公钥
 * 装载RSA公钥
@@ -509,8 +509,8 @@ CILSDK.downloadParamWithProgress(callback);</li>
 * 上送联机版本号
 激活完成接口<br />
 CILSDK.notifyActived(mer,term);  </p>
-<h3 id="_5">交易</h3>
-<h4 id="_6">扫码交易（不需要硬件模块读卡器）</h4>
+<h3 id="_5">交易<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">扫码交易（不需要硬件模块读卡器）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <ul>
 <li>扫码消费consume<br />
 request.setAmount()<br />
@@ -526,7 +526,7 @@ CILSDK.revokConsumerQr(request,callback);  </li>
 <li>扫码退货refund  </li>
 <li>CILSDK.returnConsumeQr  </li>
 </ul>
-<h4 id="msccardiccard-nfccardmsccard">刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）</h4>
+<h4 id="msccardiccard-nfccardmsccard">刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）<a class="headerlink" href="#msccardiccard-nfccardmsccard" title="Permanent link">&para;</a></h4>
 <p>通过继承BaseCardActivity复写
 getAmount()接口方法   通过跳转的时候传过来 
 cardReaderHandler()  读卡信息的接听返回</p>
@@ -563,7 +563,7 @@ CILSDK.preAuthComplete(request,cardtype,callback);</li>
 <li>DCC转EDC
 CILSDK.dccToEdc(request,callback);  </li>
 </ul>
-<h4 id="_7">账单查询</h4>
+<h4 id="_7">账单查询<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <ul>
 <li>获取账单列表<br />
 CILSDK.getBillsAsync(pager,size,txtype,callback);</li>
@@ -572,10 +572,10 @@ CILSDK.getBillStateAsync(type,callback)</li>
 <li>根据凭证号获取订单详情（获取当前批次下得订单详情，凭证号：）
 CILSDK.getBillByTraceNumAsync(trancenum,callback)</li>
 </ul>
-<h4 id="_8">结算</h4>
+<h4 id="_8">结算<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>每日交易结束得时候或收银员交接班时，对某段时间内得账款核对，商户每日交易结束得时候，收银员需要统计并核对所有得交易，核对交易统计准确后结算，打印出结算单，结算会涉及一个概念 批次号，我们在前面的交易都会传入一个批次号给request,调用结算后，后续的交易需要将这个批次号加一，因为此批次号已经打包结算掉了
 CILSDK.transSettleAsync(batchNum,callback)  </p>
-<h4 id="_9">打印</h4>
+<h4 id="_9">打印<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <ul>
 <li>打印银行卡类交易、扫码类交易<br />
 CILSDK.printKindsReceipts(trans，linebreak,formartTransCode,kind,isForeignTrans,callback);</li>
@@ -591,33 +591,33 @@ CILSDK.printBarCode(barCode,posion,lineBreak,callback);</li>
 CILSDK.printImage(bitmap,lineBreak,offset,callback)  </li>
 </ul>
 <p>其他设置<br />
-<em> 获取sdk版本号
+* 获取sdk版本号
 CILSDK.VERSION_NAME;
 CILSDK.VERSION_CODE;
 * 获取sn号
 CILSDK.getDeviceSN();<br />
-</em> 设置流水号
+* 设置流水号
 CILSDK.setSericalNum(int serialNum);
 * 获取流水号
 CILSDK.getSerialNum();
 * 设置批次号
 CILSDK.setBatchNum(int batchNum);<br />
-<em> 获取批次号
+* 获取批次号
  CILSDK.getBatchNum();<br />
-</em> 设置联迪密钥区(取值范围1~15)  需要在CILSDK.connect之前调用
+* 设置联迪密钥区(取值范围1~15)  需要在CILSDK.connect之前调用
 CILSDK.setTingA8KeyIndex(2);
 * 设置密钥索引(MAIN,MAC,PIN,MES)  需要在CILSDK.connect之前调用
 CILSDK.setTingKeyIndex(4,101,10,150);</p>
-<h4 id="uncaughtexceptionhandler">日志收集（uncaughtExceptionHandler）</h4>
+<h4 id="uncaughtexceptionhandler">日志收集（uncaughtExceptionHandler）<a class="headerlink" href="#uncaughtexceptionhandler" title="Permanent link">&para;</a></h4>
 <p>将日志写到sd文件中，然后上传的时候在从文件中取出上传</p>
 <p>1.编译时异常在编码的时候就会提示编码人员进行try catch,运行时异常会出现忘记trycatch的现象，可以通过uncaughtExceptionHandler来进行捕获<br />
-具体用法：继承这个类复写uncaughtException方法，具体的异常会回调到这个方法中（https://www.cnblogs.com/jadic/p/3532580.html）<br />
+具体用法：继承这个类复写uncaughtException方法，具体的异常会回调到这个方法中（<a href="https://www.cnblogs.com/jadic/p/3532580.html">https://www.cnblogs.com/jadic/p/3532580.html</a>）<br />
 捕获后写到本地的sdcard中
 2.上传log文件IntentService
      debugInfoActivity右上角的optionsMenu有上传日志的选项
     开启IntentService在handleIntent中执行上传日志操作
     开启线程池一条一条的上传日志SingleThreadExcutor</p>
-<p>MainActivity--&gt;mainpagerFragment--&gt;DebugInfoActiivty标题栏的头像点击8下，进入调试暗门</p>
+<p>MainActivity&rarr;mainpagerFragment&rarr;DebugInfoActiivty标题栏的头像点击8下，进入调试暗门</p>
                 
                   
                 
@@ -638,7 +638,7 @@ CILSDK.setTingKeyIndex(4,101,10,150);</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../contact/" title="三. 丑照" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../contact/" title="丑照" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -647,19 +647,19 @@ CILSDK.setTingKeyIndex(4,101,10,150);</p>
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                三. 丑照
+                丑照
               </span>
             </div>
           </a>
         
         
-          <a href="../show_money/" title="五. 爱好" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../show_money/" title="爱好" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                五. 爱好
+                爱好
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
