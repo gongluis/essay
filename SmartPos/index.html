@@ -389,93 +389,12 @@
     收单服务平台
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sdk" class="md-nav__link">
     sdk功能点整理
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#app" class="md-nav__link">
-    激活模块（在录入终端的时候需要选择方式）  app~收单服务平台
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    终端密钥下载
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    交易
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    扫码交易（不需要硬件模块读卡器）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#msccardiccard-nfccardmsccard" class="md-nav__link">
-    刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    账单查询
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    结算
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    打印
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uncaughtexceptionhandler" class="md-nav__link">
-    日志收集（uncaughtExceptionHandler）
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -546,93 +465,12 @@
     收单服务平台
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sdk" class="md-nav__link">
     sdk功能点整理
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#app" class="md-nav__link">
-    激活模块（在录入终端的时候需要选择方式）  app~收单服务平台
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    终端密钥下载
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    交易
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    扫码交易（不需要硬件模块读卡器）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#msccardiccard-nfccardmsccard" class="md-nav__link">
-    刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    账单查询
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    结算
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    打印
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uncaughtexceptionhandler" class="md-nav__link">
-    日志收集（uncaughtExceptionHandler）
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -750,19 +588,15 @@
     A--&gt;C;
     B--&gt;D;
     C--&gt;D;</p>
-<h3 id="sdk">sdk功能点整理</h3>
-<h4 id="app">激活模块（在录入终端的时候需要选择方式）  app~收单服务平台</h4>
-<ol>
-<li>传统输入商户号和终端号的方式激活（重置的方法是清空sn号然后点击确定）<ul>
-<li>调用sdk激活接口<br />
-CILSDK.active(merCode, termCode, callback); </li>
-<li>接口调用成功后立马调用终端参数下载接口下载交易时使用的参数
-CILSDK.downloadParam(mer,term,callback);</li>
-<li>跳转到MainActivity onCreat的时候调用终端密钥下载接口
-CILSDK.downloadParamWithProgress(callback);  </li>
-</ul>
-</li>
-</ol>
+<h2 id="sdk"><strong>sdk功能点整理</strong></h2>
+<p><strong>激活模块（在录入终端的时候需要选择方式）  app~收单服务平台</strong>
+1. 传统输入商户号和终端号的方式激活（重置的方法是清空sn号然后点击确定）
+    * 调用sdk激活接口<br />
+    CILSDK.active(merCode, termCode, callback); 
+    * 接口调用成功后立马调用终端参数下载接口下载交易时使用的参数
+    CILSDK.downloadParam(mer,term,callback);
+    * 跳转到MainActivity onCreat的时候调用终端密钥下载接口
+    CILSDK.downloadParamWithProgress(callback);  </p>
 <p>汇总：<br />
     1.sp的抽取<br />
         &emsp; 传入三个参数put(Context context,String str,Object &emsp; object),根据object的类型，选择putString还是putInt。。。get(...)同上
@@ -786,45 +620,43 @@ CILSDK.getMechantInfo(activeCode,time.appVersion);</li>
 <li>点击激活按钮调用激活码激活接口
 CILSDK.activeWithCode(activeCode,deviceToken, callback);   </li>
 <li>激活接口调用成功后紧接着调用下载终端参数的接口
-CILSDK.downloadParamWithProgress(callback);</li>
+CILSDK.downloadParamWithProgress(callback);
+<strong>终端密钥下载</strong><br />
+终端密钥下载只需要成功执行一次即可，密钥会被转载到POS的硬件模块  </li>
 </ul>
 </li>
-</ol>
-<h4 id="_4">终端密钥下载</h4>
-<p>终端密钥下载只需要成功执行一次即可，密钥会被转载到POS的硬件模块<br />
-* 下载RSA公钥
-* 装载RSA公钥
-* 下载主密钥
-* 装载主密钥
-* 启用主密钥
-* 下载工作密钥
-* 装载工作密钥
-* 下载AIDS
-* 装载AIDS
-* 下载ICPKS
-* 装载ICPKS
-* 上送联机版本号
+<li>下载RSA公钥</li>
+<li>装载RSA公钥</li>
+<li>下载主密钥</li>
+<li>装载主密钥</li>
+<li>启用主密钥</li>
+<li>下载工作密钥</li>
+<li>装载工作密钥</li>
+<li>下载AIDS</li>
+<li>装载AIDS</li>
+<li>下载ICPKS</li>
+<li>装载ICPKS</li>
+<li>上送联机版本号
 激活完成接口<br />
-CILSDK.notifyActived(mer,term);  </p>
-<h3 id="_5">交易</h3>
-<h4 id="_6">扫码交易（不需要硬件模块读卡器）</h4>
-<ul>
-<li>扫码消费consume<br />
+CILSDK.notifyActived(mer,term);  </li>
+</ol>
+<p><strong>交易</strong><br />
+1. 扫码交易（不需要硬件模块读卡器）<br />
+<em> 扫码消费consume<br />
 request.setAmount()<br />
 request.setScanCode()<br />
 request.setOrderId()<br />
 CILSDK.consumeQr(request,callback); 
 在callback中判断如果有应答09/98需要发起查询操作<br />
-CILSDK.QueryQr(request,callback);//查询6次10s不超过60s,查询出结果返回，如果最后一次仍然是09、98sdk会自动发起取消操作   </li>
-<li>扫码取消/冲正cancel<br />
-CILSDK.sCanCodeCancel(request,callback);</li>
-<li>扫码撤销revoke
-CILSDK.revokConsumerQr(request,callback);  </li>
-<li>扫码退货refund  </li>
-<li>CILSDK.returnConsumeQr  </li>
-</ul>
-<h4 id="msccardiccard-nfccardmsccard">刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）</h4>
-<p>通过继承BaseCardActivity复写
+CILSDK.QueryQr(request,callback);//查询6次10s不超过60s,查询出结果返回，如果最后一次仍然是09、98sdk会自动发起取消操作 <br />
+</em> 扫码取消/冲正cancel<br />
+CILSDK.sCanCodeCancel(request,callback);
+* 扫码撤销revoke
+CILSDK.revokConsumerQr(request,callback);<br />
+<em> 扫码退货refund<br />
+</em> CILSDK.returnConsumeQr<br />
+2. 刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）
+通过继承BaseCardActivity复写
 getAmount()接口方法   通过跳转的时候传过来 
 cardReaderHandler()  读卡信息的接听返回</p>
 <p>密码键盘调用
@@ -860,33 +692,29 @@ CILSDK.preAuthComplete(request,cardtype,callback);</li>
 <li>DCC转EDC
 CILSDK.dccToEdc(request,callback);  </li>
 </ul>
-<h4 id="_7">账单查询</h4>
-<ul>
-<li>获取账单列表<br />
-CILSDK.getBillsAsync(pager,size,txtype,callback);</li>
-<li>获取账单统计<br />
-CILSDK.getBillStateAsync(type,callback)</li>
-<li>根据凭证号获取订单详情（获取当前批次下得订单详情，凭证号：）
-CILSDK.getBillByTraceNumAsync(trancenum,callback)</li>
-</ul>
-<h4 id="_8">结算</h4>
-<p>每日交易结束得时候或收银员交接班时，对某段时间内得账款核对，商户每日交易结束得时候，收银员需要统计并核对所有得交易，核对交易统计准确后结算，打印出结算单，结算会涉及一个概念 批次号，我们在前面的交易都会传入一个批次号给request,调用结算后，后续的交易需要将这个批次号加一，因为此批次号已经打包结算掉了
+<p><strong>账单查询</strong><br />
+* 获取账单列表<br />
+CILSDK.getBillsAsync(pager,size,txtype,callback);
+* 获取账单统计<br />
+CILSDK.getBillStateAsync(type,callback)
+* 根据凭证号获取订单详情（获取当前批次下得订单详情，凭证号：）
+CILSDK.getBillByTraceNumAsync(trancenum,callback)</p>
+<p><strong>结算</strong> <br />
+每日交易结束得时候或收银员交接班时，对某段时间内得账款核对，商户每日交易结束得时候，收银员需要统计并核对所有得交易，核对交易统计准确后结算，打印出结算单，结算会涉及一个概念 批次号，我们在前面的交易都会传入一个批次号给request,调用结算后，后续的交易需要将这个批次号加一，因为此批次号已经打包结算掉了
 CILSDK.transSettleAsync(batchNum,callback)  </p>
-<h4 id="_9">打印</h4>
-<ul>
-<li>打印银行卡类交易、扫码类交易<br />
-CILSDK.printKindsReceipts(trans，linebreak,formartTransCode,kind,isForeignTrans,callback);</li>
-<li>打印结算小票
-CILSDK.pintSettleReceipts(transSettles,transDatetime,batchNum,formatTransCode,lineBreak,formatTransCode,callback);</li>
-<li>自定义打印 (超过2000个字符需要采用分段式打印，否则出现异常DeviceRTException) <br />
-CILSDK.printBufferReceipt(buffer,lineBreak,callback);</li>
-<li>打印二维码
-CILSDK. printQRCode(qrCode,positon,width,linebreak,callback);</li>
-<li>打印条形码
-CILSDK.printBarCode(barCode,posion,lineBreak,callback);</li>
-<li>打印图片
-CILSDK.printImage(bitmap,lineBreak,offset,callback)  </li>
-</ul>
+<p><strong>打印</strong><br />
+* 打印银行卡类交易、扫码类交易<br />
+CILSDK.printKindsReceipts(trans，linebreak,formartTransCode,kind,isForeignTrans,callback);
+* 打印结算小票
+CILSDK.pintSettleReceipts(transSettles,transDatetime,batchNum,formatTransCode,lineBreak,formatTransCode,callback);
+* 自定义打印 (超过2000个字符需要采用分段式打印，否则出现异常DeviceRTException) <br />
+CILSDK.printBufferReceipt(buffer,lineBreak,callback);
+* 打印二维码
+CILSDK. printQRCode(qrCode,positon,width,linebreak,callback);
+* 打印条形码
+CILSDK.printBarCode(barCode,posion,lineBreak,callback);
+* 打印图片
+CILSDK.printImage(bitmap,lineBreak,offset,callback)  </p>
 <p>其他设置<br />
 <em> 获取sdk版本号
 CILSDK.VERSION_NAME;
@@ -905,8 +733,8 @@ CILSDK.setBatchNum(int batchNum);<br />
 CILSDK.setTingA8KeyIndex(2);
 * 设置密钥索引(MAIN,MAC,PIN,MES)  需要在CILSDK.connect之前调用
 CILSDK.setTingKeyIndex(4,101,10,150);</p>
-<h4 id="uncaughtexceptionhandler">日志收集（uncaughtExceptionHandler）</h4>
-<p>将日志写到sd文件中，然后上传的时候在从文件中取出上传</p>
+<p><strong>日志收集（uncaughtExceptionHandler）</strong><br />
+将日志写到sd文件中，然后上传的时候在从文件中取出上传</p>
 <p>1.编译时异常在编码的时候就会提示编码人员进行try catch,运行时异常会出现忘记trycatch的现象，可以通过uncaughtExceptionHandler来进行捕获<br />
 具体用法：继承这个类复写uncaughtException方法，具体的异常会回调到这个方法中（https://www.cnblogs.com/jadic/p/3532580.html）<br />
 捕获后写到本地的sdcard中
