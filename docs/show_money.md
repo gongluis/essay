@@ -9,7 +9,7 @@
 3.开启日志上传Service   
  
 ***GuidActivity***  
-&emsp;一个简单滑动的轮播图外加一个进入LoginActivity的按钮  
+&emsp;一个很简单滑动的轮播图外加一个进入LoginActivity的按钮  
 
 ***LoginActivity***   
 &emsp;自定义EditText(主要功能有：清除图标，EditText抖动动画)  

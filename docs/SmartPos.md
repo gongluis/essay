@@ -1,7 +1,7 @@
-#SmartPos  
-##项目依赖关系  
+# SmartPos  
+## **项目依赖关系图**  
 ![posstructure](https://i.loli.net/2019/04/11/5caf069822108.png)  
-##激活模块
+## **激活模块**
 1. build.gradle里面的depandence中
 	* implementation project(':PosSDK')
 	* implementation project(':jbig-kit')
@@ -46,8 +46,8 @@
 	* 
 * 银行卡交易  
 
-#api  
-##收单服务平台  
+api  
+## **收单服务平台**  
 1. getMerName   终端注册码获取商户信息接口    
 	*  ActiveActivity的onActivityResult中调用
 	*  sdk中调用
@@ -64,8 +64,8 @@ graph TD;
 
 
 
-###sdk功能点整理
-####激活模块（在录入终端的时候需要选择方式）  app~收单服务平台
+## **sdk功能点整理**
+**激活模块（在录入终端的时候需要选择方式）  app~收单服务平台**
 1. 传统输入商户号和终端号的方式激活（重置的方法是清空sn号然后点击确定）
 	* 调用sdk激活接口  
     CILSDK.active(merCode, termCode, callback); 
@@ -98,7 +98,7 @@ graph TD;
     CILSDK.activeWithCode(activeCode,deviceToken, callback);   
 	* 激活接口调用成功后紧接着调用下载终端参数的接口
 	CILSDK.downloadParamWithProgress(callback);
-####终端密钥下载  
+**终端密钥下载**  
 终端密钥下载只需要成功执行一次即可，密钥会被转载到POS的硬件模块  
 * 下载RSA公钥
 * 装载RSA公钥
@@ -115,8 +115,8 @@ graph TD;
 激活完成接口  
 CILSDK.notifyActived(mer,term);  
 
-###交易  
-####扫码交易（不需要硬件模块读卡器）  
+**交易**  
+1. 扫码交易（不需要硬件模块读卡器）  
 * 扫码消费consume  
 request.setAmount()  
 request.setScanCode()  
@@ -130,7 +130,7 @@ CILSDK.sCanCodeCancel(request,callback);
 CILSDK.revokConsumerQr(request,callback);  
 * 扫码退货refund  
 * CILSDK.returnConsumeQr  
-####刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）
+2. 刷卡交易区分卡类型（mscCard,icCard ,nfcCard,默认使用mscCard）
 通过继承BaseCardActivity复写
 getAmount()接口方法   通过跳转的时候传过来 
 cardReaderHandler()  读卡信息的接听返回
@@ -178,7 +178,7 @@ CILSDK.preAuthComplete(request,cardtype,callback);
 CILSDK.dccToEdc(request,callback);  
 
 
-####账单查询  
+**账单查询**  
 * 获取账单列表  
 CILSDK.getBillsAsync(pager,size,txtype,callback);
 * 获取账单统计  
@@ -187,11 +187,11 @@ CILSDK.getBillStateAsync(type,callback)
 CILSDK.getBillByTraceNumAsync(trancenum,callback)
 
 
-####结算   
+**结算**   
 每日交易结束得时候或收银员交接班时，对某段时间内得账款核对，商户每日交易结束得时候，收银员需要统计并核对所有得交易，核对交易统计准确后结算，打印出结算单，结算会涉及一个概念 批次号，我们在前面的交易都会传入一个批次号给request,调用结算后，后续的交易需要将这个批次号加一，因为此批次号已经打包结算掉了
 CILSDK.transSettleAsync(batchNum,callback)  
 
-####打印  
+**打印**  
 * 打印银行卡类交易、扫码类交易  
 CILSDK.printKindsReceipts(trans，linebreak,formartTransCode,kind,isForeignTrans,callback);
 * 打印结算小票
@@ -225,7 +225,7 @@ CILSDK.setTingA8KeyIndex(2);
 * 设置密钥索引(MAIN,MAC,PIN,MES)  需要在CILSDK.connect之前调用
 CILSDK.setTingKeyIndex(4,101,10,150);
 
-####日志收集（uncaughtExceptionHandler）  
+**日志收集（uncaughtExceptionHandler）**  
 将日志写到sd文件中，然后上传的时候在从文件中取出上传
 
 1.编译时异常在编码的时候就会提示编码人员进行try catch,运行时异常会出现忘记trycatch的现象，可以通过uncaughtExceptionHandler来进行捕获  

@@ -1,7 +1,45 @@
-site_name: Luis Docs  
-nav:  
-- 首页: index.md  
-- 关于彷佛: test.md  
-- 联系我: contact.md  
-- 智能POS: SmartPos.md    
-- 云收银: show_money.md
+site_name: Luis Docs    
+  
+theme:  
+  name: 'mkdocs' 
+  feature:
+    tabs: true   
+  palette:
+    primary: 'light green'
+    accent: 'green'
+  font:
+    text: 'Ubuntu'
+    code: 'Ubuntu Mono'
+  logo:
+    icon: 'cloud'
+  language: 'zh'  
+  
+extra:
+  search:
+    language: 'jp'
+   
+  social:  
+    - type: 'github'
+      link: 'https://github.com/gongluis'  
+      
+nav:   
+  - 一、介绍: index.md    
+  - 二、事迹: 
+         - main: main.md
+         - 算法: algorithm.md
+         - 垃圾回收机制: garbage.md
+  - 三、kotuis: 
+         - 学习笔记: kotuis.md           
+  - 四语录: 
+         - 1. 鲁迅语录: SmartPos.md    
+         - 2. 云收银: show_money.md 
+         - 3. 字体样式:
+            - 3.1. 斜体,粗体,粗斜体: syntax/font_stress.md
+            - 3.2. 上标,下标: syntax/font_updown.md
+            - 3.3. 下划线: syntax/font_underline.md
+            - 3.4. 横线: syntax/font_line.md
+            - 3.5. 下划线+横线: syntax/font_underline_line.md
+         - 4. 黒珠:  
+            - 4.1. 歪珠:  syntax/font_stress.md      
+            - 4.2. 惯例珠: syntax/font_updown.md            
+    
