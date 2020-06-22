@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>2. 云收银 - Luis Docs</title>
+        <title>垃圾回收机制 - Luis Docs</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                             <li >
                                 <a href="..">一、介绍</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">二、事迹 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -61,8 +61,8 @@
     <a href="../algorithm/">算法</a>
 </li>
                                     
-<li >
-    <a href="../garbage/">垃圾回收机制</a>
+<li class="active">
+    <a href="./">垃圾回收机制</a>
 </li>
                                 </ul>
                             </li>
@@ -75,7 +75,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">四语录 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -83,8 +83,8 @@
     <a href="../SmartPos/">1. 鲁迅语录</a>
 </li>
                                     
-<li class="active">
-    <a href="./">2. 云收银</a>
+<li >
+    <a href="../show_money/">2. 云收银</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -137,12 +137,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../SmartPos/">
+                                <a rel="next" href="../algorithm/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../syntax/font_stress/">
+                                <a rel="prev" href="../kotuis/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -154,29 +154,138 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#app">云收银APP阅读文档</a></li>
+        <li class="main active"><a href="#jvm">jvm内存模型</a></li>
+        <li class="main "><a href="#_1">堆内存模型</a></li>
+        <li class="main "><a href="#_2">可回收对象的判定</a></li>
+        <li class="main "><a href="#_3">几种垃圾回收算法</a></li>
+        <li class="main "><a href="#gc">通过日志分析GC类型</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="app"><strong>云收银APP阅读文档</strong></h1>
-<p><strong><em>SplashActicity</em></strong>  </p>
-<p>1.initUmeng+initSunmiBlePrint<br />
-2.延时3s一个handler来决定接下来进入哪个页面（括号里面是条件）<br />
-&emsp;进入GuidActivity(判断sp版本号跟配置文件版本号是否一致，进入登陆页面时保存版本号)<br />
-&emsp;进入MainActivity(通过logintoken判断是否进入MainActivity)<br />
-&emsp;进入LoginAcitivity(else进入LoginActivity)<br />
-3.开启日志上传Service   </p>
-<p><strong><em>GuidActivity</em></strong><br />
-&emsp;一个很简单滑动的轮播图外加一个进入LoginActivity的按钮  </p>
-<p><strong><em>LoginActivity</em></strong> <br />
-&emsp;自定义EditText(主要功能有：清除图标，EditText抖动动画)<br />
-&emsp;重置密码<br />
-&emsp;登陆（包含获取公钥接口+登陆接口）<br />
-&emsp;&emsp;1.对于登陆参数pwd字段的加密（RSA(pwd,publicKey)）<br />
-&emsp;&emsp;2.自定义Toast(YellowToastUtils密码错误顶部显示一段黄色背景提示)<br />
-&emsp;&emsp;3.使用Linerlayout+RelativeLayout  framlayout+权重布局法<br />
-&emsp;4.</p></div>
+<h2 id="jvm">jvm内存模型</h2>
+<p>要理解gc必须理解jvm，jvm主要管理两种内存：堆非堆<br />
+堆(Heap Memory)：类实例和数组的内存<br />
+非堆(No-heap Memory)：方法区，类结构（运行时常数池，字段和方法），类加载信息  </p>
+<p>GC主要回收的内存是堆内存  </p>
+<h2 id="_1">堆内存模型</h2>
+<pre><code>1. 堆内存分两块，新生代和老年代，比例(1:2)
+    * 老年代主要存放应用程序中生命周期较长的的存活对象
+2. 新生代分三个部分，一个eden区和两个survivor区，比例8：1：1
+    * eden区存放新生的对象
+    * survivor区存放每次垃圾回收后存活的对象
+</code></pre>
+
+<h2 id="_2">可回收对象的判定</h2>
+<p>什么样的对象是垃圾？
+1. 引用计数算法 </p>
+<pre><code>原理就是给对象添加一个引用计数器，每当有一个地方引用它，计数器就加1， 当引用失效时，计数值就减1，计数器为0的对象就是不在被使用的。
+    * 简单、高效（objectiveC用的该算法）
+    * 很难处理循环引用（相互引用两个对象）
+</code></pre>
+
+<ol>
+<li>可达性分析算法<br />
+为了解决循环引用，java采用新的算法</li>
+</ol>
+<pre><code>从GC的ROOT作为起点，向下搜索它们引用的对象，可生成一棵引用树，树的节点可视为可达对象，反之视为不可达
+如何定义GC root,java语言定义如下GC-ROOT对象
+    * 虚拟机栈中引用的对象
+    * 方法区中静态属性引用的对象
+    * 方法区中常量引用的对象
+    * 本地方法栈中jni引用的对象
+## stop the world   
+垃圾回收时需要整个引用状态保持不变，否则判定是垃圾，等会就不是了，GC的时候所有的程序执行处于暂停的状态，卡住，这种卡顿非常短，对程序的影响微乎其微，GC的卡顿由此而来。
+
+</code></pre>
+
+<h2 id="_3">几种垃圾回收算法</h2>
+<p>如何回收？Java虚拟机采用的是分代回收算法，想要理解分代回收算法，有必要先了解其它几种简单算法
+1. 标记清楚算法(Mark-Sweep)  </p>
+<pre><code>标记阶段：标记所有需要被回收的对象
+清楚阶段：回收被标记对象占用的空间
+    * 简单，容易实现
+    * 容易产生内存碎片，碎片太多可能导致后续需要为大对象分配空间无法找到足够的空间，提前触发新的一次垃圾收集动作。
+</code></pre>
+
+<ol>
+<li>复制算法（Copying）  </li>
+</ol>
+<pre><code>将内存分为大小相同的两块，每次只使用其中的一块，当这一块用完了，将还活着的对象复制到另外一块，再把已使用的一块一次清理掉，这样就不会出现内存碎片问题，
+    * 简单，高效
+    * 对内存空间的使用付出了高昂的代价，可 使用内存缩少到了原来的一半
+Copying算法的效率取决于活着的对象，活着的对象越多copying越多，效率越慢
+</code></pre>
+
+<ol>
+<li>标记整理算法（Mark-compact）</li>
+</ol>
+<pre><code>标记阶段和Mark-sweep一样，标记出需要被回收的对象，完成标记后，将存活的对象向一端移动，清理掉端边界以外的内存
+    * 适用于存活对象多，回收对象少的情况
+</code></pre>
+
+<ol>
+<li>分代回收算法<br />
+不是一种新的算法而是复制算法和标记整理算法的整合  </li>
+</ol>
+<pre><code>复制算法：适用于存活对象少，回收对象多
+标记整理算法：适用于存活对象多，回收对象少
+</code></pre>
+
+<p>堆内存分为老年代(Old generation)和新生代(young Generation),老年代的特点是每次垃圾收集时只有少量的对象需要被回收，新生代的特点是每次垃圾回收时都有大量的对象需要被回收，根据不同代的特点采用不同的算法，这就是分代算法。<br />
+详细分析  </p>
+<pre><code>1. 对于新生代采用Copying算法，因为新生代每次垃圾回收的时候都要回收大部分对象，也就是说需要复制的存活的对象较少，所以采用Copying算法的效率最高，实际中并不是按照上面Copying算法中说的1：1分成相等的两块，而是将新生代分为eden空间和survivor空间8：1：1
+2. 由于老年代每次只回收少量对象，一般使用Mark-compact算法
+</code></pre>
+
+<blockquote>
+<p>QA1.为什么需要两块Survivor空间？</p>
+</blockquote>
+<pre><code>这里涉及到一个新生代和老年代的存活周期的问题，比如一个对象在新生代经历15次（仅供参考）GC，就可以移到老年代了。问题来了，当我们第一次GC的时候，我们可以把Eden区的存活对象放到Survivor A空间，但是第二次GC的时候，Survivor A空间的存活对象也需要再次用Copying算法，放到Survivor B空间上，而把刚刚的Survivor A空间和Eden空间清除。第三次GC时，又把Survivor B空间的存活对象复制到Survivor A空间，如此反复。
+所以，这里就需要两块Survivor空间来回倒腾。
+</code></pre>
+
+<blockquote>
+<p>QA2.为什么EDEN空间这么大而Survivor空间这么小？</p>
+</blockquote>
+<pre><code>新创建的对象都是放在Eden空间，这是很频繁的，尤其是大量的局部变量产生的临时对象，这些对象绝大部分都应该马上被回收，能存活下来被转移到survivor空间的往往不多。所以，设置较大的Eden空间和较小的Survivor空间是合理的，大大提高了内存的使用率，缓解了Copying算法的缺点。
+我看8：1：1就挺好的，当然这个比例是可以调整的，包括上面的新生代和老年代的1：2的比例也是可以调整的。
+新的问题又来了，从Eden空间往Survivor空间转移的时候Survivor空间不够了怎么办？直接放到老年代去。
+</code></pre>
+
+<p>Eden空间和两块Survivor空间的工作流程？<br />
+现在假定有新生代Eden，Survivor A， Survivor B三块空间和老生代Old一块空间。  </p>
+<pre><code>// 分配了一个又一个对象
+放到Eden区
+// 不好，Eden区满了，只能GC(新生代GC：Minor GC)了
+把Eden区的存活对象copy到Survivor A区，然后清空Eden区（本来Survivor B区也需要清空的，不过本来就是空的）
+// 又分配了一个又一个对象
+放到Eden区
+// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了
+把Eden区和Survivor A区的存活对象copy到Survivor B区，然后清空Eden区和Survivor A区
+// 又分配了一个又一个对象
+放到Eden区
+// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了
+把Eden区和Survivor B区的存活对象copy到Survivor A区，然后清空Eden区和Survivor B区
+// ...
+// 有的对象来回在Survivor A区或者B区呆了比如15次，就被分配到老年代Old区
+// 有的对象太大，超过了Eden区，直接被分配在Old区
+// 有的存活对象，放不下Survivor区，也被分配到Old区
+// ...
+// 在某次Minor GC的过程中突然发现：
+// 不好，老年代Old区也满了，这是一次大GC(老年代GC：Major GC)
+Old区慢慢的整理一番，空间又够了
+// 继续Minor GC
+// ...
+// ...
+</code></pre>
+
+<h2 id="gc">通过日志分析GC类型</h2>
+<pre><code>GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。
+GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。
+GC_EXPLICIT: 表示是应用程序调用System.gc、VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。
+GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
