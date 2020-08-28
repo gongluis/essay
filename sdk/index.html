@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>sdk开发笔记 - Luis Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Luis Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">介绍</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../basicDataType/">基础数据类型</a>
+</li>
+                                    
+<li >
+    <a href="../algorithm/">算法</a>
+</li>
+                                    
+<li >
+    <a href="../garbage/">垃圾回收机制</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../kotuis/">学习笔记</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../fourcomponent/">四大组件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">设计模式</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../designpattern/singleInstance/">单例</a>
+</li>
+            
+<li >
+    <a href="../designpattern/factory/">工厂</a>
+</li>
+            
+<li >
+    <a href="../designpattern/builder/">Builder</a>
+</li>
+            
+<li >
+    <a href="../designpattern/observer/">观察者</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">自定义控件</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customView/customCombinationView/">自定义组合控件</a>
+</li>
+            
+<li >
+    <a href="../customView/customView/">自定义View</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">APP架构</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../constructure/mvc/">MVC</a>
+</li>
+            
+<li >
+    <a href="../constructure/font_updown.md">MVP</a>
+</li>
+            
+<li >
+    <a href="../constructure/font_updown.md">MVvm</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li >
+    <a href="../threadPool/">线程池</a>
+</li>
+                                    
+<li >
+    <a href="../touchEvent/">事件分发</a>
+</li>
+                                    
+<li >
+    <a href="../handler/">Handler原理</a>
+</li>
+                                    
+<li >
+    <a href="../sdkversion/">Android版本对应SDK版本</a>
+</li>
+                                    
+<li >
+    <a href="../better/">APP整体优化</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">sdk开发笔记</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../better/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#_1">定义</a></li>
+        <li class="main "><a href="#_2">接口设计</a></li>
+            <li><a href="#_3">出入参设计</a></li>
+        <li class="main "><a href="#_4">调用封装设计</a></li>
+        <li class="main "><a href="#_5">数据返回设计</a></li>
+            <li><a href="#_6">发送数据</a></li>
+            <li><a href="#_7">接收数据</a></li>
+        <li class="main "><a href="#_8">参数过滤设计</a></li>
+        <li class="main "><a href="#_9">交互流程设计</a></li>
+        <li class="main "><a href="#_10">异常处理</a></li>
+        <li class="main "><a href="#_11">初始化</a></li>
+        <li class="main "><a href="#_12">个性化配置</a></li>
+        <li class="main "><a href="#sdk">SDK安全与校验</a></li>
+        <li class="main "><a href="#sdk_1">SDK打包方法</a></li>
+            <li><a href="#library-modulebuildgradle">library module下的build.gradle模板配置：</a></li>
+            <li><a href="#_13">依赖原则，尽量避免第三方库的依赖</a></li>
+            <li><a href="#_14">如何解决组件依赖冲突：</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<div class="toc">
+<ul>
+<li><a href="#_1">定义</a></li>
+<li><a href="#_2">接口设计</a><ul>
+<li><a href="#_3">出入参设计</a></li>
+</ul>
+</li>
+<li><a href="#_4">调用封装设计</a></li>
+<li><a href="#_5">数据返回设计</a><ul>
+<li><a href="#_6">发送数据</a></li>
+<li><a href="#_7">接收数据</a></li>
+</ul>
+</li>
+<li><a href="#_8">参数过滤设计</a></li>
+<li><a href="#_9">交互流程设计</a></li>
+<li><a href="#_10">异常处理</a></li>
+<li><a href="#_11">初始化</a></li>
+<li><a href="#_12">个性化配置</a></li>
+<li><a href="#sdk">SDK安全与校验</a></li>
+<li><a href="#sdk_1">SDK打包方法</a><ul>
+<li><a href="#library-modulebuildgradle">library module下的build.gradle模板配置：</a></li>
+<li><a href="#_13">依赖原则，尽量避免第三方库的依赖</a></li>
+<li><a href="#_14">如何解决组件依赖冲突：</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h4 id="_1">定义</h4>
+<p>jar so aar 一些方法和逻辑合集，对资源api封装后的产物。</p>
+<h4 id="_2">接口设计</h4>
+<blockquote>
+<p>如无必要勿增实体，如无必要勿增依赖<br />
+1. sdk接收什么？输出什么？明确职责</p>
+</blockquote>
+<h5 id="_3">出入参设计</h5>
+<ol>
+<li>map</li>
+<li>String</li>
+<li>实体类 </li>
+</ol>
+<pre><code>1. 自定义实体类作为出入参在activity间传输，无法直接传播实体，需要经过序列化。
+    * 实现serializable接口通过bundle传输
+    * 实现parcelabel接口，通过budle传输
+2. intent中的bundle是通过Binder机制进行数据传输，有大小限制，建议最大不超过500k越小越好，避免传输图片
+</code></pre>
+
+<h4 id="_4">调用封装设计</h4>
+<p>如果app需要通过sdk的入口activity进行调用与业务开发，如何做一个优雅的调用封装。  </p>
+<p>封装前的调用：</p>
+<pre><code>//繁琐的调用代码
+Bundle bundle = new Bundle();
+//这里要暴露或者约定一个静态KEY
+bundle.putParcelable(KEY_REQ, request);
+Intent intent = new Intent(context, EntryActivity.class);
+//屏蔽转场动画，让画面跳转更和谐
+intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+intent.putExtras(bundle);
+context.startActivity(intent);
+</code></pre>
+
+<p>封装后的调用：</p>
+<pre><code>//简洁的调用代码
+MySDK.launchSdk(context,req);
+
+//将复杂逻辑或细节内置于SDK中，对外提供封装好的静态方法即可
+public static void launchSdk(Context context, ReqContent request) {
+    Bundle bundle = new Bundle();
+    bundle.putParcelable(KEY_REQ, request);
+    Intent intent = new Intent(context, EntryActivity.class);
+    //屏蔽转场动画，让画面跳转更和谐
+    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+    intent.putExtras(bundle);
+    context.startActivity(intent);
+}
+</code></pre>
+
+<h4 id="_5">数据返回设计</h4>
+<p>调用即响应，不可无响应无回调<br />
+背景：  </p>
+<pre><code>1. 需要在app与sdk的activity间进行数据传输
+2. 调用sdk后，需要执行一段异步逻辑，结束后需要及时关闭
+3. 需要在逻辑代码处理过程中随时随地的构造返回参数并返回。
+4. sdk目标用户，各类第三方app，需要通用的交互机制，避免引起兼容问题。
+</code></pre>
+
+<p>方案：  </p>
+<pre><code>startActivityForResult()?理论可行，但不够灵活，弃。
+采用EventBus ? 避免引入非必须第三方依赖，暂时放弃。
+采用BroadcastReceiver？Android 内置的四大组件之一，为组件间交互而生。而且灵活方便，与入参方法呼应，可以从Intent中传输数据。
+
+采用应用内广播，无进程间通信，效率更高，更安全
+</code></pre>
+
+<h5 id="_6">发送数据</h5>
+<pre><code>//SDK内部封装的静态方法，提供给SDK内部模块统一调用
+public static void sendResult(String token, int code, String message) {
+
+    ResultContent result = new ResultContent();
+    result.setToken(token);
+    result.setCode(code);
+    result.setMessage(message);
+
+    Bundle bundle = new Bundle();
+    bundle.putParcelable(KEY_RESULT, result);
+
+    Intent intent = new Intent();
+    intent.setAction(MY_SDK_RECEIVER_ACTION);
+    intent.putExtras(bundle);
+    LocalBroadcastManager.getInstance(MySDK.getContext()).sendBroadcast(intent);
+}
+</code></pre>
+
+<h5 id="_7">接收数据</h5>
+<pre><code>
+//SDK内部封装的注册方法，提供给APP模块统一调用
+public static void registerReceiver(BroadcastReceiver receiver) {
+    IntentFilter filter = new IntentFilter();
+    filter.addAction(MY_SDK_RECEIVER_ACTION);
+    LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filter);
+}
+
+//SDK内部封装的反注册方法，提供给APP模块统一调用，如果在onCreate()方法中注册，则在onDestroy()方法中反注册。
+public static void unregisterReceiver(BroadcastReceiver receiver) {
+    LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(receiver);
+}
+
+
+//APP 中定义的广播接收器，用于接收返回参数
+public class MyReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        ResultContent result = MySDKHelper.getResult(intent);
+        if (result == null) {
+            return;
+        }
+        int code = result.getCode();
+        String message = result.getMessage();
+        String token = result.getToken();
+        String log = String.format(Locale.CHINA,&quot;返回码: %d 返回信息: %s Token: %s&quot;, code, message, token);
+        Log.d(TAG, log);
+    }
+}
+</code></pre>
+
+<h4 id="_8">参数过滤设计</h4>
+<p>对入参数据进行过滤，避免无意义的后续业务流程，及时提供调用反馈。 <br />
+非空检测，数据类型检测，数据格式检测，自定义注解。  </p>
+<pre><code>    public static final String PRINTER = &quot;PRINTER&quot;;
+    public static final String HORN = &quot;HORN&quot;;
+    public static final String SOUND = &quot;SOUND&quot;;
+    @StringDef({PRINTER, HORN, SOUND})
+    public @interface DeviceType{}
+
+
+    public void getDevice( @DeviceType String deviceType){
+
+    }
+</code></pre>
+
+<h4 id="_9">交互流程设计</h4>
+<blockquote>
+<p>前端没有绝对的安全  </p>
+</blockquote>
+<ol>
+<li>错误的返回<br />
+错误的返回并不会对业务造成损失，比如支付失败，直接当作失败处理即可。</li>
+<li>成功的返回
+成功的返回有时候会造成损失，比如支付后发货行为，因此必须要判断返回的可靠性。
+前端代码，容易被破解者通过hook等非正常手段伪造或者篡改，不能信任前端返回码。</li>
+<li>一般支付的交互流程图  </li>
+</ol>
+<p><img alt="sdk-safe.jpg" src="https://i.loli.net/2020/08/25/Tizgt8PYWMeQEVr.png" />   </p>
+<h4 id="_10">异常处理</h4>
+<ol>
+<li>异常概念（throwable为exception和error父类）</li>
+<li>异常的层次<ul>
+<li>checked Exception 如IoException要么用try catch捕获要么throw出去，在编码的时候会强提醒</li>
+<li>unCheckException所有继承自error或者RuntimeException的类如nullPointException</li>
+</ul>
+</li>
+<li>APP开发者和sdk开发者看代异常的角度。</li>
+</ol>
+<pre><code>因为sdk内部的异常中断了sdk内部的流程而不告诉app这显然是不可接受的，处理sdk内部的异常，原则就是不应该内部消化，而应该向外抛出，以同样的异常形式或者自定义返回码。
+</code></pre>
+
+<ol>
+<li>Exception or Error Code?
+在sdk设计中既可以通过异常告知接入方，也可以通过返回码告知接入方，如何选择？<br />
+场景：  </li>
+</ol>
+<pre><code>1. sdk入参中需要app传入手机号，并校验参数合法性
+2. sdk需要获取app包名/appid进行白名单校验
+</code></pre>
+
+<p>自定义异常是一种比较重的告知方式，意味着中断，返回码是一种比较轻的告知方式。  </p>
+<p>在与业务有关的逻辑且涉及用户（非app开发者）可以重试的部分，应该采用返回码，方便后续处理，比如用户输入了不符合手机号码规则的信息，可以通过我们的检查逻辑返回对应的返回码，集成sdk的开发者针对处理即可。<br />
+在与业务无关的逻辑且一旦发生用户无法处理的部分，可以采用抛出自定异常的方式，如sdk对app包名的校验，是一个面向开发者的校验逻辑，坦然让app崩溃，让开发者从错误堆栈中找问题,这就是uncheck exception的使用场景<br />
+开发者未遵循约定造成的无法重试的专有异常  </p>
+<h4 id="_11">初始化</h4>
+<blockquote>
+<p>初始化的本质是将APP的上下文注入到SDK，使其能通过上下文获取到app的资源和上下文  </p>
+</blockquote>
+<ol>
+<li>自定义Application（已经被废弃）</li>
+</ol>
+<pre><code>
+跟调用者自己定义的application冲突，接口反射什么的来处理，没必要  
+
+public class App extends Application {
+
+    @SuppressLint(&quot;StaticFieldLeak&quot;)
+    private static Context sContext;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        sContext = this;
+    }
+
+    public static Context getContext() {
+        return sContext;
+    }
+}
+</code></pre>
+
+<ol>
+<li>静态方法初始化（最常用）  </li>
+</ol>
+<pre><code>public class MySDK {
+
+    private static Context sContext;
+
+    private MySDK() {
+    }
+
+    public static void initSdk(Context context) {
+                //获取ApplicationContext防止内存泄漏
+        sContext = context.getApplicationContext();
+        initSomething();
+
+    }
+
+    public static Context getContext() {
+        return sContext;
+    }
+
+    private static void initSomething() {
+        //init something
+    }
+
+}  
+
+  //调用方
+public class App extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        //初始化SDK
+        MySDK.initSdk(this);
+
+    }
+}
+</code></pre>
+
+<ol>
+<li>"无侵入"contentProvider初始化方案  </li>
+</ol>
+<pre><code>利用contentProvider获取了app的上下文  
+源码：App的启动过程中加载了provider，并且传了一个Application实例进去，最终在ContentProvider中调用了onCreate()方法。因此，在自定义的ContentProvider中，通过getContext()方法就可以获取到Application的实例了，ContentProvider中的onCreate()方法是先于Application中的onCreate()方法执行的（注意：此时Application对象已经创建）。关于App启动耗时的优化思路，是不是又多了一个关注点？  
+
+1. 自定义用于初始化的provider
+
+public class MySDKInitProvider extends FileProvider{
+
+    @Override
+    public boolean onCreate() {
+        //初始化
+        MySDK.initSdk(getContext());
+        return super.onCreate();
+    }
+} 
+
+在SDK Module下的manifest中注册，编译时将会合并至主工程项目
+
+&lt;provider
+    android:name=&quot;.MySDKInitProvider&quot;
+    android:authorities=&quot;${applicationId}.MySDKInitProvider&quot;
+    android:exported=&quot;false&quot;
+    android:grantUriPermissions=&quot;true&quot;&gt;
+    &lt;meta-data
+        android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
+        android:resource=&quot;@xml/my_sdk_provider_paths&quot; /&gt;
+&lt;/provider&gt;  
+
+这里需要注意的是Provider的authorities千万别写死，否则两个引入同样SDK的App就无法共存了，这大概是SDK最不该犯的错误之一吧！
+</code></pre>
+
+<ol>
+<li>初始化新姿势-App 谷歌新组件，Startup(alpha的阶段，就不太建议用于生产环境中)  </li>
+</ol>
+<h4 id="_12">个性化配置</h4>
+<blockquote>
+<p>使用流式比较优雅的实现sdk的个性化配置。<br />
+sdk配置的本质是为sdk相关功能提供默认配置，并且接收开发者的自定义配置  </p>
+</blockquote>
+<pre><code>private void initsdk(){
+    LuisSDK.setdebug(true);
+    LuisSDK.init(this);
+    LuisSDK.setVoice(true); 
+}
+</code></pre>
+
+<p>流式api的样例  </p>
+<pre><code>MySDKConfig.getConfig().setDebug(true).setTimeout(8000L);
+</code></pre>
+
+<pre><code>public class LuisSDKConfig{
+private static final LuisSDKConfig.Config CONFIG = new LuisSDKConfig.Congi();
+
+    public static class Config{
+        private Config(){
+
+        }
+
+        public LuisSDKConfig.Config setDebug(final boolean isDebug) {
+            sDebug = isDebug;
+            return this;
+        }
+
+    }
+
+    public static boolean isDebug() {
+        return sDebug;
+    }
+
+    public static LuisSDKConfig.Config getConfig() {
+        return CONFIG;
+    }
+
+}
+
+
+//调用示例
+LuisSDKConfig.getConfig().setdebug(true);
+
+</code></pre>
+
+<h4 id="sdk">SDK安全与校验</h4>
+<ol>
+<li>资源安全，如何保证sdk包的完整性  <ul>
+<li>在编译的时候aar被合并到apk中，直接校验aar包的摘要不可行，但是可以通过校验aar包中的资源,raw,assets包中文件的摘要，这两个目录下的文件在编译的时候不会被压缩，摘要也不会变。</li>
+</ul>
+</li>
+<li>警惕资源覆盖造成的安全问题Android 会将Library模块中资源与Application模块中的资源进行合并，APP Moduler的资源将会覆盖Library Moduler中的同名资源。<br />
+在对文件或者资源进行命名的时候务必添加唯一性的前缀，或其他唯一性命名方案。  </li>
+</ol>
+<p>这一特性也为我们替换SDK资源，进行个性化改造提供了一种思路<br />
+3. 存储安全
+    * sp存储，采用xml文件格式来存储文件文件所在目录data/data/shared_prefs如果直接将账号密码或者个人敏感信息存储进去，手机root后可轻松获取，存储的时候简单做一层加密逻辑。
+    * so安全存储，不仅把密钥存储与so，还要把加解密逻辑或者传输逻辑放置于so。
+4. 传输安全
+    安全环境监测
+    * vpn
+    * root
+    * 多开
+    * 模拟器环境<br />
+5. 混淆与配置
+    * 手动继承
+    * SDK内置</p>
+<pre><code>将sdk中混淆配置也打包进aar中  
+指定consumerProguardFiles属性，自定义引入混淆规则，该属性只针对Library有效，对app无效
+
+
+as4.0新建library会会自动创建出两个***rules.pro文件，其中consumer-rules.pro，自动被defaultConfig下的consumerProguardFiles所引用； proguard-rules.pro，自动被buildType下的proguardFiles引用。
+区别：
+default下的consumerProguardFiles配置的*.pro文件将会在library mopduler打包成aar,以proguard.txt的形式存在
+</code></pre>
+
+<h4 id="sdk_1">SDK打包方法</h4>
+<h5 id="library-modulebuildgradle">library module下的build.gradle模板配置：</h5>
+<pre><code>//区别于application，这意味着该module将被视为library
+apply plugin: 'com.android.library'
+
+//自定义的一个方法，用来获取当前时间
+static def releaseTime() {
+    return new Date().format(&quot;yyyy-MM-dd&quot;, TimeZone.getTimeZone(&quot;UTC&quot;))
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion &quot;29.0.3&quot;
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName &quot;1.0&quot;
+        consumerProguardFiles &quot;proguard-rules.pro&quot;//配置自定义的混淆规则，该字段下的混淆规则将作用于集成该SDK的APP
+        testInstrumentationRunner &quot;android.support.test.runner.AndroidJUnitRunner&quot;
+        ndk {
+            abiFilters 'armeabi-v7a','arm64-v8a'//显式限定sdk支持的arm架构指令集
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(&quot;../key/mylib.jks&quot;)//相对路径下的签名文件
+            storePassword &quot;Android_2333&quot;
+            keyAlias &quot;key-sdk&quot;
+            keyPassword &quot;Android_2333&quot;
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources false//sdk module编译时，不支持设置shrinkResources为true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//编译本module时参与混淆配置的文件
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false //sdk module编译时，不支持设置shrinkResources为true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//编译本module时参与混淆配置的文件
+        }
+    }
+
+    //自动提取编译生成的aar文件，重命名，最后自动复制到appmodule下的libs目录，方便调试验证。
+    libraryVariants.all { variant -&gt;
+        if (variant.buildType.name == 'release') {
+            variant.assembleProvider.get().doLast {
+                variant.outputs.each { output -&gt;
+                    def outputFile = output.outputFile
+                    if (outputFile != null &amp;&amp; outputFile.name.endsWith('release.aar')) {
+//                        def fileName = &quot;${project.name}-release-${android.defaultConfig.versionName}-${releaseTime()}&quot;
+                        def outputPath = &quot;../mylib/build/aar&quot;
+                        def libPath = &quot;../app/libs&quot;
+                        copy {
+                            from outputFile
+                            into outputPath
+//                            rename { fileName + &quot;.aar&quot; }
+                        }
+                        //直接复制到App的libs目录下，方便调试
+                        copy {
+                            from outputFile
+                            into libPath
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    //这句话代表集引入libs目录下的所有jar包
+    implementation fileTree(dir: &quot;libs&quot;, include: [&quot;*.jar&quot;])
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+}
+</code></pre>
+
+<p>如何打一个aar包：  </p>
+<pre><code>双击gradle脚本assembleRelease，执行正式aar编译生成过程;
+编译完成，可以看到outputs目录下自动生成了一个aar文件，同时我们的脚本也生效了，将其复制到了指定的目录下（这里可以做一下自动版本命名之类的工作）
+</code></pre>
+
+<h5 id="_13">依赖原则，尽量避免第三方库的依赖</h5>
+<h5 id="_14">如何解决组件依赖冲突：</h5>
+<ol>
+<li>强制使用指定版本  </li>
+<li></li>
+</ol></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

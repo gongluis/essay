@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>APP整体优化 - Luis Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Luis Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">介绍</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../basicDataType/">基础数据类型</a>
+</li>
+                                    
+<li >
+    <a href="../algorithm/">算法</a>
+</li>
+                                    
+<li >
+    <a href="../garbage/">垃圾回收机制</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../kotuis/">学习笔记</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../fourcomponent/">四大组件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">设计模式</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../designpattern/singleInstance/">单例</a>
+</li>
+            
+<li >
+    <a href="../designpattern/factory/">工厂</a>
+</li>
+            
+<li >
+    <a href="../designpattern/builder/">Builder</a>
+</li>
+            
+<li >
+    <a href="../designpattern/observer/">观察者</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">自定义控件</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customView/customCombinationView/">自定义组合控件</a>
+</li>
+            
+<li >
+    <a href="../customView/customView/">自定义View</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">APP架构</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../constructure/mvc/">MVC</a>
+</li>
+            
+<li >
+    <a href="../constructure/font_updown.md">MVP</a>
+</li>
+            
+<li >
+    <a href="../constructure/font_updown.md">MVvm</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li >
+    <a href="../threadPool/">线程池</a>
+</li>
+                                    
+<li >
+    <a href="../touchEvent/">事件分发</a>
+</li>
+                                    
+<li >
+    <a href="../handler/">Handler原理</a>
+</li>
+                                    
+<li >
+    <a href="../sdkversion/">Android版本对应SDK版本</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">APP整体优化</a>
+</li>
+                                    
+<li >
+    <a href="../sdk/">sdk开发笔记</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../sdkversion/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../sdk/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#_1">性能优化</a></li>
+            <li><a href="#_2">内存优化</a></li>
+            <li><a href="#_6">代码优化</a></li>
+            <li><a href="#ui">UI优化（布局优化和绘制优化）</a></li>
+            <li><a href="#_9">速度优化（线程优化和网络优化）</a></li>
+            <li><a href="#_14">电量优化</a></li>
+            <li><a href="#_15">启动优化</a></li>
+            <li><a href="#_20">分析性能的工具</a></li>
+            <li><a href="#apk">APK瘦身</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="_1">性能优化</h2>
+<div class="toc">
+<ul>
+<li><a href="#_1">性能优化</a><ul>
+<li><a href="#_2">内存优化</a><ul>
+<li><a href="#_3">什么是内存泄漏？</a></li>
+<li><a href="#_4">原因</a></li>
+<li><a href="#_5">影响？</a></li>
+<li><a href="#-leakcanary">工具-leakcanary</a></li>
+</ul>
+</li>
+<li><a href="#_6">代码优化</a><ul>
+<li><a href="#lint">使用lint检查取出无效代码</a></li>
+<li><a href="#_7">代码规范优化</a></li>
+</ul>
+</li>
+<li><a href="#ui">UI优化（布局优化和绘制优化）</a><ul>
+<li><a href="#_8">布局优化</a></li>
+</ul>
+</li>
+<li><a href="#_9">速度优化（线程优化和网络优化）</a><ul>
+<li><a href="#_10">线程优化</a></li>
+<li><a href="#_11">使用线程池</a></li>
+<li><a href="#_12">网络优化</a><ul>
+<li><a href="#_13">图片：</a></li>
+</ul>
+</li>
+<li><a href="#loading">加载Loading优化</a></li>
+</ul>
+</li>
+<li><a href="#_14">电量优化</a></li>
+<li><a href="#_15">启动优化</a><ul>
+<li><a href="#_16">冷启动</a></li>
+<li><a href="#_17">暖启动</a></li>
+<li><a href="#_18">热启动</a></li>
+<li><a href="#_19">启动页优化</a></li>
+</ul>
+</li>
+<li><a href="#_20">分析性能的工具</a></li>
+<li><a href="#apk">APK瘦身</a><ul>
+<li><a href="#apk_1">APK构成初探</a></li>
+<li><a href="#_21">优化方案</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h4 id="_2">内存优化</h4>
+<p>内存泄漏是常客  </p>
+<h5 id="_3">什么是内存泄漏？</h5>
+<pre><code>内存不在GC的掌控范围内 
+对一些对象有有限的周期声明，希望要做的事完成了，它会被垃圾回收器回收掉，但是有一些对这个对象的引用还存在，导致无法被回收，占用内存，持续累加，内存很快被耗尽OOM.
+如一个activity的onDestroy被调用，但是如果有一个后台线程持有这个activity的引用，该activity占用的内存就不能被回收。
+</code></pre>
+
+<h5 id="_4">原因</h5>
+<ol>
+<li>错误使用单例-context(ApplicationContext)</li>
+<li>handler  </li>
+</ol>
+<pre><code>在handler中设置ui元素
+解决方案：
+1. activity关闭的时候移除所有的消息和runable
+2. 采用静态内部类+弱引用
+
+</code></pre>
+
+<ol>
+<li>thread</li>
+</ol>
+<pre><code>非静态内部类或者匿名类创建线程会隐式引用activity,线程run方法不执行完，线程是不会销毁的，所引用的activity也不会销毁。
+解决方案：
+线程内部使用弱引用/加个tag,activity销毁时修改tag值，不继续执行线程中的操作
+</code></pre>
+
+<ol>
+<li>AsyncTask</li>
+</ol>
+<pre><code>在AsyncTask中进行耗时操作，完成后，更新ui，有时会在耗时操作还没结束，activity就退出了，但是引用还被AsyncTask持有，无法释放导致内存泄漏。
+解决方法：在ondestroy的时候，调用AsyncTask.cancel()
+5. 资源未关闭BroadcastReceiver、注册后记得取消注册。
+6. 动画资源未释放，无限循环动画
+</code></pre>
+
+<h5 id="_5">影响？</h5>
+<p>oom</p>
+<h5 id="-leakcanary">工具-leakcanary</h5>
+<ol>
+<li>java的GC内存回收机制是什么？<br />
+答：对象在没有任何引用的时候才会被回收</li>
+<li>
+<p>GC回收机制的原理是什么？/可以作为GC Root引用点是啥？<br />
+答：1.java栈中引用的对象2.方法静态引用的对象3.方法常量引用的对象4.Native中JNI引用的对象5.Thread-活着的线程。  </p>
+</li>
+<li>
+<p>内存泄漏原因？<br />
+答:代码存在泄漏，内存无法释放/图片加载消耗大量内存，系统给应用分配内存即为应用能占用内存的最大值。</p>
+</li>
+</ol>
+<pre><code>Android Profiler 测量应用性能  
+</code></pre>
+
+<h4 id="_6">代码优化</h4>
+<h5 id="lint">使用lint检查取出无效代码</h5>
+<ol>
+<li>检测未使用的资源  </li>
+</ol>
+<pre><code>点击菜单栏 Analyze -&gt; Run Inspection by Name -&gt; unused resources -&gt; Moudule ‘app’ -&gt; OK
+</code></pre>
+
+<ol>
+<li>检测无效代码  </li>
+</ol>
+<pre><code>步骤：点击菜单栏 Analyze -&gt; Run Inspection by Name -&gt; unused declaration -&gt; Moudule ‘app’ -&gt; OK
+</code></pre>
+
+<h5 id="_7">代码规范优化</h5>
+<ol>
+<li>避免创建不必要的对象，越少的对象意味着越少的GC操作  </li>
+</ol>
+<pre><code>1. 字符串拼接优先使用stringBuilder或stringBuffer,而不是+号连接，+会创建多余的对象，拼接的字符串越长，+号连接符的性能越低
+2. 当一个方法返回值为string通常要判断string的作用，如果明确知道该方法返回的string再进行拼接可以考虑返回一个stringBuuffer对象来替代，将一个对象的引用返回，而返回string则是创建了一个短生命周期的临时对象。
+</code></pre>
+
+<ol>
+<li>静态优于抽象</li>
+</ol>
+<pre><code>如果只是想调用来完成某项功能，可设置成静态的，不用专门调用这个方法而创建对象
+</code></pre>
+
+<ol>
+<li>对常量使用static final修饰</li>
+<li>去除淡黄色警告</li>
+<li>节制的使用service,可考虑使用intentServie代替service  </li>
+<li>不适用静态变量保存核心数据  </li>
+</ol>
+<pre><code>android的进程并不是安全的，被kill掉后，app不会重新开始启动，android系统会创建一个新的Apllication对象然后启动上次用户离开时的activity,造成这个app从来没有退出的假象，静态变量数据由于进程被杀死而被初始化。
+</code></pre>
+
+<ol>
+<li>轮询操作优化  </li>
+</ol>
+<pre><code>大概思路：当用户打开这个页面的时候初始化TimerTask对象，每个一分钟请求一次服务器拉取订单信息并更新UI，当用户离开页面的时候清除TimerTask对象，即取消轮训请求操作
+</code></pre>
+
+<h4 id="ui">UI优化（布局优化和绘制优化）</h4>
+<blockquote>
+<p>每秒60帧，相当于每帧需要在大概16毫秒内完成渲染，否则就会卡顿</p>
+</blockquote>
+<ol>
+<li>ui线程做耗时操作</li>
+<li>Layout过于复杂，无法在16ms内完成渲染</li>
+<li>同一时间动画执行的次数过多，CPU GPU负荷过重</li>
+<li>View频繁的触发measure layout</li>
+<li>内存频繁出发gc,stoptheword<ul>
+<li>onDraw方法不需要创建新的对象</li>
+<li>onDraw方法不需要执行耗时操作循环</li>
+</ul>
+</li>
+<li>无用的资源和逻辑导致加载和执行缓慢）  <ul>
+<li>Analyze-&gt;Run Inspection by Name… –&gt;unused resource </li>
+<li>Analyze-&gt;Inspect Code</li>
+</ul>
+</li>
+<li>anr  </li>
+</ol>
+<p>通过瞬时测试和压力测试更容易出发上面问题</p>
+<p>如何来定位？  </p>
+<pre><code>1. 系统设置-开发者选项-调试GPU过度绘制，红色区域过度绘制，层级/relativelayout和linealayout
+2. 
+</code></pre>
+
+<h5 id="_8">布局优化</h5>
+<ol>
+<li>include优化-重用公共布局</li>
+<li>viewstub优化-仅在需要时才加载布局性能比VISISBLE好</li>
+<li>merge优化-可以删减多余的层级，优化ui，但是无法预览</li>
+<li>减少重叠，背景图,selector normal改成透明</li>
+</ol>
+<h4 id="_9">速度优化（线程优化和网络优化）</h4>
+<blockquote>
+<p>ANR Activity 5s触摸或者键盘输入事件无响应，broadcastReceiver 10s, service 20s</p>
+</blockquote>
+<h5 id="_10">线程优化</h5>
+<p>以上出现的anr多数由于线程阻塞引起的，可通过以下方法解决
+* Asytask
+* HandlerThread
+* ThreadPool
+* intentService
+* </p>
+<h5 id="_11">使用线程池</h5>
+<pre><code>直接创建Thread实现Runable的弊端，大量线程的创建和销毁很容易导致gc频繁的执行，发生内存抖动从而造成界面卡顿
+
+为什么使用线程池？
+1. 重用线程
+2. 控制最大并发数量
+3. 对线程进行一定的管理
+
+例子：
+Rxjava，rxandroid
+</code></pre>
+
+<h5 id="_12">网络优化</h5>
+<h6 id="_13">图片：</h6>
+<ul>
+<li>图片优化使用webP格式，大幅节省流量，相对于jpg节省25~35%，对于png节省80%</li>
+<li>Bitmap优化 <ul>
+<li>使用Android Matrix对图片缩放。</li>
+<li>如何在不使用 缩略图，不压缩，优化，使用android bitmapRigionDecode显示指定区域。</li>
+</ul>
+</li>
+<li>Glide加载优化
+  <code>之前看到豆瓣的开源接口，思路很好，接口返回图片的数据有三种，高清大图、正常图片、缩略图，处于wifi用高清大图，4g或3g用正常，弱网条件下加载缩略图</code></li>
+<li>网络请求处理：  </li>
+<li>对服务端返回的数据合理的缓存  </li>
+<li>下载采用断点续传</li>
+<li>刷新数据尽可能采用局部刷新  </li>
+<li></li>
+</ul>
+<h5 id="loading">加载Loading优化</h5>
+<ol>
+<li>一种就是从A页面跳转到B页面时的加载loading,loading的时候页面是纯白色，加载完数据才显示内容页面</li>
+<li>在某个页面操作某种逻辑，局部loading(帧动画或者补间动画)，建议在销毁弹窗时，销毁动画。</li>
+</ol>
+<h4 id="_14">电量优化</h4>
+<blockquote>
+<p>重视程度低，音乐和视频耗电最大</p>
+</blockquote>
+<ul>
+<li>网络请求前先判断网络的状态</li>
+<li>网络请求最好进行批量处理，避免频繁间隔的网络请求</li>
+<li>有wifi和移动网络优先使用wifi,请求wifi的耗电量远比移动耗电量低</li>
+</ul>
+<h4 id="_15">启动优化</h4>
+<h5 id="_16">冷启动</h5>
+<p>耗时最长的，第一次启动app或者杀死进程第一次启动，主要包括application creat和activity的creat，因此在两个类的oncreat方法中做的事情越多，冷启动消耗的时间越长</p>
+<h5 id="_17">暖启动</h5>
+<p>当应用中的Activity被销毁，但在内存中常驻时，启动方式就变成暖启动，减少了对象的初始化、布局加载等工作，启动时间更短，系统依然会展现闪屏页，直到第一个activity页面呈现</p>
+<h5 id="_18">热启动</h5>
+<p>用户使用返回键退出应用，然后又马上重新启动应用  </p>
+<pre><code>1. 白屏
+2. 闪屏页倒计时进行一些预加载
+3. 主线程中涉及到的sp操作尽量在非ui线程执行
+4. application创建过程尽量少的进行耗时操作
+5. 减少布局的层次
+</code></pre>
+
+<h5 id="_19">启动页优化</h5>
+<ol>
+<li>启动时间优化，从Application的onCreat()方法开始到MainActivity的onCreat()执行结束<ul>
+<li>延迟初始化</li>
+<li>后台任务</li>
+<li>启动界面预加载  </li>
+</ul>
+</li>
+</ol>
+<pre><code>* intentService分担部分初始化工作
+bugly\推送，热修复等。。。
+</code></pre>
+
+<ol>
+<li>启动页白屏处理  </li>
+</ol>
+<pre><code>为什么会出现？
+zygote在启动一个APP时，会创建一个新的进程去运行这个app,创建进程是需要时间的，创建完成之前，界面是假死状态，系统根据你的manifest文件设置的主题颜色来展示一个白屏或者黑屏，称为preview window，即预览窗口
+实际就是activity默认主题的android:windowBackground为白色或者黑色决定的
+APP启动--previewWindow--启动页
+
+解决办法有透明主题
+添加一个有背景的style样式
+，然后闪屏页引用该theme主题，在该页面将window的背景图片设置为空
+
+
+</code></pre>
+
+<h4 id="_20">分析性能的工具</h4>
+<ol>
+<li>Systrace   进行埋点，使用门槛搞点，需要输入命令  </li>
+</ol>
+<pre><code>原理：在一些关键链路中插入label,通过label的开始和结束时间来确定某个核心过程的执行时间，framwork层和java从都插入了label信息，亦可以自定义label
+系统版本越高，Framwork中添加的系统可用label就越多  
+
+</code></pre>
+
+<p>使用注意事项：  </p>
+<pre><code>1. 手动缩小范围
+2. sdk/plaform-tools/systrace目录下执行命令
+3. 执行结束后会生成一个trace.html文件
+</code></pre>
+
+<p>自定义label  </p>
+<pre><code>在开始和结束的地方加上自定义label,抓一遍trace，分析问题
+</code></pre>
+
+<p>如何分析非debug app  </p>
+<pre><code>debug和非debug性能差别很大，为了支持debug,系统开启了一些列功能，并且关闭掉了某些重要优化  ，要想分析app真实的运行情况必须要在非debug的APP中启动systrace功能。
+通过反射调用sdk中一个@hide的函数
+</code></pre>
+
+<ol>
+<li>traceView  </li>
+</ol>
+<pre><code>运行时开销很严重，trace会收集程序运行时所有方法的耗时情况
+可以埋点
+</code></pre>
+
+<ol>
+<li>Profiler    </li>
+</ol>
+<h4 id="apk">APK瘦身</h4>
+<h5 id="apk_1">APK构成初探</h5>
+<p>将apk包拖到android studio中就可以看到包结构了。  </p>
+<pre><code>lib 主要存储各cpu架构的so库
+classes.dex java文件编译生成的字节码文件
+res 资源文件
+AndroidManifest.xml 配置文件
+META-INFO 相关签名信息
+resource.arsc 资源文件映射表
+</code></pre>
+
+<h5 id="_21">优化方案</h5>
+<ol>
+<li>使用minifyEnable混淆代码  </li>
+</ol>
+<pre><code>android {
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+}
+proguard-rules.pro中编写混淆规则
+</code></pre>
+
+<ol>
+<li>使用ShrinkResources移除无用资源  </li>
+</ol>
+<pre><code>android {
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+        }
+    }
+}
+shrinkResource必须与minifyResource同时开启才有效。
+注意：采用该方法其实无用的资源并没有被移除掉，而是被体积更小的占位符替代了
+</code></pre>
+
+<ol>
+<li>删除项目中未使用到的资源文件
+通过androidstudio提供的lint工具，analyze-run inspection by name然后输入unused resource查找未使用的资源文件，然后删除。</li>
+<li>
+<p>删除项目中未使用的代码<br />
+analyze-run inspection by name然后输入unused declearation 找到无用代码对其删除</p>
+<blockquote>
+<p>通过反射引用的方法或者类，lint识别不了，也会给检查出来，删除的时候通过反射引用的方法或者类千万不能删除</p>
+</blockquote>
+</li>
+<li>
+<p>对图片进行压缩</p>
+<ul>
+<li>将Png图片换成体积更小的jpg格式。</li>
+<li>使用tinypng或者upng对图片进行压缩</li>
+<li>使用vector矢量图</li>
+<li>将图片转化成webP格式(要求最低的api是18)转换后jpg节省35%。png 80%</li>
+</ul>
+</li>
+<li>使用shape代替图片</li>
+<li>使用Resource Configs进行语言配置</li>
+</ol>
+<pre><code>Android应用本身是支持国际化的，但国内的项目好多都是在国内使用，不需要国际化，这时候可以对相关的String进行减法操作，使其只包含特定的语言（例如中文）
+
+android {
+    defaultConfig {
+        ...
+        //语言资源，只支持中文
+        resConfigs &quot;zh-rCN&quot;
+    }
+}
+</code></pre>
+
+<ol>
+<li>so库操作，在引入第三方sdk难免要引入对应的so库，一般给到的so库分好多架构（armeabi, armeabi-v7a, x86等等）
+Android系统 目前支持以下七种不同的CPU架构：  </li>
+</ol>
+<pre><code>ARMv5
+ARMv7
+x86
+MIPS
+ARMv8
+MIPS64
+x86_64
+</code></pre>
+
+<p>所有的架构设备x86,x8664,armeabi-v7a,arm64-v8a都支持armeabi架构的.so文件，所以可以根据自己的业务需求选择使用armeabi或者armeabi-v7a  </p>
+<p>微信、qq、网易云音乐等都只保留了armeabi-v7a</p>
+<pre><code>android {
+    defaultConfig {
+        ndk {
+            abiFilters 'armeabi','armeabi-v7a'
+        }
+    }
+}
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
