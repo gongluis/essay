@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Things - Luis Docs</title>
+        <title>观察者 - Luis Docs</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -75,7 +75,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -88,19 +88,19 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../designpattern/singleInstance/">单例</a>
+    <a href="../singleInstance/">单例</a>
 </li>
             
 <li >
-    <a href="../../designpattern/factory/">工厂</a>
+    <a href="../factory/">工厂</a>
 </li>
             
 <li >
-    <a href="../../designpattern/builder/">Builder</a>
+    <a href="../builder/">Builder</a>
 </li>
             
-<li >
-    <a href="../../designpattern/observer/">观察者</a>
+<li class="active">
+    <a href="./">观察者</a>
 </li>
     </ul>
   </li>
@@ -158,6 +158,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../builder/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../customView/customCombinationView/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -166,15 +176,112 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#dadadada">dadadada</a></li>
-            <li><a href="#dididididi">dididididi</a></li>
+        <li class="main active"><a href="#_1">定义</a></li>
+        <li class="main "><a href="#_2">经典的例子</a></li>
+        <li class="main "><a href="#_3">优缺点</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>this is interesting things</p>
-<h2 id="dadadada">dadadada</h2>
-<h3 id="dididididi">dididididi</h3></div>
+<h3 id="_1">定义</h3>
+<pre><code>基于事件和响应的设计模式  
+简单来说多个观察者同时观察一个对象，当对象发生变化的时候观察者能够回调自身的方法更新自己。
+</code></pre>
+
+<p><img alt="observer.png" src="https://i.loli.net/2020/07/14/17oMWz6nHwOxK2j.png" />  </p>
+<pre><code>1. 定义一个观察者接口
+2. 观察者实现观察者接口
+3. 定义被观察者接口或者抽象类，里面有addObserver(Observer observer),removeObserver(Observer observer),notifyObserver(),调用notifyObserver(),遍历list&lt;Observer&gt;, 回调onserver里面的方法。
+</code></pre>
+
+<h3 id="_2">经典的例子</h3>
+<p>游戏中英雄，在地图中中走，捡宝盒增加技能或者踩到陷阱减生命力的。
+在这个例子中，宝石，宝剑和陷阱属于观察者ConcreteObserver,英雄属于被观察者，<br />
+如何建立关系呢？<br />
+首先有很多的英雄和很多的道具，抽取共同的行为</p>
+<pre><code>Public interface Observer{
+    void update();
+}
+</code></pre>
+
+<p>宝石</p>
+<pre><code>public Stone implement Observer{
+    public void update(){
+        if(inrange()){
+            System.out.print(&quot;获取到宝石&quot;);
+        }
+
+    }
+    public Boolean inrange(){
+        //判断是否在距离内
+        return true;
+    }
+
+}
+</code></pre>
+
+<p>陷阱  </p>
+<pre><code>public Trap implement Observer{
+    public void update(){
+        if(){
+            System.out.print(&quot;踩到陷阱&quot;);
+        }
+    }
+}
+</code></pre>
+
+<p>定义抽象类  </p>
+<pre><code>public abstract Subject{
+private List&lt;Observer&gt; observerList = new ArrayList&lt;Observer&gt;();
+
+    public void addObserver(Observer observer){
+        observerList.add(observer);
+    }
+
+    public void deleteObserver(Observer observer){
+        observerList.remove(observer);
+    }
+
+    public void notifyObserver(){
+        for(Observer observer: observerList){
+            observer.update();
+        }
+    }
+
+}
+</code></pre>
+
+<p>定义英雄  </p>
+<pre><code>public class Hero extend Subject{
+
+    public void run(){
+        notifyObserver();
+    }
+
+}
+</code></pre>
+
+<p>具体调用<br />
+  ```
+  public class client{
+      public static void main(String[] args){
+      //初始化对象<br />
+      Hero hero = new Hero();
+      Stone stone = new Stone();
+      Trap trap = new Trap();
+      hero.addObserver(stone);
+      hero.addObserver(trap);
+        hero.run();<br />
+      }
+  }<br />
+  代码输出如下：<br />
+  获取到宝石<br />
+  踩到陷阱</p>
+<p>```  </p>
+<h3 id="_3">优缺点</h3>
+<ol>
+<li>解耦观察者被观察者</li>
+</ol></div>
         </div>
 
         <footer class="col-md-12">

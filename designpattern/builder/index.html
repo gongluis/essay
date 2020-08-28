@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Things - Luis Docs</title>
+        <title>Builder - Luis Docs</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -75,7 +75,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -88,19 +88,19 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../designpattern/singleInstance/">单例</a>
+    <a href="../singleInstance/">单例</a>
 </li>
             
 <li >
-    <a href="../../designpattern/factory/">工厂</a>
+    <a href="../factory/">工厂</a>
+</li>
+            
+<li class="active">
+    <a href="./">Builder</a>
 </li>
             
 <li >
-    <a href="../../designpattern/builder/">Builder</a>
-</li>
-            
-<li >
-    <a href="../../designpattern/observer/">观察者</a>
+    <a href="../observer/">观察者</a>
 </li>
     </ul>
   </li>
@@ -158,6 +158,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../factory/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../observer/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -166,15 +176,68 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#dadadada">dadadada</a></li>
-            <li><a href="#dididididi">dididididi</a></li>
+        <li class="main active"><a href="#_1">定义</a></li>
+        <li class="main "><a href="#_2">经典例子</a></li>
+        <li class="main "><a href="#_3">优缺点</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>this is interesting things</p>
-<h2 id="dadadada">dadadada</h2>
-<h3 id="dididididi">dididididi</h3></div>
+<h3 id="_1">定义</h3>
+<p>将一个复杂对象的构建和表示分离，使得同样的构建过程可以构建不同的对象。</p>
+<h3 id="_2">经典例子</h3>
+<p>创建对象传递参数的时候往往通过构造函数来传，，随着构造函数的增加，代码会很难编写。<br />
+例：生产组装一辆、台电脑  </p>
+<pre><code>public class computer{
+    private final String display；
+    private final String keyBoard；
+    private final String mouse；
+
+    public static class Builder{
+    //必选字段
+        private final String display；
+        private final String keyBoard；
+        //可选字段
+        private final String mouse；
+
+        public Builder(String display, String keyBoard){
+            this.display = display;
+            this.keyBoard = keyBoard;
+
+        }
+        public Builder mouse(String mouse){
+            this.mouse = mouse;
+            return this;
+        }
+
+        public Computer build(){
+            return new Computer(this);
+        }
+    }
+    private Computer (Builder builder){
+        display = builder.display;
+        keyBoard = builder.keyBoard;
+        mouse = builder.mouse;
+    }
+}
+</code></pre>
+
+<p>测试代码  </p>
+<pre><code>Computer computer = new Computer.Builder(&quot;三星&quot;,&quot;华为&quot;)
+.mouse(&quot;苹果&quot;)
+.build();
+</code></pre>
+
+<p>Android 采用Builder模式的AlertDialog  </p>
+<pre><code>AlertDialog.Builder dialog = new AlertDialog.Nuilder(this);
+dialog.setTitle(&quot;关于我们&quot;)
+.setMessage(&quot;大家好!&quot;)
+.creat()
+.show();
+</code></pre>
+
+<h3 id="_3">优缺点</h3>
+<p>链式调用抑郁阅读和编写，出错难以debug</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Things - Luis Docs</title>
+        <title>自定义组合控件 - Luis Docs</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -75,7 +75,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -109,12 +109,12 @@
     <a href="#">自定义控件</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../customView/customCombinationView/">自定义组合控件</a>
+<li class="active">
+    <a href="./">自定义组合控件</a>
 </li>
             
 <li >
-    <a href="../../customView/customView/">自定义View</a>
+    <a href="../customView/">自定义View</a>
 </li>
     </ul>
   </li>
@@ -158,6 +158,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../../designpattern/observer/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../customView/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -166,15 +176,167 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#dadadada">dadadada</a></li>
-            <li><a href="#dididididi">dididididi</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>this is interesting things</p>
-<h2 id="dadadada">dadadada</h2>
-<h3 id="dididididi">dididididi</h3></div>
+<ol>
+<li>第一步定义你要复用的布局</li>
+</ol>
+<pre><code>&lt;RelativeLayout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/tv_left_attribute&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/tv_order_goods_name&quot;
+        android:textSize=&quot;@dimen/edge_14&quot;
+        android:textColor=&quot;@color/color_3f3f3f&quot;
+        android:layout_marginTop=&quot;@dimen/edge_15&quot;
+        android:layout_centerVertical=&quot;true&quot;/&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/tv_right_attribute&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:textColor=&quot;@color/color_808080&quot;
+        android:textSize=&quot;@dimen/edge_14&quot;
+        android:layout_alignParentRight=&quot;true&quot;
+        android:layout_centerVertical=&quot;true&quot;/&gt;
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<ol>
+<li>第二步定义自定义属性(value下新建attrs)</li>
+</ol>
+<pre><code>&lt;resources&gt;
+    &lt;declare-styleable name=&quot;SimpleAttribute&quot;&gt;
+        &lt;attr name=&quot;left_text_color&quot; format=&quot;color&quot;/&gt;
+        &lt;attr name=&quot;left_text_size&quot; format=&quot;dimension&quot;/&gt;
+        &lt;attr name=&quot;left_text&quot; format=&quot;string&quot;/&gt;
+        &lt;attr name=&quot;right_text_color&quot; format=&quot;color&quot;/&gt;
+        &lt;attr name=&quot;right_text_size&quot; format=&quot;dimension&quot;/&gt;
+        &lt;attr name=&quot;right_text&quot; format=&quot;string&quot;/&gt;
+    &lt;/declare-styleable&gt;
+&lt;/resources&gt;
+</code></pre>
+
+<ol>
+<li>第三步自定义一个View根据需求继承不同的viewGroup,如：RelativeLayout、LinearLayout等,复写两个构造方法  </li>
+</ol>
+<pre><code>public class SimpleAttribute extends RelativeLayout {
+</code></pre>
+
+<ol>
+<li>初始化控件  </li>
+</ol>
+<pre><code>    private void initView(Context context) {
+        View.inflate(context, R.layout.attribute_layout, this);
+        mLeftTv = this.findViewById(R.id.tv_left_attribute);
+        mRightTv = this.findViewById(R.id.tv_right_attribute);
+    }
+</code></pre>
+
+<ol>
+<li>重写构造方法，在构造方法中初始化控件，并引用自定义属性。  </li>
+</ol>
+<pre><code>    private void useCustomAttribute(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleAttribute);
+
+        int leftTextColor = typedArray.getColor(R.styleable.SimpleAttribute_left_text_color, getResources().getColor(R.color.black));
+        setLeftTextColor(leftTextColor);
+        float leftTextSize = typedArray.getDimension(R.styleable.SimpleAttribute_left_text_size, getResources().getDimension(R.dimen.edge_14));
+        setLeftTextSize(leftTextSize);
+        String leftText = typedArray.getString(R.styleable.SimpleAttribute_left_text);
+        setLeftText(leftText);
+
+        int rightTextColor = typedArray.getColor(R.styleable.SimpleAttribute_right_text_color, getResources().getColor(R.color.black));
+        setRightTextColor(rightTextColor);
+        float rightTextSize = typedArray.getDimension(R.styleable.SimpleAttribute_right_text_size, getResources().getDimension(R.dimen.edge_14));
+        setRightTextSize(rightTextSize);
+        String rightText = typedArray.getString(R.styleable.SimpleAttribute_right_text);
+        setRightText(rightText);
+
+    }
+</code></pre>
+
+<p>完整代码：  </p>
+<pre><code>
+/**
+ * author : luis
+ * e-mail : luis.gong@cardinfolink.com
+ * date   : 2020/7/17  19:39
+ * desc   :
+ */
+public class SimpleAttribute extends RelativeLayout {
+
+    private TextView mLeftTv;
+    private TextView mRightTv;
+
+    public SimpleAttribute(Context context) {
+        super(context);
+        initView(context);
+    }
+
+    public SimpleAttribute(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        useCustomAttribute(context, attrs);
+    }
+
+    private void initView(Context context) {
+        View.inflate(context, R.layout.attribute_layout, this);
+        mLeftTv = this.findViewById(R.id.tv_left_attribute);
+        mRightTv = this.findViewById(R.id.tv_right_attribute);
+    }
+
+
+    private void useCustomAttribute(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleAttribute);
+
+        int leftTextColor = typedArray.getColor(R.styleable.SimpleAttribute_left_text_color, getResources().getColor(R.color.black));
+        setLeftTextColor(leftTextColor);
+        float leftTextSize = typedArray.getDimension(R.styleable.SimpleAttribute_left_text_size, getResources().getDimension(R.dimen.edge_14));
+        setLeftTextSize(leftTextSize);
+        String leftText = typedArray.getString(R.styleable.SimpleAttribute_left_text);
+        setLeftText(leftText);
+
+        int rightTextColor = typedArray.getColor(R.styleable.SimpleAttribute_right_text_color, getResources().getColor(R.color.black));
+        setRightTextColor(rightTextColor);
+        float rightTextSize = typedArray.getDimension(R.styleable.SimpleAttribute_right_text_size, getResources().getDimension(R.dimen.edge_14));
+        setRightTextSize(rightTextSize);
+        String rightText = typedArray.getString(R.styleable.SimpleAttribute_right_text);
+        setRightText(rightText);
+
+    }
+
+    public void setLeftTextSize(float leftTextSize) {
+        mLeftTv.setTextSize(leftTextSize);
+    }
+
+    public void setLeftTextColor(int leftTextColor) {
+        mLeftTv.setTextColor(leftTextColor);
+    }
+
+    public void setLeftText(String leftText){
+        mLeftTv.setText(leftText);
+    }
+
+    public void setRightTextSize(float rightTextSize) {
+        mRightTv.setTextSize(rightTextSize);
+    }
+
+    public void setRightTextColor(int rightTextColor) {
+        mRightTv.setTextColor(rightTextColor);
+    }
+
+    public void setRightText(String rightText){
+        mRightTv.setText(rightText);
+    }
+}
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
