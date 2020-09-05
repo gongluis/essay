@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Knowledge - Luis Docs</title>
+        <title>Adaptation - Luis Docs</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -192,11 +192,63 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#android">Android屏幕适配</a></li>
+        <li class="main "><a href="#_1">基础</a></li>
+            <li><a href="#_2">单位</a></li>
+            <li><a href="#_3">换算</a></li>
+            <li><a href="#_4">屏幕尺寸</a></li>
+            <li><a href="#_5">分辨率</a></li>
+            <li><a href="#ppi">屏幕像素密度（PPI）</a></li>
+            <li><a href="#_6">像素的大小是固定的吗？</a></li>
+            <li><a href="#_7">结论</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h3 id="android">Android屏幕适配</h3>
+<h3 id="_1">基础</h3>
+<h5 id="_2">单位</h5>
+<pre><code>1. px(Pixel像素)  
+构成图像的基本单元
+2. resolution(分辨率)  
+屏幕水平方向和垂直方向的像素数量1920*1080
+3. Dpi(dot per inch,每英寸像素数)
+ dpi = density*160
+4. Density
+屏幕密度，但是别被四个字误导了，值跟屏幕物理大小一点关系没有  
+1080*1920：density为3.0
+1080*2160：density为2.75
+720*1280：density为2.0
+Dip/dp(设备独立像素)  
+
+</code></pre>
+
+<h5 id="_3">换算</h5>
+<pre><code>dp的定义，1dp约等于中等密度屏幕（160dpi，基准密度）上的1像素。
+px = density*dp
+density = dpi/160
+px = dp*(dpi/160)
+px = dp*density
+
+
+px和density是屏幕自带的东西，dpi和dp是通过计算得来的东西
+</code></pre>
+
+<h5 id="_4">屏幕尺寸</h5>
+<p>1英寸（inch）=2.54厘米（cm）<br />
+一款手机写的屏幕是5.2英寸，表示屏幕对角线长度5.2英寸  </p>
+<h5 id="_5">分辨率</h5>
+<p>1920px x 1080px意思就是竖向有1920个像素块，横向有1080个像素块  </p>
+<h5 id="ppi">屏幕像素密度（PPI）</h5>
+<p>每英寸屏幕所拥有的像素数，每英寸也是指的对角线<br />
+<img alt="ppi.jpg" src="https://i.loli.net/2020/09/03/1ubfwWQ3lei8U4O.jpg" />  </p>
+<p>1920*1080最后计算出来的是423.63599近似等于424  </p>
+<h5 id="_6">像素的大小是固定的吗？</h5>
+<p>借用网上一个例子：<br />
+<img alt="iphone6huawei7.jpg" src="https://i.loli.net/2020/09/03/kWJpLQYU6MDARGd.jpg" />  </p>
+<p>上面的是iphone6的参数，下面是荣耀7的参数，两者的分辨率都是1920*1080但是，苹果手机的屏幕尺寸比华为7的要小0.2英寸，苹果6手机的ppi却比华为6的高45，说明每英寸的屏幕苹果6用469ppi显示，华为7只用了424个。英寸是物理尺寸大小是固定的，所以可以推断出像素的尺寸大小不是固定的。  </p>
+<h5 id="_7">结论</h5>
+<p>PPI越高的手机显示效果就越精细</p></div>
         </div>
 
         <footer class="col-md-12">

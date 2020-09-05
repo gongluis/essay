@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Knowledge - Luis Docs</title>
+        <title>ConText - Luis Docs</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -75,7 +75,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -169,8 +169,8 @@
     <a href="#">一些小的点</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../context/">ConText</a>
+<li class="active">
+    <a href="./">ConText</a>
 </li>
     </ul>
   </li>
@@ -184,6 +184,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../sdk/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -192,11 +202,72 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#important-points">important points：</a></li>
+        <li class="main "><a href="#mainly-two-types-of-context">Mainly two types of context</a></li>
+        <li class="main "><a href="#contentprovider">ContentProvider</a></li>
+        <li class="main "><a href="#when-to-use-which-context">When to use which Context?</a></li>
+        <li class="main "><a href="#_1">参考链接</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h5 id="important-points">important points：</h5>
+<ol>
+<li>It is the context of the current state of the application.  </li>
+<li>It can be used to get information regarding the activity and application.</li>
+<li>It can be used to get access to resources, databases, and shared preferences, and etc.</li>
+<li>Both the Activity and Application classes extend the Context class.  </li>
+</ol>
+<h5 id="mainly-two-types-of-context">Mainly two types of context</h5>
+<blockquote>
+<p>Wrong use of Context can easily lead to memory leaks in an android application.  </p>
+</blockquote>
+<ol>
+<li>Application Context: It is the application and we are present in Application. For example - MyApplication(which extends Application class). It is an instance of MyApplication only.  </li>
+</ol>
+<pre><code>It is an instance that is the singleton and can be accessed in activity via getApplicationContext().
+This context is tied to the lifecycle of an application. 
+The application context can be used where you need a context whose lifecycle is separate from 
+the current context or when you are passing a context beyond the scope of activity.
+
+
+Example Use: If you have to create a singleton object for your application and that object needs a context, 
+always pass the application context.
+
+If you pass the activity context here, it will lead to the memory leak as it will keep the 
+reference to the activity and activity will not be garbage collected.
+
+In case, when you have to initialize a library in an activity, always pass the 
+application context, not the activity context.
+
+You only use getApplicationContext() when you know you need a 
+Context for something that may live longer than any other likely 
+Context you have at your disposal.
+</code></pre>
+
+<ol>
+<li>Activity Context: It is the activity and we are present in Activity. For example - MainActivity. It is an instance of MainActivity only.    </li>
+</ol>
+<pre><code>This context is available in an activity. This context is tied to the lifecycle of an activity. 
+The activity context should be used when you are passing the context in the scope of an activity
+or you need the context whose lifecycle is attached to the current context.
+
+Example Use: If you have to create an object whose lifecycle is attached to an activity,
+ you can use the activity context.
+</code></pre>
+
+<h5 id="contentprovider">ContentProvider</h5>
+<p>This context is the application context and can be used as the application context. 
+You can get it using the getContext() method.</p>
+<h5 id="when-to-use-which-context">When to use which Context?</h5>
+<p>always remember, in case of Singleton(lifecycle is attached to the application lifecycle), 
+always use the Application Context.</p>
+<p>Whenever you are in Activity, for any UI operations like showing toast, dialogs, 
+and etc, use the Activity Context.</p>
+<p>Always try to use the nearest context which is available to you. When you are in Activity, the nearest context is Activity context. When you are in Application, the nearest context is the Application context. If Singleton, use the Application Context.</p>
+<h5 id="_1">参考链接</h5>
+<pre><code>https://blog.mindorks.com/understanding-context-in-android-application-330913e32514
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
