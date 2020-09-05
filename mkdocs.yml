@@ -47,5 +47,11 @@ nav:
          - 线程池: threadPool.md
          - 事件分发: touchEvent.md
          - Handler原理: handler.md
+         - Android版本对应SDK版本: sdkversion.md
+         - APP整体优化: better.md
+         - sdk开发笔记: sdk.md
+         - 屏幕适配: adaption.md
+         - 一些小的点:
+            - ConText: context.md
                     
     
