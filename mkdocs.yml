@@ -53,5 +53,9 @@ nav:
          - 屏幕适配: adaption.md
          - 一些小的点:
             - ConText: context.md
+         - 一些常见功能的思考:
+            - 登录: login.md
+         - 单元测试Monkey: test.md
+         
                     
     
