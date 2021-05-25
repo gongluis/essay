@@ -8,203 +8,190 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>单例 - Luis Docs</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <title>单例 - 巩贺的网站</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">Luis Docs</a>
-                </div>
+                <a class="navbar-brand" href="../..">巩贺的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">介绍</a>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">介绍</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../basicDataType/">基础数据类型</a>
+<li>
+    <a href="../../basicDataType/" class="dropdown-item">基础数据类型</a>
 </li>
                                     
-<li >
-    <a href="../../algorithm/">算法</a>
+<li>
+    <a href="../../algorithm/" class="dropdown-item">算法</a>
 </li>
                                     
-<li >
-    <a href="../../garbage/">垃圾回收机制</a>
+<li>
+    <a href="../../garbage/" class="dropdown-item">垃圾回收机制</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../kotuis/">学习笔记</a>
+<li>
+    <a href="../../kotuis/" class="dropdown-item">学习笔记</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../fourcomponent/">四大组件</a>
+<li>
+    <a href="../../fourcomponent/" class="dropdown-item">四大组件</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">设计模式</a>
+    <a href="#" class="dropdown-item">设计模式</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">单例</a>
+<li>
+    <a href="./" class="dropdown-item active">单例</a>
 </li>
             
-<li >
-    <a href="../factory/">工厂</a>
+<li>
+    <a href="../factory/" class="dropdown-item">工厂</a>
 </li>
             
-<li >
-    <a href="../builder/">Builder</a>
+<li>
+    <a href="../builder/" class="dropdown-item">Builder</a>
 </li>
             
-<li >
-    <a href="../observer/">观察者</a>
+<li>
+    <a href="../observer/" class="dropdown-item">观察者</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">自定义控件</a>
+    <a href="#" class="dropdown-item">自定义控件</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../customView/customCombinationView/">自定义组合控件</a>
+<li>
+    <a href="../../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
 </li>
             
-<li >
-    <a href="../../customView/customView/">自定义View</a>
+<li>
+    <a href="../../customView/customView/" class="dropdown-item">自定义View</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">APP架构</a>
+    <a href="#" class="dropdown-item">APP架构</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../constructure/mvc/">MVC</a>
+<li>
+    <a href="../../constructure/mvc/" class="dropdown-item">MVC</a>
 </li>
             
-<li >
-    <a href="../../constructure/font_updown.md">MVP</a>
+<li>
+    <a href="../../constructure/font_updown.md" class="dropdown-item">MVP</a>
 </li>
             
-<li >
-    <a href="../../constructure/font_updown.md">MVvm</a>
+<li>
+    <a href="../../constructure/font_updown.md" class="dropdown-item">MVvm</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../../threadPool/">线程池</a>
+<li>
+    <a href="../../threadPool/" class="dropdown-item">线程池</a>
 </li>
                                     
-<li >
-    <a href="../../touchEvent/">事件分发</a>
+<li>
+    <a href="../../touchEvent/" class="dropdown-item">事件分发</a>
 </li>
                                     
-<li >
-    <a href="../../handler/">Handler原理</a>
+<li>
+    <a href="../../handler/" class="dropdown-item">Handler原理</a>
 </li>
                                     
-<li >
-    <a href="../../sdkversion/">Android版本对应SDK版本</a>
+<li>
+    <a href="../../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
 </li>
                                     
-<li >
-    <a href="../../better/">APP整体优化</a>
+<li>
+    <a href="../../better/" class="dropdown-item">APP整体优化</a>
 </li>
                                     
-<li >
-    <a href="../../sdk/">sdk开发笔记</a>
+<li>
+    <a href="../../sdk/" class="dropdown-item">sdk开发笔记</a>
 </li>
                                     
-<li >
-    <a href="../../adaption.md">屏幕适配</a>
+<li>
+    <a href="../../adaption/" class="dropdown-item">屏幕适配</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些小的点</a>
+    <a href="#" class="dropdown-item">一些小的点</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../context/">ConText</a>
+<li>
+    <a href="../../context/" class="dropdown-item">ConText</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些常见功能的思考</a>
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../login.md">登录</a>
+<li>
+    <a href="../../login.md" class="dropdown-item">登录</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../../test/">单元测试Monkey</a>
+<li>
+    <a href="../../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../../fourcomponent/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../../fourcomponent/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../factory/">
+                            <li class="nav-item">
+                                <a rel="next" href="../factory/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -214,18 +201,28 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#_1">第一种不加锁的单例</a></li>
-        <li class="main "><a href="#synchronized">简单加上synchronized锁</a></li>
-        <li class="main "><a href="#_2">以上实现还是有问题 ，单例第三种写法</a></li>
-        <li class="main "><a href="#_3">静态内部类</a></li>
-        <li class="main "><a href="#_4">如何通过反射打破单例模式，只能构建一个对象</a></li>
-        <li class="main "><a href="#_5">防止内存泄漏单例</a></li>
-        <li class="main "><a href="#_6">参考  小灰漫画</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <blockquote>
 <p>简单来说就是一个类只能构建一个对象的设计模式    </p>
@@ -247,7 +244,6 @@
 }
 
 </code></pre>
-
 <p>饿汉式   </p>
 <blockquote>
 <p>在类被初始化的时候就已经在内存中创建了对象，以空间换时间，不存在线程安全问题。</p>
@@ -260,7 +256,6 @@
     }
 }
 </code></pre>
-
 <p>懒汉式  </p>
 <blockquote>
 <p>在方法被调起后才创建对象，以时间换空间，在多线程环境下存在风险。  </p>
@@ -277,7 +272,6 @@ public class SingleTon{
   }
   }
 </code></pre>
-
 <h4 id="synchronized">简单加上synchronized锁</h4>
 <blockquote>
 <p>双重检测(double check lock)是为了b线程在a线程刚结束的临界点执行锁内任务，存在DCL失效问题</p>
@@ -299,7 +293,6 @@ public class SingleTon{
 }
 
 </code></pre>
-
 <h4 id="_2">以上实现还是有问题 ，单例第三种写法</h4>
 <blockquote>
 <p>JVM编译器有个指令重排的概念<br />
@@ -310,13 +303,11 @@ java一个简单的instance = new instance()会被jvm编译成如下jvm指令  <
 2. creatinstance(memory);初始化对象
 3. instance = memory设置instance指向刚分配的内存地址
 </code></pre>
-
 <p>但是这些指令顺序并非是一重不变，可能会经过jvm和cpu的优化，进行重排序  </p>
 <pre><code>1.分配对象内存地址
 3.设置instance指向刚分配的内存地址
 2.初始化对象
 </code></pre>
-
 <p>当线程A执行完13的时候，线程B抢到资源，返回了一个还没有初始化完成的对象
 * 如何避免以上问题？<br />
 在instance对象前面增加一个volatile修饰符  </p>
@@ -336,7 +327,6 @@ java一个简单的instance = new instance()会被jvm编译成如下jvm指令  <
       }
 }
 </code></pre>
-
 <p>volatile阻止了变量访问访问前后指令重排序，对于线程B来说，instance要么指向null，要么指向一个完整的instance,而不会出现中间状态  </p>
 <blockquote>
 <p>不仅可以防止指令重排，也可以保证线程访问的变量值是主内存种最新值，jdk1.6及以后才支持，每次均从主内存中读取，牺牲点效率，无伤大雅。</p>
@@ -352,7 +342,6 @@ java一个简单的instance = new instance()会被jvm编译成如下jvm指令  <
 4. 程序开始时主方法所在类会被加载
 
 </code></pre>
-
 <p>静态内部类的懒加载应该属于第一种情况，为什么外部类加载时，内部类未加载，静态内部类只是刚好写在了另一个类里面，实际上和外部类没什么附属关系。</p>
 <pre><code>public class Singleton{
 private SingleTon (){}
@@ -366,7 +355,6 @@ private static class Holder{
     }
 }
 </code></pre>
-
 <h4 id="_4">如何通过反射打破单例模式，只能构建一个对象</h4>
 <pre><code>//获得构造器
 Constructor con = Singleton.class.getDeclaredConstructor();
@@ -379,14 +367,12 @@ Singleton singleton2 = (Singleton)con.newInstance();
 System.out.println(singleton1.equals(singleton2));
 
 </code></pre>
-
 <p>如何防止反射？<br />
 使用枚举实现单例  </p>
 <pre><code>public enum SingletonEnum {
     INSTANCE;
 }
 </code></pre>
-
 <blockquote>
 <p>使用枚举单例，不仅可以防止反序列化，而且可以保证枚举对象被反序列化的时候，返回的对象是同一个对象</p>
 </blockquote>
@@ -397,7 +383,6 @@ System.out.println(singleton1.equals(singleton2));
     }
 }
 </code></pre>
-
 <pre><code>public enum SingletonEnum{
     PERSON;
     private Person person = null;
@@ -414,7 +399,6 @@ public class Person{
 
 }
 </code></pre>
-
 <h4 id="_5">防止内存泄漏单例</h4>
 <pre><code>public class A8PinPadManage {
 
@@ -437,7 +421,6 @@ public class Person{
     }
 }
 </code></pre>
-
 <ul>
 <li>解读  <ul>
 <li>私有构造函数，全局只能构建一个对象，不能让随便的就去new,所以要私有</li>
@@ -452,6 +435,7 @@ public class Person{
 <h4 id="_6">参考  小灰漫画</h4>
 <pre><code>https://www.zhihu.com/search?type=content&amp;q=%E5%8D%95%E4%BE%8B
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -465,21 +449,21 @@ public class Person{
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -488,12 +472,12 @@ public class Person{
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

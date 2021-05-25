@@ -8,203 +8,190 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>MVC - Luis Docs</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <title>MVC - 巩贺的网站</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">Luis Docs</a>
-                </div>
+                <a class="navbar-brand" href="../..">巩贺的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">介绍</a>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">介绍</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../basicDataType/">基础数据类型</a>
+<li>
+    <a href="../../basicDataType/" class="dropdown-item">基础数据类型</a>
 </li>
                                     
-<li >
-    <a href="../../algorithm/">算法</a>
+<li>
+    <a href="../../algorithm/" class="dropdown-item">算法</a>
 </li>
                                     
-<li >
-    <a href="../../garbage/">垃圾回收机制</a>
+<li>
+    <a href="../../garbage/" class="dropdown-item">垃圾回收机制</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../kotuis/">学习笔记</a>
+<li>
+    <a href="../../kotuis/" class="dropdown-item">学习笔记</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../fourcomponent/">四大组件</a>
+<li>
+    <a href="../../fourcomponent/" class="dropdown-item">四大组件</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">设计模式</a>
+    <a href="#" class="dropdown-item">设计模式</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../designpattern/singleInstance/">单例</a>
+<li>
+    <a href="../../designpattern/singleInstance/" class="dropdown-item">单例</a>
 </li>
             
-<li >
-    <a href="../../designpattern/factory/">工厂</a>
+<li>
+    <a href="../../designpattern/factory/" class="dropdown-item">工厂</a>
 </li>
             
-<li >
-    <a href="../../designpattern/builder/">Builder</a>
+<li>
+    <a href="../../designpattern/builder/" class="dropdown-item">Builder</a>
 </li>
             
-<li >
-    <a href="../../designpattern/observer/">观察者</a>
+<li>
+    <a href="../../designpattern/observer/" class="dropdown-item">观察者</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">自定义控件</a>
+    <a href="#" class="dropdown-item">自定义控件</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../customView/customCombinationView/">自定义组合控件</a>
+<li>
+    <a href="../../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
 </li>
             
-<li >
-    <a href="../../customView/customView/">自定义View</a>
+<li>
+    <a href="../../customView/customView/" class="dropdown-item">自定义View</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">APP架构</a>
+    <a href="#" class="dropdown-item">APP架构</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">MVC</a>
+<li>
+    <a href="./" class="dropdown-item active">MVC</a>
 </li>
             
-<li >
-    <a href="../font_updown.md">MVP</a>
+<li>
+    <a href="../font_updown.md" class="dropdown-item">MVP</a>
 </li>
             
-<li >
-    <a href="../font_updown.md">MVvm</a>
+<li>
+    <a href="../font_updown.md" class="dropdown-item">MVvm</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../../threadPool/">线程池</a>
+<li>
+    <a href="../../threadPool/" class="dropdown-item">线程池</a>
 </li>
                                     
-<li >
-    <a href="../../touchEvent/">事件分发</a>
+<li>
+    <a href="../../touchEvent/" class="dropdown-item">事件分发</a>
 </li>
                                     
-<li >
-    <a href="../../handler/">Handler原理</a>
+<li>
+    <a href="../../handler/" class="dropdown-item">Handler原理</a>
 </li>
                                     
-<li >
-    <a href="../../sdkversion/">Android版本对应SDK版本</a>
+<li>
+    <a href="../../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
 </li>
                                     
-<li >
-    <a href="../../better/">APP整体优化</a>
+<li>
+    <a href="../../better/" class="dropdown-item">APP整体优化</a>
 </li>
                                     
-<li >
-    <a href="../../sdk/">sdk开发笔记</a>
+<li>
+    <a href="../../sdk/" class="dropdown-item">sdk开发笔记</a>
 </li>
                                     
-<li >
-    <a href="../../adaption.md">屏幕适配</a>
+<li>
+    <a href="../../adaption/" class="dropdown-item">屏幕适配</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些小的点</a>
+    <a href="#" class="dropdown-item">一些小的点</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../context/">ConText</a>
+<li>
+    <a href="../../context/" class="dropdown-item">ConText</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些常见功能的思考</a>
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../login.md">登录</a>
+<li>
+    <a href="../../login.md" class="dropdown-item">登录</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../../test/">单元测试Monkey</a>
+<li>
+    <a href="../../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../../customView/customView/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../../customView/customView/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../../threadPool/">
+                            <li class="nav-item">
+                                <a rel="next" href="../../threadPool/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -214,22 +201,36 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#mvc">MVC</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#mvc" class="nav-link">MVC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h2 id="mvc">MVC</h2>
 <pre><code>View：XML布局文件。
 Model：实体模型（数据的获取、存储、数据状态变化）。
 Controller：对应于Activity，处理数据、业务和UI。
 </code></pre>
-
 <p>从上面这个结构来看，Android本身的设计还是符合MVC架构的，但是Android中纯粹作为View的XML视图功能太弱，我们大量处理View的逻辑只能写在Activity中，这样Activity就充当了View和Controller两个角色，直接导致Activity中的代码大爆炸。相信大多数Android开发者都遇到过一个Acitivty数以千行的代码情况吧！所以，更贴切的说法是，这个MVC结构最终其实只是一个Model-View（Activity:View&amp;Controller）的结构。</p>
 <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 这是苹果开发者文档中摘过来的图片，表明了三者之间的关系，简单描述了三者作用Model：数据模型，用来存储数据View：视图界面，用来展示UI界面和响应用户交互Controller：控制器(大管家角色)，监听模型数据的改变和控制视图行为、处理用户交互他们工作和关系看起来是如此清晰，是一种非常好的设计思想，是的，首先声明MVC是一个非常好的架构思想。</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -243,21 +244,21 @@ Controller：对应于Activity，处理数据、业务和UI。
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -266,12 +267,12 @@ Controller：对应于Activity，处理数据、业务和UI。
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

@@ -8,203 +8,190 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>基础数据类型 - Luis Docs</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <title>基础数据类型 - 巩贺的网站</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">Luis Docs</a>
-                </div>
+                <a class="navbar-brand" href="..">巩贺的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">介绍</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">介绍</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li class="active">
-    <a href="./">基础数据类型</a>
+<li>
+    <a href="./" class="dropdown-item active">基础数据类型</a>
 </li>
                                     
-<li >
-    <a href="../algorithm/">算法</a>
+<li>
+    <a href="../algorithm/" class="dropdown-item">算法</a>
 </li>
                                     
-<li >
-    <a href="../garbage/">垃圾回收机制</a>
+<li>
+    <a href="../garbage/" class="dropdown-item">垃圾回收机制</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../kotuis/">学习笔记</a>
+<li>
+    <a href="../kotuis/" class="dropdown-item">学习笔记</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../fourcomponent/">四大组件</a>
+<li>
+    <a href="../fourcomponent/" class="dropdown-item">四大组件</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">设计模式</a>
+    <a href="#" class="dropdown-item">设计模式</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../designpattern/singleInstance/">单例</a>
+<li>
+    <a href="../designpattern/singleInstance/" class="dropdown-item">单例</a>
 </li>
             
-<li >
-    <a href="../designpattern/factory/">工厂</a>
+<li>
+    <a href="../designpattern/factory/" class="dropdown-item">工厂</a>
 </li>
             
-<li >
-    <a href="../designpattern/builder/">Builder</a>
+<li>
+    <a href="../designpattern/builder/" class="dropdown-item">Builder</a>
 </li>
             
-<li >
-    <a href="../designpattern/observer/">观察者</a>
+<li>
+    <a href="../designpattern/observer/" class="dropdown-item">观察者</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">自定义控件</a>
+    <a href="#" class="dropdown-item">自定义控件</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../customView/customCombinationView/">自定义组合控件</a>
+<li>
+    <a href="../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
 </li>
             
-<li >
-    <a href="../customView/customView/">自定义View</a>
+<li>
+    <a href="../customView/customView/" class="dropdown-item">自定义View</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">APP架构</a>
+    <a href="#" class="dropdown-item">APP架构</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../constructure/mvc/">MVC</a>
+<li>
+    <a href="../constructure/mvc/" class="dropdown-item">MVC</a>
 </li>
             
-<li >
-    <a href="../constructure/font_updown.md">MVP</a>
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVP</a>
 </li>
             
-<li >
-    <a href="../constructure/font_updown.md">MVvm</a>
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVvm</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../threadPool/">线程池</a>
+<li>
+    <a href="../threadPool/" class="dropdown-item">线程池</a>
 </li>
                                     
-<li >
-    <a href="../touchEvent/">事件分发</a>
+<li>
+    <a href="../touchEvent/" class="dropdown-item">事件分发</a>
 </li>
                                     
-<li >
-    <a href="../handler/">Handler原理</a>
+<li>
+    <a href="../handler/" class="dropdown-item">Handler原理</a>
 </li>
                                     
-<li >
-    <a href="../sdkversion/">Android版本对应SDK版本</a>
+<li>
+    <a href="../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
 </li>
                                     
-<li >
-    <a href="../better/">APP整体优化</a>
+<li>
+    <a href="../better/" class="dropdown-item">APP整体优化</a>
 </li>
                                     
-<li >
-    <a href="../sdk/">sdk开发笔记</a>
+<li>
+    <a href="../sdk/" class="dropdown-item">sdk开发笔记</a>
 </li>
                                     
-<li >
-    <a href="../adaption.md">屏幕适配</a>
+<li>
+    <a href="../adaption/" class="dropdown-item">屏幕适配</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些小的点</a>
+    <a href="#" class="dropdown-item">一些小的点</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../context/">ConText</a>
+<li>
+    <a href="../context/" class="dropdown-item">ConText</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些常见功能的思考</a>
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../login.md">登录</a>
+<li>
+    <a href="../login.md" class="dropdown-item">登录</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../test/">单元测试Monkey</a>
+<li>
+    <a href="../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="..">
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../algorithm/">
+                            <li class="nav-item">
+                                <a rel="next" href="../algorithm/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -214,25 +201,33 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#_1">二进制简介</a></li>
-            <li><a href="#1">负数的二进制(补码=反码+1)</a></li>
-        <li class="main "><a href="#_2">进制间转换</a></li>
-        <li class="main "><a href="#_3">基本数据类型占的位数</a></li>
-        <li class="main "><a href="#0xff">与运算&amp;0XFF</a></li>
-        <li class="main "><a href="#_4">移位运算</a></li>
-        <li class="main "><a href="#_5">位异或运算符</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            
+            
+            
+            
+            
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h3 id="_1">二进制简介</h3>
 <p>假设有一 int 类型的数，值为5，那么，我们知道它在计算机中表示为：  </p>
 <pre><code>00000000 00000000 00000000 00000101
 5转换成二制是101，不过int类型的数占用4字节（32位），所以前面填了一堆0。
 </code></pre>
-
 <h4 id="1">负数的二进制(补码=反码+1)</h4>
 <p>-5在计算机中如何表示？  </p>
 <pre><code>在计算机中负数以其正值的补码形式表达
@@ -245,7 +240,6 @@
 -5在计算机中表示为：11111111 11111111 11111111 11111011  
 
 </code></pre>
-
 <h3 id="_2">进制间转换</h3>
 <pre><code>十进制转二进制
 转二进制就除2把余数都标在右侧
@@ -268,7 +262,6 @@
 0001 0010 0011 0100--&gt;0x1234
 
 </code></pre>
-
 <h3 id="_3">基本数据类型占的位数</h3>
 <pre><code>bit: 1 bit位 = 1 二进制数据
 
@@ -294,7 +287,6 @@ string:
 
 《《***这里不是很准确，当编码不同的时候，1个汉字所占的字节数也会有所不同，有些编码是占 2个字节，有些则不是，可能是 3个或者 4个***》》
 </code></pre>
-
 <h3 id="0xff">与运算&amp;0XFF</h3>
 <pre><code>&amp;作为位运算 （还可以作为逻辑运算符）  
 操作数的二进制形式，同为1结果才是1，其它则为0，操作数可以是二进制八进制十六进制
@@ -311,7 +303,6 @@ string:
 
 
 </code></pre>
-
 <p>有符号整数，正数要去除一个符号位，负数不用</p>
 <pre><code>计算机用位（bit）来作为基础单位
 byte它的范围是-127~128,用8个bit可表示 1（2^8）~2^8-1 
@@ -322,21 +313,19 @@ int,他的范围是-2^-31~2^31-1
 long double  8byte 64bit 取值-(2^64)~2^63
 float 4byte 32bit  
 </code></pre>
-
 <pre><code>byte类型的-127，其计算机存储的补码是10000001（8位），将其作为int类型向控制台输出的时候，jvm作了一个补位的处理，因为int类型是32位，所以补位后的补码就是1111111111111111111111111 10000001（32位），这个32位二进制补码表示的也是-127.虽然byte-&gt;int（八位扩展到32位），计算机背后存储的二进制补码由10000001（8位）转化成了1111111111111111111111111 10000001（32位）很显然这两个补码表示的十进制数字依然是相同的。
 
 </code></pre>
-
 <h3 id="_4">移位运算</h3>
 <pre><code>&lt;&lt;:左移运算符，num &lt;&lt; 1,相当于num乘以2
 &gt;&gt;:右移运算符，num &gt;&gt; 1,相当于num除以2
 &gt;&gt;&gt;:无符号右移，忽略符号位，空位都以0补齐!
 </code></pre>
-
 <h3 id="_5">位异或运算符</h3>
 <pre><code>位异或运算符为^，其运算规则是：参与运算的数字，低位对齐，高位不足的补零，如果对应的二进制位相同（同时为 0 或同时为 1）时，结果为 0；如果对应的二进制位不相同，结果则为 1。
 11^7=12  (化成二进制然后计算)
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -350,21 +339,21 @@ float 4byte 32bit
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -373,12 +362,12 @@ float 4byte 32bit
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

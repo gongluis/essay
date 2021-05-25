@@ -8,203 +8,190 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>线程池 - Luis Docs</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <title>线程池 - 巩贺的网站</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">Luis Docs</a>
-                </div>
+                <a class="navbar-brand" href="..">巩贺的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">介绍</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">介绍</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../basicDataType/">基础数据类型</a>
+<li>
+    <a href="../basicDataType/" class="dropdown-item">基础数据类型</a>
 </li>
                                     
-<li >
-    <a href="../algorithm/">算法</a>
+<li>
+    <a href="../algorithm/" class="dropdown-item">算法</a>
 </li>
                                     
-<li >
-    <a href="../garbage/">垃圾回收机制</a>
+<li>
+    <a href="../garbage/" class="dropdown-item">垃圾回收机制</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../kotuis/">学习笔记</a>
+<li>
+    <a href="../kotuis/" class="dropdown-item">学习笔记</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../fourcomponent/">四大组件</a>
+<li>
+    <a href="../fourcomponent/" class="dropdown-item">四大组件</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">设计模式</a>
+    <a href="#" class="dropdown-item">设计模式</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../designpattern/singleInstance/">单例</a>
+<li>
+    <a href="../designpattern/singleInstance/" class="dropdown-item">单例</a>
 </li>
             
-<li >
-    <a href="../designpattern/factory/">工厂</a>
+<li>
+    <a href="../designpattern/factory/" class="dropdown-item">工厂</a>
 </li>
             
-<li >
-    <a href="../designpattern/builder/">Builder</a>
+<li>
+    <a href="../designpattern/builder/" class="dropdown-item">Builder</a>
 </li>
             
-<li >
-    <a href="../designpattern/observer/">观察者</a>
+<li>
+    <a href="../designpattern/observer/" class="dropdown-item">观察者</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">自定义控件</a>
+    <a href="#" class="dropdown-item">自定义控件</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../customView/customCombinationView/">自定义组合控件</a>
+<li>
+    <a href="../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
 </li>
             
-<li >
-    <a href="../customView/customView/">自定义View</a>
+<li>
+    <a href="../customView/customView/" class="dropdown-item">自定义View</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">APP架构</a>
+    <a href="#" class="dropdown-item">APP架构</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../constructure/mvc/">MVC</a>
+<li>
+    <a href="../constructure/mvc/" class="dropdown-item">MVC</a>
 </li>
             
-<li >
-    <a href="../constructure/font_updown.md">MVP</a>
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVP</a>
 </li>
             
-<li >
-    <a href="../constructure/font_updown.md">MVvm</a>
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVvm</a>
 </li>
     </ul>
   </li>
                                     
-<li class="active">
-    <a href="./">线程池</a>
+<li>
+    <a href="./" class="dropdown-item active">线程池</a>
 </li>
                                     
-<li >
-    <a href="../touchEvent/">事件分发</a>
+<li>
+    <a href="../touchEvent/" class="dropdown-item">事件分发</a>
 </li>
                                     
-<li >
-    <a href="../handler/">Handler原理</a>
+<li>
+    <a href="../handler/" class="dropdown-item">Handler原理</a>
 </li>
                                     
-<li >
-    <a href="../sdkversion/">Android版本对应SDK版本</a>
+<li>
+    <a href="../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
 </li>
                                     
-<li >
-    <a href="../better/">APP整体优化</a>
+<li>
+    <a href="../better/" class="dropdown-item">APP整体优化</a>
 </li>
                                     
-<li >
-    <a href="../sdk/">sdk开发笔记</a>
+<li>
+    <a href="../sdk/" class="dropdown-item">sdk开发笔记</a>
 </li>
                                     
-<li >
-    <a href="../adaption.md">屏幕适配</a>
+<li>
+    <a href="../adaption/" class="dropdown-item">屏幕适配</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些小的点</a>
+    <a href="#" class="dropdown-item">一些小的点</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../context/">ConText</a>
+<li>
+    <a href="../context/" class="dropdown-item">ConText</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些常见功能的思考</a>
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../login.md">登录</a>
+<li>
+    <a href="../login.md" class="dropdown-item">登录</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../test/">单元测试Monkey</a>
+<li>
+    <a href="../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../constructure/mvc/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../constructure/mvc/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../touchEvent/">
+                            <li class="nav-item">
+                                <a rel="next" href="../touchEvent/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -214,13 +201,23 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#_1">含义</a></li>
-        <li class="main "><a href="#_2">如何使用线程池</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h4 id="_1">含义</h4>
 <p>装线程的池子，目的是管理线程，避免大量创建线程，增加开销，影响响应速度。</p>
@@ -256,7 +253,6 @@ public ThreadPoolExecutor(int corePoolSize,
                           ThreadFactory threadFactory,
                           RejectedExecutionHandler handler) 
 </code></pre>
-
 <pre><code>corePoolSize -&gt; 该线程池中核心线程数最大值
 
 核心线程：在创建完线程池之后，核心线程先不创建，在接到任务之后创建核心线程。并且会一直存在于线程池中（即使这个线程啥都不干），有任务要执行时，如果核心线程没有被占用，会优先用核心线程执行任务。数量一般情况下设置为CPU核数的二倍即可。  
@@ -311,7 +307,6 @@ DiscardPolicy：不能执行的任务，并将该任务删除。
 DiscardOldestPolicy：丢弃队列最近的任务，并执行当前的任务。
 
 </code></pre>
-
 <h4 id="_2">如何使用线程池</h4>
 <p>以上是原理，线面说用法，java给我们提供了四种线程池<br />
 <em> FixedThreadPool
@@ -340,7 +335,6 @@ public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
 }
 </code></pre>
-
 <ol>
 <li>CachedThreadPool  </li>
 </ol>
@@ -356,7 +350,6 @@ public static ExecutorService newCachedThreadPool() {
 CachedThreadPool的corePoolSize是0，maximumPoolSize是Int的最大值，也就是说CachedThreadPool没有核心线程，全部都是非核心线程，并且没有上限。keepAliveTime是60秒，就是说空闲线程等待新任务60秒，超时则销毁。此处用到的队列是阻塞队列SynchronousQueue,这个队列没有缓冲区，所以其中最多只能存在一个元素,有新的任务则阻塞等待。
 
 </code></pre>
-
 <ol>
 <li>SingleThreadExecutor</li>
 </ol>
@@ -372,7 +365,6 @@ CachedThreadPool的corePoolSize是0，maximumPoolSize是Int的最大值，也就
 
 我们可以看到总线程数和核心线程数都是1，所以就只有一个核心线程。该线程池才用链表阻塞队列LinkedBlockingQueue，先进先出原则，所以保证了任务的按顺序逐一进行。  
 </code></pre>
-
 <ol>
 <li>ScheduledThreadPool  </li>
 </ol>
@@ -388,6 +380,7 @@ CachedThreadPool的corePoolSize是0，maximumPoolSize是Int的最大值，也就
 如果运行的线程达到了corePoolSize时，则将任务添加到DelayedWorkQueue中。DelayedWorkQueue会将任务进行排序，先要执行的任务会放在队列的前面。在跟此前介绍的线程池不同的是，当执行完任务后，会将ScheduledFutureTask中的time变量改为下次要执行的时间并放回到DelayedWorkQueue中。
 
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -401,21 +394,21 @@ CachedThreadPool的corePoolSize是0，maximumPoolSize是Int的最大值，也就
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -424,12 +417,12 @@ CachedThreadPool的corePoolSize是0，maximumPoolSize是Int的最大值，也就
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

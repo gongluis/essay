@@ -8,203 +8,190 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>垃圾回收机制 - Luis Docs</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <title>垃圾回收机制 - 巩贺的网站</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">Luis Docs</a>
-                </div>
+                <a class="navbar-brand" href="..">巩贺的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">介绍</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">介绍</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../basicDataType/">基础数据类型</a>
+<li>
+    <a href="../basicDataType/" class="dropdown-item">基础数据类型</a>
 </li>
                                     
-<li >
-    <a href="../algorithm/">算法</a>
+<li>
+    <a href="../algorithm/" class="dropdown-item">算法</a>
 </li>
                                     
-<li class="active">
-    <a href="./">垃圾回收机制</a>
+<li>
+    <a href="./" class="dropdown-item active">垃圾回收机制</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../kotuis/">学习笔记</a>
+<li>
+    <a href="../kotuis/" class="dropdown-item">学习笔记</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../fourcomponent/">四大组件</a>
+<li>
+    <a href="../fourcomponent/" class="dropdown-item">四大组件</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">设计模式</a>
+    <a href="#" class="dropdown-item">设计模式</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../designpattern/singleInstance/">单例</a>
+<li>
+    <a href="../designpattern/singleInstance/" class="dropdown-item">单例</a>
 </li>
             
-<li >
-    <a href="../designpattern/factory/">工厂</a>
+<li>
+    <a href="../designpattern/factory/" class="dropdown-item">工厂</a>
 </li>
             
-<li >
-    <a href="../designpattern/builder/">Builder</a>
+<li>
+    <a href="../designpattern/builder/" class="dropdown-item">Builder</a>
 </li>
             
-<li >
-    <a href="../designpattern/observer/">观察者</a>
+<li>
+    <a href="../designpattern/observer/" class="dropdown-item">观察者</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">自定义控件</a>
+    <a href="#" class="dropdown-item">自定义控件</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../customView/customCombinationView/">自定义组合控件</a>
+<li>
+    <a href="../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
 </li>
             
-<li >
-    <a href="../customView/customView/">自定义View</a>
+<li>
+    <a href="../customView/customView/" class="dropdown-item">自定义View</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">APP架构</a>
+    <a href="#" class="dropdown-item">APP架构</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../constructure/mvc/">MVC</a>
+<li>
+    <a href="../constructure/mvc/" class="dropdown-item">MVC</a>
 </li>
             
-<li >
-    <a href="../constructure/font_updown.md">MVP</a>
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVP</a>
 </li>
             
-<li >
-    <a href="../constructure/font_updown.md">MVvm</a>
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVvm</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../threadPool/">线程池</a>
+<li>
+    <a href="../threadPool/" class="dropdown-item">线程池</a>
 </li>
                                     
-<li >
-    <a href="../touchEvent/">事件分发</a>
+<li>
+    <a href="../touchEvent/" class="dropdown-item">事件分发</a>
 </li>
                                     
-<li >
-    <a href="../handler/">Handler原理</a>
+<li>
+    <a href="../handler/" class="dropdown-item">Handler原理</a>
 </li>
                                     
-<li >
-    <a href="../sdkversion/">Android版本对应SDK版本</a>
+<li>
+    <a href="../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
 </li>
                                     
-<li >
-    <a href="../better/">APP整体优化</a>
+<li>
+    <a href="../better/" class="dropdown-item">APP整体优化</a>
 </li>
                                     
-<li >
-    <a href="../sdk/">sdk开发笔记</a>
+<li>
+    <a href="../sdk/" class="dropdown-item">sdk开发笔记</a>
 </li>
                                     
-<li >
-    <a href="../adaption.md">屏幕适配</a>
+<li>
+    <a href="../adaption/" class="dropdown-item">屏幕适配</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些小的点</a>
+    <a href="#" class="dropdown-item">一些小的点</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../context/">ConText</a>
+<li>
+    <a href="../context/" class="dropdown-item">ConText</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些常见功能的思考</a>
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../login.md">登录</a>
+<li>
+    <a href="../login.md" class="dropdown-item">登录</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../test/">单元测试Monkey</a>
+<li>
+    <a href="../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../algorithm/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../algorithm/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../kotuis/">
+                            <li class="nav-item">
+                                <a rel="next" href="../kotuis/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -214,16 +201,46 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#jvm">jvm内存模型</a></li>
-        <li class="main "><a href="#_1">堆内存模型</a></li>
-        <li class="main "><a href="#_2">可回收对象的判定</a></li>
-        <li class="main "><a href="#_3">几种垃圾回收算法</a></li>
-        <li class="main "><a href="#gc">通过日志分析GC类型</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#jvm" class="nav-link">jvm内存模型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">堆内存模型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">可回收对象的判定</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">几种垃圾回收算法</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gc" class="nav-link">通过日志分析GC类型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h2 id="jvm">jvm内存模型</h2>
 <p>要理解gc必须理解jvm，jvm主要管理两种内存：堆非堆<br />
@@ -237,7 +254,6 @@
     * eden区存放新生的对象
     * survivor区存放每次垃圾回收后存活的对象
 </code></pre>
-
 <h2 id="_2">可回收对象的判定</h2>
 <p>什么样的对象是垃圾？
 1. 引用计数算法 </p>
@@ -245,7 +261,6 @@
     * 简单、高效（objectiveC用的该算法）
     * 很难处理循环引用（相互引用两个对象）
 </code></pre>
-
 <ol>
 <li>可达性分析算法<br />
 为了解决循环引用，java采用新的算法</li>
@@ -260,7 +275,6 @@
 垃圾回收时需要整个引用状态保持不变，否则判定是垃圾，等会就不是了，GC的时候所有的程序执行处于暂停的状态，卡住，这种卡顿非常短，对程序的影响微乎其微，GC的卡顿由此而来。
 
 </code></pre>
-
 <h2 id="_3">几种垃圾回收算法</h2>
 <p>如何回收？Java虚拟机采用的是分代回收算法，想要理解分代回收算法，有必要先了解其它几种简单算法
 1. 标记清楚算法(Mark-Sweep)  </p>
@@ -269,7 +283,6 @@
     * 简单，容易实现
     * 容易产生内存碎片，碎片太多可能导致后续需要为大对象分配空间无法找到足够的空间，提前触发新的一次垃圾收集动作。
 </code></pre>
-
 <ol>
 <li>复制算法（Copying）  </li>
 </ol>
@@ -278,14 +291,12 @@
     * 对内存空间的使用付出了高昂的代价，可 使用内存缩少到了原来的一半
 Copying算法的效率取决于活着的对象，活着的对象越多copying越多，效率越慢
 </code></pre>
-
 <ol>
 <li>标记整理算法（Mark-compact）</li>
 </ol>
 <pre><code>标记阶段和Mark-sweep一样，标记出需要被回收的对象，完成标记后，将存活的对象向一端移动，清理掉端边界以外的内存
     * 适用于存活对象多，回收对象少的情况
 </code></pre>
-
 <ol>
 <li>分代回收算法<br />
 不是一种新的算法而是复制算法和标记整理算法的整合  </li>
@@ -293,20 +304,17 @@ Copying算法的效率取决于活着的对象，活着的对象越多copying越
 <pre><code>复制算法：适用于存活对象少，回收对象多
 标记整理算法：适用于存活对象多，回收对象少
 </code></pre>
-
 <p>堆内存分为老年代(Old generation)和新生代(young Generation),老年代的特点是每次垃圾收集时只有少量的对象需要被回收，新生代的特点是每次垃圾回收时都有大量的对象需要被回收，根据不同代的特点采用不同的算法，这就是分代算法。<br />
 详细分析  </p>
 <pre><code>1. 对于新生代采用Copying算法，因为新生代每次垃圾回收的时候都要回收大部分对象，也就是说需要复制的存活的对象较少，所以采用Copying算法的效率最高，实际中并不是按照上面Copying算法中说的1：1分成相等的两块，而是将新生代分为eden空间和survivor空间8：1：1
 2. 由于老年代每次只回收少量对象，一般使用Mark-compact算法
 </code></pre>
-
 <blockquote>
 <p>QA1.为什么需要两块Survivor空间？</p>
 </blockquote>
 <pre><code>这里涉及到一个新生代和老年代的存活周期的问题，比如一个对象在新生代经历15次（仅供参考）GC，就可以移到老年代了。问题来了，当我们第一次GC的时候，我们可以把Eden区的存活对象放到Survivor A空间，但是第二次GC的时候，Survivor A空间的存活对象也需要再次用Copying算法，放到Survivor B空间上，而把刚刚的Survivor A空间和Eden空间清除。第三次GC时，又把Survivor B空间的存活对象复制到Survivor A空间，如此反复。
 所以，这里就需要两块Survivor空间来回倒腾。
 </code></pre>
-
 <blockquote>
 <p>QA2.为什么EDEN空间这么大而Survivor空间这么小？</p>
 </blockquote>
@@ -314,7 +322,6 @@ Copying算法的效率取决于活着的对象，活着的对象越多copying越
 我看8：1：1就挺好的，当然这个比例是可以调整的，包括上面的新生代和老年代的1：2的比例也是可以调整的。
 新的问题又来了，从Eden空间往Survivor空间转移的时候Survivor空间不够了怎么办？直接放到老年代去。
 </code></pre>
-
 <p>Eden空间和两块Survivor空间的工作流程？<br />
 现在假定有新生代Eden，Survivor A， Survivor B三块空间和老生代Old一块空间。  </p>
 <pre><code>// 分配了一个又一个对象
@@ -341,13 +348,13 @@ Old区慢慢的整理一番，空间又够了
 // ...
 // ...
 </code></pre>
-
 <h2 id="gc">通过日志分析GC类型</h2>
 <pre><code>GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。
 GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。
 GC_EXPLICIT: 表示是应用程序调用System.gc、VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。
 GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -361,21 +368,21 @@ GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触�
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -384,12 +391,12 @@ GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触�
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

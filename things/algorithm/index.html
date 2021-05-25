@@ -8,193 +8,180 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Algorithm - Luis Docs</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <title>Algorithm - 巩贺的网站</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">Luis Docs</a>
-                </div>
+                <a class="navbar-brand" href="../..">巩贺的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">介绍</a>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">介绍</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../basicDataType/">基础数据类型</a>
+<li>
+    <a href="../../basicDataType/" class="dropdown-item">基础数据类型</a>
 </li>
                                     
-<li >
-    <a href="../../algorithm/">算法</a>
+<li>
+    <a href="../../algorithm/" class="dropdown-item">算法</a>
 </li>
                                     
-<li >
-    <a href="../../garbage/">垃圾回收机制</a>
+<li>
+    <a href="../../garbage/" class="dropdown-item">垃圾回收机制</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">kotuis <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../kotuis/">学习笔记</a>
+<li>
+    <a href="../../kotuis/" class="dropdown-item">学习笔记</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../fourcomponent/">四大组件</a>
+<li>
+    <a href="../../fourcomponent/" class="dropdown-item">四大组件</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">设计模式</a>
+    <a href="#" class="dropdown-item">设计模式</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../designpattern/singleInstance/">单例</a>
+<li>
+    <a href="../../designpattern/singleInstance/" class="dropdown-item">单例</a>
 </li>
             
-<li >
-    <a href="../../designpattern/factory/">工厂</a>
+<li>
+    <a href="../../designpattern/factory/" class="dropdown-item">工厂</a>
 </li>
             
-<li >
-    <a href="../../designpattern/builder/">Builder</a>
+<li>
+    <a href="../../designpattern/builder/" class="dropdown-item">Builder</a>
 </li>
             
-<li >
-    <a href="../../designpattern/observer/">观察者</a>
+<li>
+    <a href="../../designpattern/observer/" class="dropdown-item">观察者</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">自定义控件</a>
+    <a href="#" class="dropdown-item">自定义控件</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../customView/customCombinationView/">自定义组合控件</a>
+<li>
+    <a href="../../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
 </li>
             
-<li >
-    <a href="../../customView/customView/">自定义View</a>
+<li>
+    <a href="../../customView/customView/" class="dropdown-item">自定义View</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">APP架构</a>
+    <a href="#" class="dropdown-item">APP架构</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../constructure/mvc/">MVC</a>
+<li>
+    <a href="../../constructure/mvc/" class="dropdown-item">MVC</a>
 </li>
             
-<li >
-    <a href="../../constructure/font_updown.md">MVP</a>
+<li>
+    <a href="../../constructure/font_updown.md" class="dropdown-item">MVP</a>
 </li>
             
-<li >
-    <a href="../../constructure/font_updown.md">MVvm</a>
+<li>
+    <a href="../../constructure/font_updown.md" class="dropdown-item">MVvm</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../../threadPool/">线程池</a>
+<li>
+    <a href="../../threadPool/" class="dropdown-item">线程池</a>
 </li>
                                     
-<li >
-    <a href="../../touchEvent/">事件分发</a>
+<li>
+    <a href="../../touchEvent/" class="dropdown-item">事件分发</a>
 </li>
                                     
-<li >
-    <a href="../../handler/">Handler原理</a>
+<li>
+    <a href="../../handler/" class="dropdown-item">Handler原理</a>
 </li>
                                     
-<li >
-    <a href="../../sdkversion/">Android版本对应SDK版本</a>
+<li>
+    <a href="../../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
 </li>
                                     
-<li >
-    <a href="../../better/">APP整体优化</a>
+<li>
+    <a href="../../better/" class="dropdown-item">APP整体优化</a>
 </li>
                                     
-<li >
-    <a href="../../sdk/">sdk开发笔记</a>
+<li>
+    <a href="../../sdk/" class="dropdown-item">sdk开发笔记</a>
 </li>
                                     
-<li >
-    <a href="../../adaption.md">屏幕适配</a>
+<li>
+    <a href="../../adaption/" class="dropdown-item">屏幕适配</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些小的点</a>
+    <a href="#" class="dropdown-item">一些小的点</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../context/">ConText</a>
+<li>
+    <a href="../../context/" class="dropdown-item">ConText</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">一些常见功能的思考</a>
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../login.md">登录</a>
+<li>
+    <a href="../../login.md" class="dropdown-item">登录</a>
 </li>
     </ul>
   </li>
                                     
-<li >
-    <a href="../../test/">单元测试Monkey</a>
+<li>
+    <a href="../../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -204,38 +191,51 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#hashmap">HashMap</a></li>
-            <li><a href="#_1">概念</a></li>
-            <li><a href="#put">put方法原理</a></li>
-            <li><a href="#get">get方法</a></li>
-            <li><a href="#_2">初始化长度</a></li>
-            <li><a href="#hashmap_1">高并发下的HashMap</a></li>
-            <li><a href="#concurrenthashmap">什么是ConcurrentHashMap？</a></li>
-            <li><a href="#putget">put和get原理</a></li>
-        <li class="main "><a href="#_3">红黑树  （数据结构）</a></li>
-            <li><a href="#_4">二叉树的特性</a></li>
-            <li><a href="#_5">红黑树特性</a></li>
-            <li><a href="#_6">调整红黑树的两种方法（变色、旋转）</a></li>
-        <li class="main "><a href="#aes">AES算法（对称加密算法）</a></li>
-            <li><a href="#_7">三个基本概念（密钥、填充、模式）</a></li>
-            <li><a href="#java">在java中的具体实现</a></li>
-            <li><a href="#aes_1">AES算法的底层原理</a></li>
-            <li><a href="#subbyte">字节替代 subByte</a></li>
-            <li><a href="#shiftrows">行移位 shiftRows</a></li>
-            <li><a href="#mixcolumns">列混淆MixColumns</a></li>
-            <li><a href="#add-round-key">加 论密钥(add round key)</a></li>
-            <li><a href="#_8">不同工作模式在加密流程中有什么不同？</a></li>
-        <li class="main "><a href="#md5">MD5</a></li>
-            <li><a href="#_9">验签过程</a></li>
-            <li><a href="#md5_1">MD5底层原理</a></li>
-        <li class="main "><a href="#base64">Base64</a></li>
-        <li class="main "><a href="#_10">排序</a></li>
-            <li><a href="#_11">冒泡算法和优化</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#hashmap" class="nav-link">HashMap</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">红黑树  （数据结构）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#aes" class="nav-link">AES算法（对称加密算法）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#md5" class="nav-link">MD5</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#base64" class="nav-link">Base64</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_10" class="nav-link">排序</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h2 id="hashmap">HashMap</h2>
 <h4 id="_1">概念</h4>
@@ -278,7 +278,6 @@ index = hashcode(key)&amp;(size-1)  </p>
 对应的十进制9，所以index = 9
 index结果取决于key的hashcode的最后几位
 </code></pre>
-
 <p>长度为16或其它2的幂，length-1的二进制位全为1，这种情况下与key的hashcode做&amp;运算的结果等同于hashcode的后几位的值，只要输入的hashcode本身均匀，hash算法的结果就是均匀的。</p>
 <h4 id="hashmap_1">高并发下的HashMap</h4>
 <p>Hashmap的容量是有限的，达到容量的时候需要扩容，resize<br />
@@ -334,13 +333,11 @@ segment写入是需要上锁的，同一个segment的写入是阻塞的，每个
 2. 右子树所有节点的值均大于或者等于根节点的值
 3. 左右子树也分别为二叉排序树
 </code></pre>
-
 <p>例：查找10  </p>
 <pre><code>1. 从根节点9开始找，由于10大于9，走到右孩子13
 2. 由于10小于13走到左孩子11
 3. 由于10小于11走到左孩子10，结束
 </code></pre>
-
 <p>二分查找思想，查找的最大次数等于二叉查找树的高度<br />
 插入节点也是利用相同的方法  </p>
 <p>二叉树的缺点：<br />
@@ -434,7 +431,6 @@ AES256：14轮
 行移位（ShiftRows）
 加轮密钥（AddRoundKey）
 </code></pre>
-
 <h4 id="subbyte">字节替代 subByte</h4>
 <p>十六字节的明文块在第一个处理步骤中被排列成一个4x4的二位数组，字节替代就是把明文块的每一个字节都替换成另外一个字节
 替代的依据是通过一个S盒(subtitution Box)的16x16大小二维常量数组。
@@ -447,7 +443,6 @@ AES256：14轮
 第三行循环左移两个字节
 第四行循环左移三个字节
 </code></pre>
-
 <p><img alt="shiftrow.png" src="https://i.loli.net/2020/06/17/ehLdPAstTr6oz1j.png" /></p>
 <h4 id="mixcolumns">列混淆MixColumns</h4>
 <p>输入数组的每一列要和一个明文修补矩阵(fix matrix)的二位常量数组做矩阵相乘，得到对应的输出列<br />
@@ -490,7 +485,6 @@ CBC模式在每一个明文块加密前会让明文块和一个值做异或操�
     * 第三方平台接收到请求后，按照拼接规则拼接业务参数和密钥，利用MD5算法生成sign
     * 生成的sign和请求带过去的sign做对比，如果两个值相同则签名无误，两个值不同则信息做了篡改
 </code></pre>
-
 <blockquote>
 <p>密钥本身不直接传输，只参与sign的拼接，如果坏人既知道拼接规则又知道密钥，只能通过业务上的规则来限制，比如最大金额的限制</p>
 </blockquote>
@@ -501,7 +495,6 @@ CBC模式在每一个明文块加密前会让明文块和一个值做异或操�
 
 之后用剩余的位置（512-448=64）记录原文的真正长度，把长度的二进制值补在最后这样处理后的信息长度就是512*（N+1）
 </code></pre>
-
 <ol>
 <li>设置初始值  </li>
 </ol>
@@ -511,7 +504,6 @@ B= 0x89ABCDEF
 C= 0xFEDCBA98
 D= 0x76543210
 </code></pre>
-
 <ol>
 <li>循环加工</li>
 </ol>
@@ -545,6 +537,7 @@ Mi是第一步处理后的原文。在第一步中，处理后原文的长度是
 <h2 id="base64">Base64</h2>
 <h2 id="_10">排序</h2>
 <h4 id="_11">冒泡算法和优化</h4></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -558,21 +551,21 @@ Mi是第一步处理后的原文。在第一步中，处理后原文的长度是
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -581,12 +574,12 @@ Mi是第一步处理后的原文。在第一步中，处理后原文的长度是
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>单元测试Monkey - 巩贺的网站</title>
+        <title>屏幕适配 - 巩贺的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -149,7 +149,7 @@
 </li>
                                     
 <li>
-    <a href="../adaption/" class="dropdown-item">屏幕适配</a>
+    <a href="./" class="dropdown-item active">屏幕适配</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -173,7 +173,7 @@
   </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">单元测试Monkey</a>
+    <a href="../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
                                 </ul>
                             </li>
@@ -186,12 +186,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../context/" class="nav-link">
+                                <a rel="prev" href="../sdk/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../context/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -214,73 +214,217 @@
         <ul class="nav flex-column">
             
             
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h3 id="junit4">单元测试JUNIT4</h3>
-<p>每个项目都是由成百上千个函数组成，每编写完一个函数都要对这个函数的方方面面进行测试，这样的测试称之为单元测试。</p>
-<h4 id="local-unit-test">本地单元测试Local Unit Test</h4>
-<p>这种测试运行在本地开发环境的java虚拟机上，不需要连接安卓设备或者虚拟器，无法获得安卓相关api,只能使用java相关api<br />
-测试类代码编写也很简单，主要通过一些注解和断言来实现。  </p>
-<h5 id="junit4_1">Junit4 注解</h5>
-<pre><code>@Before标注setup方法，每个单元测试用例方法调用之前都会调用
-@After标注teardown方法，每个单元测试用例方法调用之后都会调用
-@Test标注的每个方法都是一个测试用例
-@BeforeClass标注的静态方法，在当前测试类所有用例方法执行之前执行
-@AfterClass标注的静态方法，在当前测试类所有用例方法执行之后执行
-@Test(timeout=)为测试用例指定超时时间
+<h4 id="_1">为什么要适配？</h4>
+<p>Android系统的开放性导致的屏幕尺寸碎片化，出现同一元素在不同手机上显示不同的问题。试想一下这么一个场景： 为4.3寸屏幕准备的UI设计图，运行在5.0寸的屏幕上，很可能在右侧和下侧存在大量的空白；而5.0寸的UI设计图运行到4.3寸的设备上，很可能显示不下。为了保证用户获得一致的用户体验效果,使得某一元素在Android不同尺寸、不同分辨率的、不同系统的手机上具备相同的显示效果，能够保持界面上的效果一致,我们需要对各种手机屏幕进行适配！</p>
+<h4 id="_2">基本概念</h4>
+<ol>
+<li>
+<p>像素（px）：</p>
+</li>
+<li>
+<p>含义：通常所说的像素，就是CCD/CMOS上光电感应元件的数量，一个感光元件经过感光，光电信号转换，A/D转换等步骤以后，在输出的照片上就形成一个点，我们如果把影像放大数倍，会发现这些连续色调其实是由许多色彩相近的小方点所组成，这些小方点就是构成影像的最小单位“像素”（Pixel）。简而言之，像素就是手机屏幕的最小构成单元。</p>
+</li>
+<li>单位：px（pixel），1px = 1像素点
+一般情况下UI设计师的设计图会以px作为统一的计量单位</li>
+<li>分辨率：</li>
+<li>含义：手机在横向、纵向上的像素点数总和 一般描述成 宽*高 ，即横向像素点个数 * 纵向像素点个数（如1080 x 1920）。</li>
+<li>单位：px（pixel），1px = 1像素点</li>
+<li>屏幕尺寸（in）：</li>
+<li>含义：手机对角线的物理尺寸</li>
+<li>单位 英寸（inch），一英寸大约2.54cm 常见的尺寸有4.7寸、5寸、5.5寸、6寸</li>
+<li>
+<p>屏幕像素密度（dpi）：</p>
+</li>
+<li>
+<p>含义：每英寸的像素点数。
+例如每英寸内有160个像素点，则其像素密度为160dpi。</p>
+</li>
+<li>单位：dpi（dots per inch）</li>
+<li>计算公式： 像素密度 = 像素 / 尺寸 （dpi = px / in）
+标准屏幕像素密度（mdpi）： 每英寸长度上还有160个像素点（160dpi），即称为标准屏幕像素密度（mdpi）。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>密度类型</th>
+<th>代表的分辨率(px)</th>
+<th>屏幕像素密度(dpi)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低密度(idpi)</td>
+<td>240x320</td>
+<td>120</td>
+</tr>
+<tr>
+<td>中密度(mdpi)</td>
+<td>320x480</td>
+<td>160</td>
+</tr>
+<tr>
+<td>高密度(hdpi)</td>
+<td>480x800</td>
+<td>240</td>
+</tr>
+<tr>
+<td>超密度(hdpi)</td>
+<td>720x1280</td>
+<td>320</td>
+</tr>
+<tr>
+<td>超超密度(hdpi)</td>
+<td>1080x1920</td>
+<td>480</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>屏幕尺寸、分辨率、像素密度三者关系</p>
+</blockquote>
+<p>一部手机的分辨率是宽x高，屏幕大小是以寸为单位，那么三者的关系是：
+<img alt="dpipxinch.png" src="https://i.loli.net/2020/11/17/a1ImzQs6lRdjPcO.png" />
+5. 密度无关像素（dp）：</p>
+<ul>
+<li>含义：density-independent pixel，叫dp或dip，与终端上的实际物理像素点无关</li>
+<li>单位：dp，可以保证在不同屏幕像素密度的设备上显示相同的效果，是安卓特有的长度单位。
+场景例子：假如同样都是画一条长度是屏幕一半的线，如果使用px作为计量单位，那么在480x800分辨率手机上设置应为240px；在320x480的手机上应设置为160px，二者设置就不同了；如果使用dp为单位，在这两种分辨率下，160dp都显示为屏幕一半的长度。</li>
+<li>
+<p>dp与px的转换：1dp = （dpi / 160 ） * 1px;
+<img alt="dptopx.png" src="https://i.loli.net/2020/11/17/pfIAEdYT2RUFgLD.png" /></p>
+</li>
+<li>
+<p>独立比例像素（sp）：</p>
+</li>
+<li>
+<p>含义：scale-independent pixel，叫sp或sip</p>
+</li>
+<li>
+<p>单位：sp，字体大小专用单位
+Android开发时用此单位设置文字大小，可根据字体大小首选项进行缩放；
+推荐使用12sp、14sp、18sp、22sp作为字体大小，不推荐使用奇数和小数，容易造成精度丢失，12sp以下字体太小。</p>
+</li>
+<li>
+<p>sp 与 dp 的区别：</p>
+</li>
+</ul>
+<p>dp只跟屏幕的像素密度有关；
+sp和dp很类似但唯一的区别是，Android系统允许用户自定义文字尺寸大小（小、正常、大、超大等等），当文字尺寸是“正常”时1sp=1dp=0.00625英寸，而当文字尺寸是“大”或“超大”时，1sp&gt;1dp=0.00625英寸。类似我们在windows里调整字体尺寸以后的效果——窗口大小不变，只有文字大小改变。</p>
+<h4 id="_3">适配方案</h4>
+<blockquote>
+<p>将分为布局组件、布局、图片、代码、接口等几方面来谈。</p>
+</blockquote>
+<h5 id="_4">关于布局组件的适配</h5>
+<ol>
+<li>使用dp或者sp代替px</li>
+<li>使用约束布局/相对布局代替绝对布局</li>
+<li>使用wrap_content,match-parent,权重替代具体的尺寸</li>
+<li>使用minwidth,minheight,等属性</li>
+<li>dimens使用</li>
+</ol>
+<h5 id="_5">关于布局的适配</h5>
+<ol>
+<li>使用large限定符</li>
+</ol>
+<pre><code>同时适配手机和平板/电视，布局名称中使用large限定符，系统回在较大（7英寸或者更大）屏幕上自动选择此布局。
 </code></pre>
-<h5 id="_1">断言</h5>
-<pre><code>Junit提供了一系列断言来判断是pass还是fail
+<ol>
+<li>最小宽度限定符  </li>
+</ol>
+<pre><code>使用Size限定符有一个问题会让很多程序员感到头疼，large到底是指多大呢？很多应用程序都希望能够更自由地为不同屏幕设备加载不同的布局，不管它们是不是被系统认定为”large”。这就是Android为什么在3.2以后引入了”Smallest-width”限定符。 
+最小宽度限定符可让您通过指定某个最小宽度（以 dp 为单位）来定位屏幕。例如，标准 7 英寸平板电脑的最小宽度为 600 dp，因此如果您要在此类屏幕上的用户界面中使用双面板（但在较小的屏幕上只显示列表），您可以使用上文中所述的单面板和双面板这两种布局，但您应使用 sw600dp 指明双面板布局仅适用于最小宽度为 600 dp 的屏幕，而不是使用 large 尺寸限定符。
+也就是说，对于最小宽度大于等于 600 dp 的设备，系统会选择 layout-sw600dp/main.xml（双面板）布局，否则系统就会选择 layout/main.xml（单面板）布局。
+但 Android 版本低于 3.2 的设备不支持此技术，原因是这些设备无法将 sw600dp 识别为尺寸限定符，因此我们仍需使用 large 限定符。这样一来，就会有一个名称为 res/layout-large/main.xml 的文件（与 res/layout-sw600dp/main.xml 一样）。但是没有太大关系，我们将马上学习如何避免此类布局文件出现的重复。
 
-assertTrue(condition)：condition为真pass，否则fail
-assertFalse(condition)：condition为假pass，否则fail
-fail()：直接fail
-assertEquals(expected, actual)：expected equal actual pass，否则fail
-assertSame(expected, actual)：expected == actual pass，否则fail
+</code></pre>
+<p>避免布局文件重复可以使用布局别名
+3. 使用屏幕方向限定符
+4. </p>
+<h5 id="_6">图片适配</h5>
+<ol>
+<li>logo图标建议按照官方标准准备好图标</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>屏幕密度</th>
+<th>对应图片大小(px)</th>
+<th>图片资源目录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>120dip(idpi)</td>
+<td>36x36</td>
+<td>mipmap-idpi</td>
+</tr>
+<tr>
+<td>160dip(mdpi)</td>
+<td>48x48</td>
+<td>mipmap或者mipmap-mdpi</td>
+</tr>
+<tr>
+<td>240dip(hdpi)</td>
+<td>72x72</td>
+<td>mipmap-hdpi</td>
+</tr>
+<tr>
+<td>320dip(xhdpi)</td>
+<td>96x96</td>
+<td>mipmap-xhdpi</td>
+</tr>
+<tr>
+<td>480dip(xxhdpi)</td>
+<td>144x144</td>
+<td>mipmap-xxhdpi</td>
+</tr>
+<tr>
+<td>640dip(xxxhdpi)</td>
+<td>192x192</td>
+<td>mipmap-xxxhdpi</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>普通图片和图标<br />
+建议按照官方的密度类型进行切图即可，但一般我们只需xxhdpi或xxxhdpi的切图即可满足我们的需求；</li>
+<li>自动拉伸图.9图片类型（按钮）</li>
+<li>动画、自定义view、shape</li>
+<li>imageView的scaleType适配</li>
+</ol>
+<pre><code>1. android:scaleType=“center”
+保持原图的大小，显示在ImageView的中心。当原图的size大于ImageView的size时，多出来的部分被截掉。
+2. android:scaleType=“center_inside”
+以原图正常显示为目的，如果原图大小大于ImageView的size，就按照比例缩小原图的宽高，居中显示在ImageView中。如果原图size小于ImageView的size，则不做处理居中显示图片。
+3. android:scaleType=“center_crop”
+以原图填满ImageView为目的，如果原图size大于ImageView的size，则与center_inside一样，按比例缩小，居中显示在ImageView上。如果原图size小于ImageView的size，则按比例拉升原图的宽和高，填充ImageView居中显示。
+4. android:scaleType=“matrix”
+不改变原图的大小，从ImageView的左上角开始绘制，超出部分做剪切处理。
+5. androd:scaleType=“fit_xy”
+把图片按照指定的大小在ImageView中显示，拉伸显示图片，不保持原比例，填满ImageView.
+6. android:scaleType=“fit_start”
+把原图按照比例放大缩小到ImageView的高度，显示在ImageView的start（前部/上部）。
+7. android:sacleType=“fit_center”
+把原图按照比例放大缩小到ImageView的高度，显示在ImageView的center（中部/居中显示）。
+8. android:scaleType=“fit_end”
+把原图按照比例放大缩小到ImageView的高度，显示在ImageVIew的end（后部/尾部/底部）
 
 </code></pre>
-<h4 id="instrumented-unit-test">设备单元测试Instrumented Unit Test</h4>
-<p>这种测试方法需要连接安卓设备或者模拟器，可以调用android中api(如设备信息，上下文等)  ，使用方法是给类加上注解@RunWith(AndroidJunit4.class)注解作为前缀。  </p>
-<pre><code>@RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-        assertEquals(&quot;top.qingningshe.test&quot;, appContext.getPackageName());
-    }
-}
+<ol>
+<li>代码适配  </li>
+</ol>
+<pre><code>通过api测量手机屏幕宽高度，然后根据需求来设置
 </code></pre>
-<p>相对于Local Unit Test 多了访问设备信息和测试筛选  </p>
-<h5 id="_2">访问设备信息</h5>
-<pre><code>可以使用instrumentationRegisty类访问与测试运行相关的信息，包括instrumentation对象，目标应用context对象，测试应用context对象。
-</code></pre>
-<h5 id="_3">测试筛选</h5>
-<pre><code>* @RequiresDevice:指定测试仅在物理设备而不在模拟器上运行。
-* @SdkSupress:禁止在低于给定级别的Android API 上运行测试，如：@SDKSupress(minSdkVersion=18)  
-* @SmallTest、@MediumTest和@LargeTest：指定测试的运行时长以及运行频率。
-</code></pre>
-<h3 id="monkey">压力测试Monkey</h3>
-<p>Monkey是Android中的一个命令行工具，可以运行在模拟器里或实际设备中。它向系统发送伪随机的用户事件流(如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试。Monkey测试是一种为了测试软件的稳定性、健壮性的快速有效的方法。</p>
-<p>#### mokey的特点<br />
-<code>测试的对象仅为应用程序包，有一定的局限性。
-Monky测试使用的事件流数据流是随机的，不能进行自定义。
-可对MonkeyTest的对象，事件数量，类型，频率等进行设置。</code> <br />
- #### monkey用法<br />
-<code>adb shell monkey [options] &lt;event-count&gt;
-  options这个是配置monkey的设置，如指定启动哪个包，不指定将会随机启动所有程序，event-count这个是让monkey发送多少次事件
-  例：adb shell monkey -p com.android.test -v 5000  
-  向test包发送五千次随机事件</code>   </p>
-<p>```
-  事件  </p>
-<p>```</p>
-<h4 id="monkey_1">monkey停止条件</h4>
-<pre><code>如果限定了Monkey运行在一个或几个特定的包上，那么它会监测试图转到其它包的操作，并对其进行阻止。
-如果应用程序崩溃或接收到任何失控异常，Monkey将停止并报错。
-如果应用程序产生了应用程序不响应(ANR)的错误，Monkey将会停止并报错。
+<ol>
+<li>接口适配  </li>
+</ol>
+<pre><code>本地加载图片前判断手机分辨率或者像素密度，向服务器请求对应级别图片
 </code></pre></div>
             </div>
         </div>
