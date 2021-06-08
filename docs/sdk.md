@@ -440,3 +440,22 @@ dependencies {
 ##### 如何解决组件依赖冲突：  
 1. 强制使用指定版本  
 2. 
+#### 自定义aar名称
+
+```
+//如果是修改apk和jar的名称直接修改后缀即可。
+android{
+    //...
+    android.libraryVariants.all{ variant ->
+        variant.outputs.all{
+           def fileName = "${project.name}_${buildType.name}_v${defaultConfig.versionName}_${defaultConfig.versionCode}.aar"
+           outputFileName = fileName
+        }
+    }
+    //...
+}
+
+${project.name}也就是当前module的名字
+${buildType.name}就是当前构建的类型，例如 debug 或者 release
+${defaultConfig.versionName}和${defaultConfig.versionCode}则分别对应了defaultConfig中的versionName和versionCode
+```
