@@ -258,6 +258,7 @@
             
             
             
+            
         </ul>
     </div>
 </div></div>
@@ -288,6 +289,7 @@
 <li><a href="#_14">如何解决组件依赖冲突：</a></li>
 </ul>
 </li>
+<li><a href="#aar">自定义aar名称</a></li>
 </ul>
 </div>
 <h4 id="_1">定义</h4>
@@ -719,7 +721,24 @@ dependencies {
 <ol>
 <li>强制使用指定版本  </li>
 <li></li>
-</ol></div>
+</ol>
+<h4 id="aar">自定义aar名称</h4>
+<pre><code>//如果是修改apk和jar的名称直接修改后缀即可。
+android{
+    //...
+    android.libraryVariants.all{ variant -&gt;
+        variant.outputs.all{
+           def fileName = &quot;${project.name}_${buildType.name}_v${defaultConfig.versionName}_${defaultConfig.versionCode}.aar&quot;
+           outputFileName = fileName
+        }
+    }
+    //...
+}
+
+${project.name}也就是当前module的名字
+${buildType.name}就是当前构建的类型，例如 debug 或者 release
+${defaultConfig.versionName}和${defaultConfig.versionCode}则分别对应了defaultConfig中的versionName和versionCode
+</code></pre></div>
             </div>
         </div>
 
