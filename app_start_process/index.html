@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>如何配置flutter环境 - 巩贺的网站</title>
+        <title>APP启动流程 - 巩贺的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -66,7 +66,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -149,7 +149,7 @@
 </li>
                                     
 <li>
-    <a href="../app_start_process/" class="dropdown-item">APP启动流程</a>
+    <a href="./" class="dropdown-item active">APP启动流程</a>
 </li>
                                     
 <li>
@@ -181,7 +181,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flutter插件 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -190,7 +190,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">如何配置flutter环境</a>
+    <a href="../howflutterenvironment/" class="dropdown-item">如何配置flutter环境</a>
 </li>
                                     
 <li>
@@ -225,12 +225,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../whyflutterplugin/" class="nav-link">
+                                <a rel="prev" href="../better/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../flutterplugincoding/" class="nav-link">
+                                <a rel="next" href="../adaption/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -252,39 +252,62 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
+            
+            
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h4 id="flutter">flutter开发环境配置</h4>
+<h4 id="_1">基本概念</h4>
 <ol>
-<li>
-<p><a href="https://flutterchina.club/get-started/install/">起步</a>  </p>
-</li>
-<li>
-<p>下载flutter sdk<br />
-<a href="https://flutter.dev/docs/development/tools/sdk/archive">下载</a>   </p>
-</li>
-<li>
-<p>解压下载到的压缩包，不要解压到更高权限的PrograFile目录下</p>
-</li>
-<li>安卓flutter,进入flutter根目录，双击 flutter_console.bat,等带flutter安装完成。</li>
-<li>配置环境变量  </li>
+<li>launcher进程</li>
+<li>SystemServer进程</li>
 </ol>
-<pre><code>在系统变量中，点击path然后点击新建
-C:\src\flutter\flutter_windows_2.0.4-stable\flutter\bin
-差不多这个路径添加进去
+<pre><code>是zygotefork出来的第一个进程，systemServer和zygote是android framework最重要的两个进程，系统里面最重要的服务都是在这两个进程中开启的，如:ActivityManageService PackageManagerService WindowManagerService
 </code></pre>
 <ol>
-<li>重启windows,然后在dos命令行窗口输入， flutter doctor 都没有报错的话说明安装成功</li>
-<li>使用android studio开发需要安装两个插件</li>
+<li>zygote进程</li>
 </ol>
-<pre><code>1.启动Android Studio.
-2.打开 File-setting-Plugins
-3.分别搜索Dart和Flutter插件并安装，
-4.重启Android Studio后插件生效.
-</code></pre></div>
+<pre><code>android所有进程都是zygite进程fork出来的
+Android 开机流程
+</code></pre>
+<ol>
+<li>app进程</li>
+</ol>
+<h4 id="_2">流程</h4>
+<ol>
+<li>
+<p>启动进程，点击图标发生在launch进程，桌面实际上是一个launchactivity,点击图标相当于startactivity,通过binder进程通信机制发消息给system_server进程，在该进程中经过一系列操作amst通过socket通信告知zygote进程fork子进程（app进程）</p>
+</li>
+<li>
+<p>开启主线程app进程启动后，首先实例化activityThead,并执行其main函数，创建ApplicationThread，及handler体系</p>
+</li>
+<li>
+<p>创建并初始化Application和activity,始于activiyThread的main方法，通过binder通信告诉system-server进程中的ams我需要一个application,在ams的attachApplication中依次初始化appliaction和activity,分别有两个关键函数，thread#bindApplication()通知出现成handler创建application对象、绑定Context、执行Application的oncreat声明周期然后通过主线程handler消息通知创建activity对象，然后调用oncreat方法</p>
+</li>
+</ol>
+<h4 id="_3">其它</h4>
+<p>1.每个进程都运行一个单独的Dvm,每个dvm占用一个Linux进程，独立的进程可防止虚拟机崩的时候所有程序都关闭。
+2. 安卓是基于Linux系统，在linux中所有进程都是init进程直接或者间接fork出来的，fork进程比创建进程的效率高，在android中所有进程都是zygote进程fork出来的。</p>
+<h4 id="_4">开机流程</h4>
+<ol>
+<li>安卓开机linux内核启动后，启动init进程<ul>
+<li>开机动画</li>
+<li>文件系统的创建和挂在</li>
+<li>其他复杂工作</li>
+<li>最主要的是启动zygote进程，servicemanager(binder服务管理器，管理所有安卓系统服务)</li>
+</ul>
+</li>
+<li>zygote进程会fork出system server进程<ul>
+<li>启动binder线程池</li>
+<li>创建system manager对象，会启动ams等</li>
+<li>启动桌面进程</li>
+</ul>
+</li>
+<li>zygote进程运行后，fork APP进程</li>
+</ol></div>
             </div>
         </div>
 
