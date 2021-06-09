@@ -28,8 +28,9 @@ nav:
          - 基础数据类型: basicDataType.md
          - 算法: algorithm.md
          - 垃圾回收机制: garbage.md
-  - kotuis: 
-         - 学习笔记: kotuis.md           
+  - sdk笔记: 
+         - provider方式: sdk_provider.md 
+         - 总结: sdk.md           
   - Android: 
          - 四大组件: fourcomponent.md    
          - 设计模式:
@@ -49,7 +50,7 @@ nav:
          - Handler原理: handler.md
          - Android版本对应SDK版本: sdkversion.md
          - APP整体优化: better.md
-         - sdk开发笔记: sdk.md
+         - APP启动流程: app_start_process.md
          - 屏幕适配: adaption.md
          - 一些小的点:
             - ConText: context.md
