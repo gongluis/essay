@@ -62,7 +62,9 @@ nav:
          - 如何配置flutter环境: howflutterenvironment.md 
          - flutter插件开发: flutterplugincoding.md 
   - git: 
-         - 常见场景操作: git_scenes.md       
+         - 常见场景操作: git_scenes.md   
+         - Android端git版本管理: git_client_steps.md  
+         - commit log: git_commit_log.md 
   - 故障复盘记录: 
          - AndroidSDK故障记录: sdkexception.md 
                     
