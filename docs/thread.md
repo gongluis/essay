@@ -337,3 +337,4 @@ if (lock.tryLock(1, TimeUnit.SECONDS)) {
 上述代码在尝试获取锁的时候，最多等待1秒。如果1秒后仍未获取到锁，tryLock()返回false，程序就可以做一些额外处理，而不是无限等待下去。
 
 所以，使用ReentrantLock比直接使用synchronized更安全，线程在tryLock()失败的时候不会导致死锁。
+#### [下一篇 线程池](https://gongluis.github.io/essay/threadPool/)
