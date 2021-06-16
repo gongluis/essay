@@ -28,6 +28,7 @@ nav:
          - 基础数据类型: basicDataType.md
          - 算法: algorithm.md
          - 垃圾回收机制: garbage.md
+         - 线程: thread.md
   - sdk笔记: 
          - provider方式: sdk_provider.md 
          - 总结: sdk.md           
