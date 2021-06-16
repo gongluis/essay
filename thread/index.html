@@ -55,6 +55,10 @@
 <li>
     <a href="./" class="dropdown-item active">线程</a>
 </li>
+                                    
+<li>
+    <a href="../threadPool/" class="dropdown-item">线程池</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -131,10 +135,6 @@
 </li>
     </ul>
   </li>
-                                    
-<li>
-    <a href="../threadPool/" class="dropdown-item">线程池</a>
-</li>
                                     
 <li>
     <a href="../touchEvent/" class="dropdown-item">事件分发</a>
@@ -242,7 +242,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../sdk/" class="nav-link">
+                                <a rel="next" href="../threadPool/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -263,6 +263,7 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
             
             
             
@@ -603,7 +604,8 @@ ReentrantLock是可重入锁，它和synchronized一样，一个线程可以多�
 }
 </code></pre>
 <p>上述代码在尝试获取锁的时候，最多等待1秒。如果1秒后仍未获取到锁，tryLock()返回false，程序就可以做一些额外处理，而不是无限等待下去。</p>
-<p>所以，使用ReentrantLock比直接使用synchronized更安全，线程在tryLock()失败的时候不会导致死锁。</p></div>
+<p>所以，使用ReentrantLock比直接使用synchronized更安全，线程在tryLock()失败的时候不会导致死锁。</p>
+<h4 id="_7"><a href="https://gongluis.github.io/essay/threadPool/">下一篇 线程池</a></h4></div>
             </div>
         </div>
 
