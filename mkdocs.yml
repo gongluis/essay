@@ -1,4 +1,4 @@
-site_name: 巩贺的网站    
+site_name: 小巩的网站    
   
 theme:  
   name: 'mkdocs' 
@@ -30,6 +30,7 @@ nav:
          - 垃圾回收机制: garbage.md
          - 线程: thread.md
          - 线程池: threadPool.md
+         - 集合: collection.md
   - sdk笔记: 
          - provider方式: sdk_provider.md 
          - 总结: sdk.md           
