@@ -269,19 +269,59 @@
         <ul class="nav flex-column">
             
             
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h4 id="androidstudio">androidstudio创建插件项目</h4>
-<p>android studio  </p>
-<p>File-New-New Flutter Project</p>
-<h4 id="_1">打开上一步创建的插件项目的安卓部分</h4>
+<h4 id="_1">基础概念理解</h4>
+<blockquote>
+<p>插件化是全平台适配的方案之一，就是只需要通过开发桥接层，就可以让sdk给flutter,unity,apicloud等其它语言接入，缺点就是多平台语言的学习成本以及多插件的维护成本。</p>
+</blockquote>
+<p>几个重要概念的理解：<br />
+* 平台：android/ios...  </p>
+<ul>
+<li>通道：由于Flutter本身只是一个UI系统，它本身是无法提供一些系统能力，比如使用蓝牙、相机、GPS等，因此要在Flutter APP中调用这些能力就必须和原生平台进行通信。为此，Flutter中提供了一个平台通道（platform channel）
+用于Flutter和原生平台的通信。平台通道正是Flutter和原生之间通信的桥梁，它也是Flutter插件的底层基础设施。</li>
+<li>通信<ul>
+<li>应用的Flutter部分通过平台通道（platform channel）将消息发送到其应用程序的所在的宿主（iOS或Android）应用（原生应用）。</li>
+<li>宿主监听平台通道，并接收该消息。然后它会调用该平台的API，并将响应发送回客户端，即应用程序的Flutter部分。</li>
+<li>还有一种是原生主动通知flutter层，原生层在onAttachedToEngine复写方法中创建一个eventChannel对象，然后设置Streamhandler,复写两个方法，一个onListener一个onCancel,使用onListner中evnetsink可以用来发送事件，eventSink.onSuccess。flutter层同样创建一个evenChannel，在调用原生methodChannel下面调用，eventchannel.receiveBroadcastStream().listener{}即可接收到消息。</li>
+</ul>
+</li>
+</ul>
+<h4 id="_2">开发</h4>
 <ol>
-<li>鼠标选中上一步创建的项目名右键，然后选择Flutter-open android moduler in android studio</li>
-<li>在打开的项目</li>
-</ol></div>
+<li>官方demo学习插件调用流程</li>
+</ol>
+<pre><code>new flutter project --&gt; plugin
+1. example是个demo，里面引用了插件
+    * pubSpec.yaml文件中
+flutter_plugin:
+    path: ../    代表当前主目录
+
+2. example工程里面的main.dart文件中initState方法中调用initPlatformState方法，该方法为异步方法，
+里面同步调用了我们FlutterPlugin中platformVersion方法
+3. platformVersion也是一个异步方法，该方法也同步调用了methodChannel中getPlatformVersion方法
+4. 选中项目右键，选中flutter,选择打开open android muduler in android studio
+5. 打开 flutter_plugin2--&gt;java--&gt;包名...
+6. onAttachedToEngine方法中通过MethodChannel name创建管道实例，然后设置监听，
+7. 在监听方法里面通过匹配管道中的方法名，通过回调将结果放在管道中。
+
+8. example中通过插件拿到管道中指定方法返回的值
+
+</code></pre>
+<ol>
+<li>总结  </li>
+</ol>
+<pre><code>通信流程可以主要总结为三步：
+1. 创建eventChannel参数中指定原生brige类含包名。
+2. 通过eventChannel.involkeMethod()传入方法名调用原生
+3. 原生监听flutter层行为，去匹配flUtter层传入的方法名，可以直接通过系统的api回调，也可以通过eventchannel广播进行主动发送。
+</code></pre>
+<h4 id="_3">底层</h4>
+<p>查看源码便可发现，Flutter 采用二进制字节流作为数据传输协议，发送方需要把数据编码成二进制数据，接收方再把收到的数据解码成原始数据，负责编解码操作的就是Codec,每个channel中都是用到了BinaryMessages,作为信使，负责将消息进行跨平台搬运，是消息的发送和接收的工具。</p></div>
             </div>
         </div>
 
