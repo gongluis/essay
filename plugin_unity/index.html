@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>集合 - 小巩的网站</title>
+        <title>unity3D插件开发 - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">介绍</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -61,7 +61,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">集合</a>
+    <a href="../collection/" class="dropdown-item">集合</a>
 </li>
                                 </ul>
                             </li>
@@ -206,12 +206,12 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Unity3D插件 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../plugin_unity/" class="dropdown-item">unity3D插件开发</a>
+    <a href="./" class="dropdown-item active">unity3D插件开发</a>
 </li>
                                 </ul>
                             </li>
@@ -250,12 +250,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../threadPool/" class="nav-link">
+                                <a rel="prev" href="../plugin_flutter/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../sdk/" class="nav-link">
+                                <a rel="next" href="../git_scenes/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -277,154 +277,88 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
+            
+            
+            
+            
+            
+            
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h3 id="collection">collection集合</h3>
-<div class="toc">
-<ul>
-<li><a href="#collection">collection集合</a><ul>
-<li><a href="#_1">定义的理解</a></li>
-<li><a href="#_2">集合继承关系</a></li>
-<li><a href="#collection_1">Collection</a><ul>
-<li><a href="#set">Set</a><ul>
-<li><a href="#_3">定义的理解</a></li>
-<li><a href="#_4">简单使用</a></li>
-</ul>
-</li>
-<li><a href="#list">list</a><ul>
-<li><a href="#_5">定义的理解</a></li>
-</ul>
-</li>
-<li><a href="#map">map</a><ul>
-<li><a href="#_6">定义的理解</a></li>
-<li><a href="#_7">使用方法</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<h4 id="_1">定义的理解</h4>
-<blockquote>
-<p>java作为面向对象的语言，许多地方都是会对对象进行操作，那对于多个对象的操作，首相要进行存储，然后相应的操作，集合就是常用的存储方式，数组虽然也是个容器，但是只能存储基本数据类型，而且长度是固定的，不是很方便，集合只能存储对象，长度可以自增的，比较灵活。</p>
-</blockquote>
-<h4 id="_2">集合继承关系</h4>
-<pre><code>graph TD
-A[Iterator]--&gt;B[Collection]
-A--&gt;C[Map]
-B--无序不重复--&gt;D[Set]
-B--有序可重复--&gt;E[List]
-D--无序--&gt;D1[HashSet]
-D--排序--&gt;D2[TreeSet]
-E--查改优--&gt;E1[ArrayList]
-E--增删优--&gt;E2[LinkedList]
-C--无序--&gt;C1[HashMap]
-C--排序--&gt;C2[TreeMap]
+<h4 id="unity">开发unity插件的初衷</h4>
+<p>在mob负责的安卓端短信sdk及一键登录秒验sdk需要做全平台适配，其中就涉及到主流游戏平台之一的unity，公司的全平台适配方案恰好又是插件开发，于是用一周自学unity,然后又花了一周做出了秒验sdk插件。本篇目的是为了记录开发过程中的一些流程，属于unity3D入门基础内容。</p>
+<h4 id="_1">基本理解</h4>
+<p>unity插件开发需要开发的部分主要有两个部分：<br />
+1. jar/aar(简单包装原sdk)
+2. C#层负责桥接的bridge</p>
+<p>详细描述整个过程：  </p>
+<pre><code>1. C#通过一些开发是可以直接接入jar或者aar的，但是为了接入方的方便我们应当开发好桥接层后提供出去，
+2. 正常第一步需要新建一个library工程来对原生的sdk进行一层包装，
+3. 包装的第一步，引入unity的calss.jar放到lib中，
+然后在项目中就可以调用unity的UiHandler.sendMessage对unity层进行发消息通信，回调结果。
+4. 如果没有异步的需求的话可以不用，直接采用同步回调。
+5. 最后将以上打出的jar包引入到unity的（Assets-Plugins-Android），便可以调用其中方法。
 </code></pre>
+<h4 id="candroid">C#调用android(简单描述)</h4>
 <blockquote>
-<p>vector和hashtable均被替代</p>
+<p>在unity中创建的AndroidJavaClass对象可以调用一些静态方法，创建的AndroidJavaObject用来调用对象中的方法。</p>
 </blockquote>
-<pre><code>vector与arralist区别，vector add方法同步，arraylist非同步，
-vector扩容1倍，arraylist0.5倍，
-vector构造方法是直接初始化10，arraylist第一次调用添加方法初始化容量为10，
-vector是jdk1.0,arraylist是jdk1.2
-vector是线程同步的效率低安全性高
+<h5 id="androidjavaclassandroidjavaobject">一、拿到AndroidJavaClass或者AndroidJavaObject</h5>
+<ol>
+<li>AndroidJavaClass adClass = new AndroidJavaClass("com.secverify.unity3d.SecVerifyUtils");</li>
+<li>AndroidJavaObject adObject = new AndroidJavaObject("com.secverify.unity3d.SecVerifyUtils");</li>
+</ol>
+<h5 id="classobjectandroid">二、通过拿到的class或者object调用Android</h5>
+<p>adObject.Call("init", appKey, appSecret);
+init为方法名，后面两个appKey和appSecret为参数</p>
+<pre><code>//android中的方法：
+public class SMSSDKUtils  {
+    public void init(String appKey, String )
+    {
 
-增加或者删除较多使用linkedList，查找多使用arraylist.
-
-hashtable
-
-被concurrenthashmap替代
-hashtable优点，同步，但是效率低。
-
+    }
+}
 </code></pre>
-<h4 id="collection_1">Collection</h4>
-<h5 id="set">Set</h5>
-<h6 id="_3">定义的理解</h6>
-<ol>
-<li>为什么要使用这种容器，key和value相同，没有重复的value。无序，允许Null元素。</li>
-<li>set是一个接口，实现类有：<ul>
-<li>hashset:hash算法存取对象，存取速度快</li>
-<li>treeset: 能够对元素进行排序</li>
-</ul>
-</li>
-</ol>
-<h6 id="_4">简单使用</h6>
-<pre><code>Set&lt;Integer&gt; hashSet = new HashSet&lt;Integer&gt;();
- hashSet.add(3);
- hashSet.add(4);
+<p>如果有非异步的返回值：<br />
+String str = adObject.call<String>("init", appKey, appSecret);</p>
+<h4 id="androidc">Android调用C#（简单描述）</h4>
+<p>简单可分为两步：
+1. android项目中引入unity.jar取自unitysdk</p>
+<pre><code> UnityPlayer.UnitySendMessage(&quot;Main Camera&quot;, &quot;_callback&quot;, formatStr);
 
- 遍历
- for (Integer integer :hashSet){
-
-   }
- Iterator&lt;Integer&gt; iterator =hashSet.iterator();
-while (iterator.hasNext()){
-     Integer integer=iterator.next();
-   }
+ 第一个参数是 脚本挂载的物体名称
+ 第二个参数是该脚本中的准备接收回调的方法名
+ 第三个参数是要传递过去的参数（String类型）
 </code></pre>
-<blockquote>
-<p>在放入自己定义的类实例时，需要重写hashcode和equals方法，用自己的关键字来重写，因为当使用HashSet时，hashCode()方法就会得到调用，判断已经存储在集合中的对象的hash code值是否与增加的对象的hash code值一致；如果不一致，直接加进去；如果一致，再进行equals方法的比较，equals方法如果返回true，表示对象已经加进去了，就不会再增加新的对象，否则加进去。</p>
-</blockquote>
-<h5 id="list">list</h5>
-<h6 id="_5">定义的理解</h6>
 <ol>
-<li>是一个继承collection的接口，实现类有：<ul>
-<li>ArrayList:查询快，增删慢，不同步，0.5增长</li>
-<li>LinkedList:增删快</li>
-<li>Vector: 都慢，被arraylist替代，线程安全</li>
-<li>Stack: 继承于vector</li>
-</ul>
-</li>
+<li>在unity的脚本中定义该方法，取出值，复杂的可用map或者json来传值</li>
 </ol>
-<h5 id="map">map</h5>
-<h6 id="_6">定义的理解</h6>
-<ol>
-<li>Map是个接口，实现类有：<ul>
-<li>HahMap: 非同步，无序数组+链表+红黑树</li>
-<li>TreeMap:底层二叉树，不同步，可用于排序</li>
-<li>LinkedHashMap:遍历时时是插入顺序，或者最近最少使用次序，速度稍慢，迭代更快</li>
-<li>HashTable:</li>
-<li>ConcurrentHashMap:并发效率更高用来替代hashtable
-...</li>
-</ul>
-</li>
-</ol>
-<h6 id="_7">使用方法</h6>
-<ol>
-<li>方法  <ul>
-<li>添加  <ul>
-<li>V put(K key, V value)可以相同的key，但是value会覆盖前一个</li>
-<li>putAll(Map&lt;? extend K, ? extends V&gt; m)</li>
-</ul>
-</li>
-<li>删除<ul>
-<li>remove() 删除关联对象，指定key对象</li>
-<li>clear() 清空集合对象</li>
-</ul>
-</li>
-<li>获取  <ul>
-<li>value get(key) 可以用于判断是否存在的情况，指定的key不存在时返回的是null</li>
-</ul>
-</li>
-<li>判断<ul>
-<li>boolean isEmpty()长度为0返回true,否则false</li>
-<li>boolean containsKey(Object key) 判断集合中是否包含key</li>
-<li>boolean containsValue(Object value),是否包含指定value</li>
-</ul>
-</li>
-<li>长度<ul>
-<li>int size()</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol></div>
+<pre><code> private void _callback(string callbackData) {
+    ...
+ }
+</code></pre>
+<h4 id="_2">打安卓包</h4>
+<p><img alt="unity_package1.png" src="https://i.loli.net/2021/06/21/Vau6UIsGqcM1LRo.png" /></p>
+<p><img alt="unity_package2.png" src="https://i.loli.net/2021/06/21/rWFo8Hega4NtX27.png" /></p>
+<p>点击build后，选择apk输出路径，填写输出apk的名称即可构建</p>
+<h4 id="androidproject">导出Android项目结构的project</h4>
+<p>只需将上面的最后一步改为:
+build setting-&gt;exportproject打勾-&gt;Export即可</p>
+<h4 id="unityhub">UnityHub激活新许可证报错处理</h4>
+<p>选择个人版，用于初学者和业余爱好者<br />
+如果激活新许可证报网络错误<br />
+这可能是由于你之前装过其他版本的Unity导致的，而不是网络原因！</p>
+<pre><code>进入 C:\ProgramData 找到 Unity 文件夹，
+将整个 Unity 文件夹删掉，
+然后重新启动Unity Hub 激活新许可证 即可！
+</code></pre>
+<h4 id="unity3dgit-ignore">新增unity3d的git ignore文件</h4>
+<pre><code>https://github.com/github/gitignore/blob/master/Unity.gitignore
+</code></pre></div>
             </div>
         </div>
 
