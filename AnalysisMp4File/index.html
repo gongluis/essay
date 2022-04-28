@@ -8,15 +8,15 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>flutter插件开发 - 小巩的网站</title>
+        <title>mp4文件解析 - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
         <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -35,6 +35,15 @@
                         <ul class="nav navbar-nav">
                             <li class="navitem">
                                 <a href=".." class="nav-link">介绍</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">音视频 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">mp4文件解析</a>
+</li>
+                                </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
@@ -189,7 +198,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flutter插件 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -202,16 +211,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">flutter插件开发</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Unity3D插件 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../plugin_unity/" class="dropdown-item">unity3D插件开发</a>
+    <a href="../flutterplugincoding/" class="dropdown-item">flutter插件开发</a>
 </li>
                                 </ul>
                             </li>
@@ -250,12 +250,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../howflutterenvironment/" class="nav-link">
+                                <a rel="prev" href=".." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../plugin_unity/" class="nav-link">
+                                <a rel="next" href="../basicDataType/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -277,60 +277,179 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h4 id="_1">基础概念理解</h4>
-<blockquote>
-<p>插件化是全平台适配的方案之一，就是只需要通过开发桥接层，就可以让sdk给flutter,unity,apicloud等其它语言接入，缺点就是多平台语言的学习成本以及多插件的维护成本。</p>
-</blockquote>
-<p>几个重要概念的理解：<br />
-* 平台：android/ios...  </p>
-<ul>
-<li>通道：由于Flutter本身只是一个UI系统，它本身是无法提供一些系统能力，比如使用蓝牙、相机、GPS等，因此要在Flutter APP中调用这些能力就必须和原生平台进行通信。为此，Flutter中提供了一个平台通道（platform channel）
-用于Flutter和原生平台的通信。平台通道正是Flutter和原生之间通信的桥梁，它也是Flutter插件的底层基础设施。</li>
-<li>通信<ul>
-<li>应用的Flutter部分通过平台通道（platform channel）将消息发送到其应用程序的所在的宿主（iOS或Android）应用（原生应用）。</li>
-<li>宿主监听平台通道，并接收该消息。然后它会调用该平台的API，并将响应发送回客户端，即应用程序的Flutter部分。</li>
-<li>还有一种是原生主动通知flutter层，原生层在onAttachedToEngine复写方法中创建一个eventChannel对象，然后设置Streamhandler,复写两个方法，一个onListener一个onCancel,使用onListner中evnetsink可以用来发送事件，eventSink.onSuccess。flutter层同样创建一个evenChannel，在调用原生methodChannel下面调用，eventchannel.receiveBroadcastStream().listener{}即可接收到消息。</li>
-</ul>
-</li>
-</ul>
-<h4 id="_2">开发</h4>
-<ol>
-<li>官方demo学习插件调用流程</li>
-</ol>
-<pre><code>new flutter project --&gt; plugin
-1. example是个demo，里面引用了插件
-    * pubSpec.yaml文件中
-flutter_plugin:
-    path: ../    代表当前主目录
-
-2. example工程里面的main.dart文件中initState方法中调用initPlatformState方法，该方法为异步方法，
-里面同步调用了我们FlutterPlugin中platformVersion方法
-3. platformVersion也是一个异步方法，该方法也同步调用了methodChannel中getPlatformVersion方法
-4. 选中项目右键，选中flutter,选择打开open android muduler in android studio
-5. 打开 flutter_plugin2--&gt;java--&gt;包名...
-6. onAttachedToEngine方法中通过MethodChannel name创建管道实例，然后设置监听，
-7. 在监听方法里面通过匹配管道中的方法名，通过回调将结果放在管道中。
-
-8. example中通过插件拿到管道中指定方法返回的值
-
+<h3 id="mp4">mp4文件内容解析</h3>
+<h4 id="mp4_1">一、mp4文件格式</h4>
+<pre><code>mp4文件是由很多box组成，每个box包含header和data,其中data可以是数据，也可以是别的box。其中主要的box有:ftypbox moovbox mdatbox等。
+---ftype  有且只有一个，在文件的开始位置，描述的文件的版本、兼容协议等
+---moov   有且只有一个，这个box中不包含具体媒体数据，但包含本文件中所有媒体数据的宏观描述信息，moov box下有mvhd和trak box。
+-------mvhd 记录了创建时间、修改时间、时间度量标尺、可播放时长等信息。
+-------trak video track包含了mp4中各种信息表，如: stts/ctts/stss/等
+-------trak audio track 音频轨道
+---free  
+---mdat 可以有多个，也可以没有，实际媒体数据。我们最终解码播放的数据都在这里面。
 </code></pre>
-<ol>
-<li>总结  </li>
-</ol>
-<pre><code>通信流程可以主要总结为三步：
-1. 创建eventChannel参数中指定原生brige类含包名。
-2. 通过eventChannel.involkeMethod()传入方法名调用原生
-3. 原生监听flutter层行为，去匹配flUtter层传入的方法名，可以直接通过系统的api回调，也可以通过eventchannel广播进行主动发送。
+<h4 id="sttscttsstscstsz">二、stts/ctts/stsc/stsz等信息表的解析</h4>
+<h5 id="s-t-t-s-time-to-sample-atoms">s t t s :Time To Sample Atoms</h5>
+<pre><code>存储了媒体sample的时长信息，提供了时间和相关sample之间的映射关系。该atom包含了一个表，关于time和sample号之间的索引关系。表的每个entry给出了具有相同时间间隔的连续的sample的个数和这些sample的时间间隔值。将这些时间间隔相加在一起，就可以得到一个完整的time与sample之间的映射。将所有的时间间隔相加在一起，就可以得到该track的时间总长。
 </code></pre>
-<h4 id="_3">底层</h4>
-<p>查看源码便可发现，Flutter 采用二进制字节流作为数据传输协议，发送方需要把数据编码成二进制数据，接收方再把收到的数据解码成原始数据，负责编解码操作的就是Codec,每个channel中都是用到了BinaryMessages,作为信使，负责将消息进行跨平台搬运，是消息的发送和接收的工具。</p></div>
+<table>
+<thead>
+<tr>
+<th>SampleCount</th>
+<th>SampleDuration</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>如上表表示，有４个sample的duration为3，2个sample的duration为1, 3个sample的duration为2……注意，这里的duration并不是真实时间，是由时间戳和timescale计算得到的值。</p>
+<h5 id="stscsample-to-chunk-atoms">stsc:Sample-To-Chunk Atoms</h5>
+<pre><code>为了优化数据访问，通常把sample封装到chunk中，一个chunk可能会包含一个或者多个sample。每个chunk会有不同的size，每个chunk中的sample也会有不同的size。stsc table提供了从sample到chunk的一个映射，
+每个table entry可能包含一个或者多个chunk。Table entry包含的内容包括第一个chunk号(从这个位置开始)、每个chunk包含的sample的个数以及sample的描述ID:
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>First Chunk</th>
+<th>Samples per chunk</th>
+<th>Sample descriptionID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>23</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>23</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<p>如上表表示，第1、2个chunk包含的sample个数都是3个，sample的ID都是23，第3、4个chunk包含的sample个数都是1个，sample的ID都是23，第5个到最后一个chunk包含的sample个数都是1个，sample的ID都是24．</p>
+<h5 id="stsz-sample-size-atom">stsz: Sample Size Atom</h5>
+<p>该表中存储了每个sample的size</p>
+<table>
+<thead>
+<tr>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+</tr>
+<tr>
+<td>Size</td>
+</tr>
+<tr>
+<td>Size</td>
+</tr>
+<tr>
+<td>Size</td>
+</tr>
+</tbody>
+</table>
+<p>如上表表示，1-5个sample的size都是"size"。</p>
+<h5 id="stcoco64-chunk-offset-atom">stco/co64: Chunk Offset Atom</h5>
+<pre><code>stco/co64中存储了每个chunk在文件中的位置。stco表示use32BitFileOffset，co64表示use64BitFileOffset
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offset</td>
+</tr>
+<tr>
+<td>Offset</td>
+</tr>
+<tr>
+<td>Offset</td>
+</tr>
+<tr>
+<td>Offset</td>
+</tr>
+</tbody>
+</table>
+<p>如上表表示，1-5个chunk在文件中的位置"offset"。</p>
+<h5 id="stss-sync-sample-atom">stss: Sync Sample Atom</h5>
+<p>标记了每个关键帧的sample。如果该表不存在，就表示媒体流每个sample都是关键帧。</p>
+<table>
+<thead>
+<tr>
+<th>Sample1</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sample2</td>
+<td>31</td>
+</tr>
+<tr>
+<td>Sample3</td>
+<td>61</td>
+</tr>
+<tr>
+<td>Sample4</td>
+<td>91</td>
+</tr>
+</tbody>
+</table>
+<p>如上表表示第1个关键帧是第1帧，第2个关键帧是第31帧，第3个关键帧是第61帧，第4个关键帧是第91帧……</p>
+<p>三、具体应用</p>
+<pre><code>step1: 具体播放时，比如用户需要seek到某一位置，播放器首先可以根据进度条得到用户seek到的时间seektime。
+
+step2: 利用stts表，根据seektime找到其对应的seeksample
+
+step3: 利用stss表，查看seeksample是否为关键帧，如果是则继续，如果不是则按照播放器规定的方法(查找最邻近关键帧、查找前面一个关键帧、查找后面一个关键帧)更新seeksample。
+
+step4: 利用stsc表，根据通过seeksample找到对应的seekchunk和其在chunk中是第几个sample
+
+step5: 利用stsz表，计算seeksample在其所在chunk中的地址偏移量sampleindex
+
+step6: 利用stco表，查找seekchunk在文件中的位置chunkindex
+
+step7: chunkindex + sampleindex 就是用户seek到的帧在文件中的位置。
+
+step8: 取出数据去解码。
+
+step9: 如果文件存在B帧需要根据ctts去调整pts，否则pts=dts。
+
+step10: rennder
+</code></pre></div>
             </div>
         </div>
 
@@ -353,16 +472,13 @@ flutter_plugin:
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>

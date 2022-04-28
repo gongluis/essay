@@ -8,15 +8,15 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>unity3D插件开发 - 小巩的网站</title>
+        <title>flutter插件开发 - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
         <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -35,6 +35,15 @@
                         <ul class="nav navbar-nav">
                             <li class="navitem">
                                 <a href=".." class="nav-link">介绍</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">音视频 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../AnalysisMp4File/" class="dropdown-item">mp4文件解析</a>
+</li>
+                                </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
@@ -189,7 +198,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flutter插件 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -202,16 +211,7 @@
 </li>
                                     
 <li>
-    <a href="../plugin_flutter/" class="dropdown-item">flutter插件开发</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Unity3D插件 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="./" class="dropdown-item active">unity3D插件开发</a>
+    <a href="./" class="dropdown-item active">flutter插件开发</a>
 </li>
                                 </ul>
                             </li>
@@ -250,7 +250,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../plugin_flutter/" class="nav-link">
+                                <a rel="prev" href="../howflutterenvironment/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -278,87 +278,19 @@
         <ul class="nav flex-column">
             
             
-            
-            
-            
-            
-            
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h4 id="unity">开发unity插件的初衷</h4>
-<p>在mob负责的安卓端短信sdk及一键登录秒验sdk需要做全平台适配，其中就涉及到主流游戏平台之一的unity，公司的全平台适配方案恰好又是插件开发，于是用一周自学unity,然后又花了一周做出了秒验sdk插件。本篇目的是为了记录开发过程中的一些流程，属于unity3D入门基础内容。</p>
-<h4 id="_1">基本理解</h4>
-<p>unity插件开发需要开发的部分主要有两个部分：<br />
-1. jar/aar(简单包装原sdk)
-2. C#层负责桥接的bridge</p>
-<p>详细描述整个过程：  </p>
-<pre><code>1. C#通过一些开发是可以直接接入jar或者aar的，但是为了接入方的方便我们应当开发好桥接层后提供出去，
-2. 正常第一步需要新建一个library工程来对原生的sdk进行一层包装，
-3. 包装的第一步，引入unity的calss.jar放到lib中，
-然后在项目中就可以调用unity的UiHandler.sendMessage对unity层进行发消息通信，回调结果。
-4. 如果没有异步的需求的话可以不用，直接采用同步回调。
-5. 最后将以上打出的jar包引入到unity的（Assets-Plugins-Android），便可以调用其中方法。
-</code></pre>
-<h4 id="candroid">C#调用android(简单描述)</h4>
-<blockquote>
-<p>在unity中创建的AndroidJavaClass对象可以调用一些静态方法，创建的AndroidJavaObject用来调用对象中的方法。</p>
-</blockquote>
-<h5 id="androidjavaclassandroidjavaobject">一、拿到AndroidJavaClass或者AndroidJavaObject</h5>
+<h4 id="androidstudio">androidstudio创建插件项目</h4>
+<p>android studio  </p>
+<p>File-New-New Flutter Project</p>
+<h4 id="_1">打开上一步创建的插件项目的安卓部分</h4>
 <ol>
-<li>AndroidJavaClass adClass = new AndroidJavaClass("com.secverify.unity3d.SecVerifyUtils");</li>
-<li>AndroidJavaObject adObject = new AndroidJavaObject("com.secverify.unity3d.SecVerifyUtils");</li>
-</ol>
-<h5 id="classobjectandroid">二、通过拿到的class或者object调用Android</h5>
-<p>adObject.Call("init", appKey, appSecret);
-init为方法名，后面两个appKey和appSecret为参数</p>
-<pre><code>//android中的方法：
-public class SMSSDKUtils  {
-    public void init(String appKey, String )
-    {
-
-    }
-}
-</code></pre>
-<p>如果有非异步的返回值：<br />
-String str = adObject.call<String>("init", appKey, appSecret);</p>
-<h4 id="androidc">Android调用C#（简单描述）</h4>
-<p>简单可分为两步：
-1. android项目中引入unity.jar取自unitysdk</p>
-<pre><code> UnityPlayer.UnitySendMessage(&quot;Main Camera&quot;, &quot;_callback&quot;, formatStr);
-
- 第一个参数是 脚本挂载的物体名称
- 第二个参数是该脚本中的准备接收回调的方法名
- 第三个参数是要传递过去的参数（String类型）
-</code></pre>
-<ol>
-<li>在unity的脚本中定义该方法，取出值，复杂的可用map或者json来传值</li>
-</ol>
-<pre><code> private void _callback(string callbackData) {
-    ...
- }
-</code></pre>
-<h4 id="_2">打安卓包</h4>
-<p><img alt="unity_package1.png" src="https://i.loli.net/2021/06/21/Vau6UIsGqcM1LRo.png" /></p>
-<p><img alt="unity_package2.png" src="https://i.loli.net/2021/06/21/rWFo8Hega4NtX27.png" /></p>
-<p>点击build后，选择apk输出路径，填写输出apk的名称即可构建</p>
-<h4 id="androidproject">导出Android项目结构的project</h4>
-<p>只需将上面的最后一步改为:
-build setting-&gt;exportproject打勾-&gt;Export即可</p>
-<h4 id="unityhub">UnityHub激活新许可证报错处理</h4>
-<p>选择个人版，用于初学者和业余爱好者<br />
-如果激活新许可证报网络错误<br />
-这可能是由于你之前装过其他版本的Unity导致的，而不是网络原因！</p>
-<pre><code>进入 C:\ProgramData 找到 Unity 文件夹，
-将整个 Unity 文件夹删掉，
-然后重新启动Unity Hub 激活新许可证 即可！
-</code></pre>
-<h4 id="unity3dgit-ignore">新增unity3d的git ignore文件</h4>
-<pre><code>https://github.com/github/gitignore/blob/master/Unity.gitignore
-</code></pre></div>
+<li>鼠标选中上一步创建的项目名右键，然后选择Flutter-open android moduler in android studio</li>
+<li>在打开的项目</li>
+</ol></div>
             </div>
         </div>
 
@@ -381,16 +313,13 @@ build setting-&gt;exportproject打勾-&gt;Export即可</p>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>

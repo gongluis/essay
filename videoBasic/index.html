@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>videoBasic - 小巩的网站</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">小巩的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">介绍</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">音视频 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../AnalysisMp4File/" class="dropdown-item">mp4文件解析</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../basicDataType/" class="dropdown-item">基础数据类型</a>
+</li>
+                                    
+<li>
+    <a href="../algorithm/" class="dropdown-item">算法</a>
+</li>
+                                    
+<li>
+    <a href="../garbage/" class="dropdown-item">垃圾回收机制</a>
+</li>
+                                    
+<li>
+    <a href="../thread/" class="dropdown-item">线程</a>
+</li>
+                                    
+<li>
+    <a href="../threadPool/" class="dropdown-item">线程池</a>
+</li>
+                                    
+<li>
+    <a href="../collection/" class="dropdown-item">集合</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">sdk笔记 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../sdk_provider.md" class="dropdown-item">provider方式</a>
+</li>
+                                    
+<li>
+    <a href="../sdk/" class="dropdown-item">总结</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../fourcomponent/" class="dropdown-item">四大组件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">设计模式</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../designpattern/singleInstance/" class="dropdown-item">单例</a>
+</li>
+            
+<li>
+    <a href="../designpattern/factory/" class="dropdown-item">工厂</a>
+</li>
+            
+<li>
+    <a href="../designpattern/builder/" class="dropdown-item">Builder</a>
+</li>
+            
+<li>
+    <a href="../designpattern/observer/" class="dropdown-item">观察者</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">自定义控件</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
+</li>
+            
+<li>
+    <a href="../customView/customView/" class="dropdown-item">自定义View</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">APP架构</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../constructure/mvc/" class="dropdown-item">MVC</a>
+</li>
+            
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVP</a>
+</li>
+            
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVvm</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../touchEvent/" class="dropdown-item">事件分发</a>
+</li>
+                                    
+<li>
+    <a href="../handler/" class="dropdown-item">Handler原理</a>
+</li>
+                                    
+<li>
+    <a href="../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
+</li>
+                                    
+<li>
+    <a href="../better/" class="dropdown-item">APP整体优化</a>
+</li>
+                                    
+<li>
+    <a href="../app_start_process/" class="dropdown-item">APP启动流程</a>
+</li>
+                                    
+<li>
+    <a href="../adaption/" class="dropdown-item">屏幕适配</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">一些小的点</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../context/" class="dropdown-item">ConText</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../login.md" class="dropdown-item">登录</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../test/" class="dropdown-item">单元测试Monkey</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flutter插件 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../whyflutterplugin/" class="dropdown-item">什么是flutter插件及作用</a>
+</li>
+                                    
+<li>
+    <a href="../howflutterenvironment/" class="dropdown-item">如何配置flutter环境</a>
+</li>
+                                    
+<li>
+    <a href="../flutterplugincoding/" class="dropdown-item">flutter插件开发</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">git <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../git_scenes/" class="dropdown-item">常见场景操作</a>
+</li>
+                                    
+<li>
+    <a href="../git_client_steps/" class="dropdown-item">Android端git版本管理</a>
+</li>
+                                    
+<li>
+    <a href="../git_commit_log/" class="dropdown-item">commit log</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">故障复盘记录 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../sdkexception/" class="dropdown-item">AndroidSDK故障记录</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h4 id="_1">一、生活中的视音频</h4>
+<ol>
+<li>常见的视频文件格式</li>
+</ol>
+<div class="toc">
+<ul>
+<li><a href="#_1">一、生活中的视音频</a></li>
+<li><a href="#_2">四、封装格式</a></li>
+<li><a href="#_3">五、视频编码</a><ul>
+<li><a href="#_4">主流编码标准</a></li>
+<li><a href="#_5">下一代编码标准</a></li>
+</ul>
+</li>
+<li><a href="#_6">六、音频编码</a></li>
+<li><a href="#_7">七、现有网络视音频平台对比</a><ul>
+<li><a href="#_8">直播平台参数对比</a></li>
+<li><a href="#_9">点播平台参数对比</a></li>
+</ul>
+</li>
+<li><a href="#bitratef-p-s">八、码率（bitrate）帧率（f p s）分辨率和清晰度的联系与区别</a><ul>
+<li><a href="#k-p-b-ss">码率 ，单位时间内传送的数据位数，单位k p b s/s即千位每秒，影响体积和清晰度，与体积成正比：码率越大，体积越大；码率越小，体积越小。</a></li>
+<li><a href="#f-p-s1">帧率f p s，1秒内传输的图片数量，影响画面流程度，与画面流畅度成正比，帧率越大越流畅，帧率越小画面越有跳动感，帧率越高，每秒经过的画面越多，需要的码率也越高，体积大</a></li>
+<li><a href="#_10">分辨率 ，影响图像大小，分别率越高图像越大，分辨率越低，图像越小。</a></li>
+</ul>
+</li>
+<li><a href="#i-b-p">九 、I帧 B帧 P帧</a></li>
+</ul>
+</div>
+<p>：avi，rmvb，mp4，flv，mkv等等，这些格式代表的是封装格式，就是把视频数据和音频数据打包成一个文件的规范，不同的封装格式之间各有劣势。</p>
+<ol>
+<li>基本概念</li>
+</ol>
+<p>```
+   AVC/h264: Advanced Video Coding简称
+   视频编解码有两套标准：
+    国际电联：h261、h263、h263+等
+    ISO: MPEG-1、MPEG-2、MPEG-4等
+   AVC/h264是两大组织结合H263+和MPEG-4的优点联合推出的标准，更高的数据压缩比，同等图像质量的前提下，H264的压缩比比H263高2倍，比MPEG-4高1.5倍。</p>
+<p>```</p>
+<ol>
+<li>工具</li>
+</ol>
+<p>查看媒体信息工具：MediaInfo </p>
+<p>https://mediaarea.net/download/current/MediaInfo_GUI_20.09_Windows.exe</p>
+<p>#### 二、视频播放器原理</p>
+<p>解协议、解封装、解码视音频、视音频同步</p>
+<p><code>mermaid
+   graph TD;
+       数据--&gt;解协议;
+       解协议--&gt;封装格式数据;
+       封装格式数据--&gt;解封装;
+       解封装--&gt;视频压缩数据;
+       解封装--&gt;音频压缩数据;
+       视频压缩数据--&gt;视频解码;
+       音频压缩数据--&gt;音频解码;
+       视频解码--&gt;视频原数据;
+       音频解码--&gt;音频原数据;
+       视频原数据--&gt; 视音频同步;
+       音频原数据--&gt; 视音频同步;
+       视音频同步--&gt; 音频驱动/设备;
+       视音频同步--&gt; 视频驱动/设备;</code></p>
+<ol>
+<li>
+<p>解协议</p>
+<p><code>就是将流媒体协议的数据，解析为标准的相应的封装格式数据。视音频在网络上传播的时候，常常采用各种流媒体协议，例如HTTP，RTMP，或是MMS等等。这些协议在传输视音频数据的同时，也会传输一些信令数据。这些信令数据包括对播放的控制（播放，暂停，停止），或者对网络状态的描述等。解协议的过程中会去除掉信令数据而只保留视音频数据。例如，采用RTMP协议传输的数据，经过解协议操作后，输出FLV格式的数据。</code></p>
+</li>
+<li>
+<p>解封装</p>
+<p><code>就是将输入的封装格式的数据，分离成为音频流压缩编码数据和视频流压缩编码数据。封装格式种类很多，例如MP4，MKV，RMVB，TS，FLV，AVI等等，它的作用就是将已经压缩编码的视频数据和音频数据按照一定的格式放到一起。例如，FLV格式的数据，经过解封装操作后，输出H.264编码的视频码流和AAC编码的音频码流。</code></p>
+</li>
+<li>
+<p>解码</p>
+<p><code>就是将视频/音频压缩编码数据，解码成为非压缩的视频/音频原始数据。音频的压缩编码标准包含AAC，MP3，AC-3等等，视频的压缩编码标准则包含H.264，MPEG2，VC-1等等。解码是整个系统中最重要也是最复杂的一个环节。通过解码，压缩编码的视频数据输出成为非压缩的颜色数据，例如YUV420P，RGB等等；压缩编码的音频数据输出成为非压缩的音频抽样数据，例如PCM数据。</code></p>
+</li>
+<li>
+<p>视音频同步</p>
+<p><code>就是根据解封装模块处理过程中获取到的参数信息，同步解码出来的视频和音频数据，并将视频音频数据送至系统的显卡和声卡播放出来。</code></p>
+</li>
+</ol>
+<p>#### 三、流媒体协议</p>
+<p>流媒体协议是服务器与客户端之间通信遵循的规定。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>传输层协议</th>
+<th>客户端</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTSP+RTP</td>
+<td>IETF</td>
+<td>TCP+UDP</td>
+<td>VLC, WMP</td>
+<td>IPTV</td>
+</tr>
+<tr>
+<td>RTMP</td>
+<td>Adobe Inc.</td>
+<td>TCP</td>
+<td>Flash</td>
+<td>互联网直播</td>
+</tr>
+<tr>
+<td>RTMFP</td>
+<td>Adobe Inc.</td>
+<td>UDP</td>
+<td>Flash</td>
+<td>互联网直播</td>
+</tr>
+<tr>
+<td>MMS</td>
+<td>Microsoft Inc.</td>
+<td>TCP/UDP</td>
+<td>WMP</td>
+<td>互联网直播+点播</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>WWW+IETF</td>
+<td>TCP</td>
+<td>Flash</td>
+<td>互联网点播</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>UDP传输视音频，支持组播，效率较高。但其缺点是网络不好的情况下可能会丢包，影响视频观看质量。</p>
+</li>
+<li>
+<p>因为互联网网络环境的不稳定性，RTSP+RTP较少用于互联网视音频传输。互联网视频服务通常采用TCP作为其流媒体的传输层协议，因而像RTMP，MMS，HTTP这类的协议广泛用于互联网视音频服务之中。这类协议不会发生丢包，因而保证了视频的质量，但是传输的效率会相对低一些。</p>
+</li>
+</ol>
+<h4 id="_2">四、封装格式</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>流媒体</th>
+<th>支持的视频编码</th>
+<th>支持的音频编码</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AVI</td>
+<td>Microsoft Inc.</td>
+<td>不支持</td>
+<td>几乎所有格式</td>
+<td>几乎所有格式</td>
+<td>BT下载影视</td>
+</tr>
+<tr>
+<td>MP4</td>
+<td>MPEG</td>
+<td>支持</td>
+<td>MPEG-2, MPEG-4, H.264, H.263等</td>
+<td>AAC, MPEG-1 Layers I, II, III, AC-3等</td>
+<td>互联网视频网站</td>
+</tr>
+<tr>
+<td>TS</td>
+<td>MPEG</td>
+<td>支持</td>
+<td>MPEG-1, MPEG-2, MPEG-4, H.264</td>
+<td>MPEG-1 Layers I, II, III, AAC,</td>
+<td>IPTV，数字电视</td>
+</tr>
+<tr>
+<td>FLV</td>
+<td>Adobe Inc.</td>
+<td>支持</td>
+<td>Sorenson, VP6, H.264</td>
+<td>MP3, ADPCM, Linear PCM, AAC等</td>
+<td>互联网视频网站</td>
+</tr>
+<tr>
+<td>MKV</td>
+<td>CoreCodec Inc.</td>
+<td>支持</td>
+<td>几乎所有格式</td>
+<td>几乎所有格式</td>
+<td>互联网视频网站</td>
+</tr>
+<tr>
+<td>RMVB</td>
+<td>Real Networks Inc.</td>
+<td>支持</td>
+<td>RealVideo 8, 9, 10</td>
+<td>AAC, Cook Codec, RealAudio Lossless</td>
+<td>BT下载影视</td>
+</tr>
+</tbody>
+</table>
+<p>由表可见，除了AVI之外，其他封装格式都支持流媒体，即可以“边下边播”。</p>
+<h4 id="_3">五、视频编码</h4>
+<p>YUV: Y（亮度）UV(色度)</p>
+<p>视频编码的主要作用是将视频像素数据（RGB，YUV等）压缩成为视频码流，从而降低视频的数据量。如果视频不经过压缩编码，体积是非常大的，一部电影可能要上百G的空间，视频编码是视音频技术中最重要的技术之一。视频码流的数据量占了视音频总数据量的绝大部分。高效率的视频编码在同等的码率下，可以获得更高的视频质量。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>推出时间</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEVC(H.265)</td>
+<td>MPEG/ITU-T</td>
+<td>2013</td>
+<td>研发中</td>
+</tr>
+<tr>
+<td>H.264</td>
+<td>MPEG/ITU-T</td>
+<td>2003</td>
+<td>各个领域</td>
+</tr>
+<tr>
+<td>MPEG4</td>
+<td>MPEG</td>
+<td>2001</td>
+<td>不温不火</td>
+</tr>
+<tr>
+<td>MPEG2</td>
+<td>MPEG</td>
+<td>1994</td>
+<td>数字电视</td>
+</tr>
+<tr>
+<td>VP9</td>
+<td>Google</td>
+<td>2013</td>
+<td>研发中</td>
+</tr>
+<tr>
+<td>VP8</td>
+<td>Google</td>
+<td>2008</td>
+<td>不普及</td>
+</tr>
+<tr>
+<td>VC-1</td>
+<td>Microsoft Inc.</td>
+<td>2006</td>
+<td>微软平台</td>
+</tr>
+</tbody>
+</table>
+<p>由表可见，有两种视频编码方案是最新推出的：VP9和HEVC。目前这两种方案都处于研发阶段，还没有到达实用的程度。当前使用最多的视频编码方案就是H.264。</p>
+<h5 id="_4">主流编码标准</h5>
+<p>H.264仅仅是一个编码标准，而不是一个具体的编码器，H.264只是给编码器的实现提供参照用的</p>
+<p>，基于H.264标准的编码器还是很多的。实际中使用最多的就是x264了，性能强悍（超过了很多商业编码器），而且开源。</p>
+<h5 id="_5">下一代编码标准</h5>
+<p>HEVC/H.265 在未来拥有很多大的优势</p>
+<p>空间维度：相似像素点表示（16x16矩阵1）可以用一个1表示</p>
+<p>时间维度：相邻两帧图片的大部分相似，只有很少的不同点</p>
+<h4 id="_6">六、音频编码</h4>
+<p>音频编码的主要作用是将音频采样数据（PCM等）压缩成为音频码流，从而降低音频的数据量。音频编码也是互联网视音频技术中一个重要的技术。但是一般情况下音频的数据量要远小于视频的数据量，因而即使使用稍微落后的音频编码标准，而导致音频数据量有所增加，也不会对视音频的总数据量产生太大的影响。高效率的音频编码在同等的码率下，可以获得更高的音质。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>机构</th>
+<th>推出时间</th>
+<th>使用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAC</td>
+<td>MPEG</td>
+<td>1997</td>
+<td>各个领域</td>
+</tr>
+<tr>
+<td>AC-3</td>
+<td>Dolby Inc.</td>
+<td>1992</td>
+<td>电影</td>
+</tr>
+<tr>
+<td>MP3</td>
+<td>MPEG</td>
+<td>1993</td>
+<td>各个领域</td>
+</tr>
+<tr>
+<td>WMA</td>
+<td>Microsoft Inc.</td>
+<td>1999</td>
+<td>微软平台</td>
+</tr>
+</tbody>
+</table>
+<p>由表可见，近年来并未推出全新的音频编码方案，可见音频编码技术已经基本可以满足人们的需要。音频编码技术近期绝大部分的改动都是在MP3的继任者——AAC的基础上完成的。</p>
+<h4 id="_7">七、现有网络视音频平台对比</h4>
+<p>现有的网络视音频服务主要包括两种方式：点播和直播。点播意即根据用户的需要播放相应的视频节目，这是互联网视音频服务最主要的方式。绝大部分视频网站都提供了点播服务。直播意即互联网视音频平台直接将视频内容实时发送给用户，目前还处于发展阶段。直播在网络电视台，社交视频网站较为常见。</p>
+<h5 id="_8">直播平台参数对比</h5>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>协议</th>
+<th>封装</th>
+<th>视频编码</th>
+<th>音频编码</th>
+<th>播放器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>华数TV</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>六间房</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>中国教育电视台</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>北广传媒移动电视</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>上海IPTV</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+</tbody>
+</table>
+<p>直播服务普遍采用了RTMP作为流媒体协议，FLV作为封装格式，H.264作为视频编码格式，AAC作为音频编码格式。</p>
+<p>采用RTMP作为直播协议的好处在于其被Flash播放器支持。而Flash播放器如今已经安装在全球99%的电脑上，并且与浏览器结合的很好。因此这种流媒体直播平台可以实现“无插件直播”，极大的简化了客户端的操作。</p>
+<p>FLV是RTMP使用的封装格式，H.264是当今实际应用中编码效率最高的视频编码标准，AAC则是当今实际应用中编码效率最高的音频编码标准。视频播放器方面，都使用了Flash播放器。</p>
+<h5 id="_9">点播平台参数对比</h5>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>协议</th>
+<th>封装</th>
+<th>视频编码</th>
+<th>音频编码</th>
+<th>播放器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNTV</td>
+<td>HTTP</td>
+<td>MP4</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>优酷网</td>
+<td>HTTP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>土豆网</td>
+<td>HTTP</td>
+<td>F4V</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>乐视网</td>
+<td>HTTP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+<tr>
+<td>新浪视频</td>
+<td>HTTP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+<td>Flash</td>
+</tr>
+</tbody>
+</table>
+<p>点播服务普遍采用了HTTP作为流媒体协议，H.264作为视频编码格式，AAC作为音频编码格式。采用HTTP作为点播协议有以下两点优势：一方面，HTTP是基于TCP协议的应用层协议，媒体传输过程中不会出现丢包等现象，从而保证了视频的质量；另一方面，HTTP被绝大部分的Web服务器支持，因而流媒体服务机构不必投资购买额外的流媒体服务器，从而节约了开支。点播服务采用的封装格式有多种：MP4，FLV，F4V等，它们之间的区别不是很大。视频编码标准和音频编码标准是H.264和AAC。这两种标准分别是当今实际应用中编码效率最高的视频标准和音频标准。视频播放器方面，无一例外的都使用了Flash播放器。</p>
+<h4 id="bitratef-p-s">八、码率（bitrate）帧率（f p s）分辨率和清晰度的联系与区别</h4>
+<h5 id="k-p-b-ss">码率 ，单位时间内传送的数据位数，单位k p b s/s即千位每秒，影响体积和清晰度，与体积成正比：码率越大，体积越大；码率越小，体积越小。</h5>
+<h5 id="f-p-s1">帧率f p s，1秒内传输的图片数量，影响画面流程度，与画面流畅度成正比，帧率越大越流畅，帧率越小画面越有跳动感，帧率越高，每秒经过的画面越多，需要的码率也越高，体积大</h5>
+<h5 id="_10">分辨率 ，影响图像大小，分别率越高图像越大，分辨率越低，图像越小。</h5>
+<p>清晰度：</p>
+<pre><code>在码率一定的情况下，分辨率与清晰度成反比关系：分辨率越高，图像越不清晰，分辨率越低，图像越清晰
+在分辨率一定的情况下，码率与清晰度成正比关系，码率越高，图像越清晰；码率越低，图像越不清晰
+在码率一定的情况下，分辨率在一定范围内取值都将是清晰的；同样地，在分辨率一定的情况下，码率在一定范围内取值都将是清晰的。
+</code></pre>
+<h4 id="i-b-p">九 、I帧 B帧 P帧</h4>
+<ol>
+<li>为什么要压缩视频？</li>
+</ol>
+<p>未经压缩的视频，数量巨大，存储困难，传输困难，一张图片2M一秒钟三十帧的情况就是2X30=60M,1秒视频60M。</p>
+<ol>
+<li>如何进行压缩？</li>
+</ol>
+<p>去除冗余信息（空间冗余，时间冗余，视觉冗余，等）。空间冗余相同区域像素一样，时间冗余相邻帧极少差异点，视觉冗余，眼镜能分辨出几种颜色。</p>
+<ol>
+<li>数据压缩分类？</li>
+</ol>
+<p>无损压缩和有损压缩，H264属于有损压缩，在视频编码中每一帧都代表一幅静止的图像，才会有IPB减少数据容量</p>
+<p>I帧：关键帧，一幅完整画面，可独立解码</p>
+<p>B帧：双向差别帧，本帧与前后帧的差别，不仅要取得前面的缓存画面，还要取得后面的画面，前后画面与本帧数据叠加去的最终画面。</p>
+<p>P帧：前向预测帧，表示这一帧和之前的 I帧或P帧的差别，要解码P帧，只需要用之前缓存的画面加本帧的差别，生成最终的画面。</p>
+<pre><code>I帧：
+I帧又称作内部画面，通常是每个GOP的第一个帧，适度的压缩可以当做图像，一部分压缩成P帧，一部分压缩成B帧
+
+I帧也被称为关键帧，是基于离散余弦变换DCT压缩技术
+
+特点：
+
+1.它是一个全帧压缩编码帧
+
+2.解码时仅用I帧的数据就可重新构造完整图像
+
+3.I帧描述了图像背景和运动主体的详情
+
+4.I帧不需要参考其他画面
+
+5.I帧是PB帧的参考帧
+
+6.I帧是帧组GOP的基础帧（第一帧），一组只有一个I帧
+
+7.I帧不需要考虑运动矢量
+
+8.I帧所占数据信息量比较大
+P帧：
+P帧是通过充分降低于图像序列中前面已编码帧的时间冗余信息来压缩传输数据量的编码图像，也叫预测帧。
+
+当针对连续动态图像编码时，将连续若干幅图像分成I,P,B三种类型，P帧由前面的I、P帧预测而来，也就是考虑运动的特性进行帧间压缩。
+
+特点：
+
+1.P帧是I帧后面1~2帧的编码帧
+
+2.P帧采用运动补偿的方法传送它与前面的I或P帧的差值及运动矢量
+
+3.解码时必须将I帧中的预测帧与预测误差求和才能重构完整的P帧图像
+
+4.P帧属于向前预测的帧间编码。只参考前面最靠近它的I帧或P帧
+
+5.P帧可以是后面P帧的参考帧，或者是后面B帧的参考帧
+
+6.由于P帧是参考帧，可能会造成解码错误的扩散
+
+7.因为是差值传送，压缩比例比较高
+
+
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

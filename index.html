@@ -12,11 +12,11 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
         <script src="js/jquery-1.10.2.min.js" defer></script>
         <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -35,6 +35,15 @@
                         <ul class="nav navbar-nav">
                             <li class="navitem active">
                                 <a href="." class="nav-link">介绍</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">音视频 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="AnalysisMp4File/" class="dropdown-item">mp4文件解析</a>
+</li>
+                                </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
@@ -202,16 +211,7 @@
 </li>
                                     
 <li>
-    <a href="plugin_flutter/" class="dropdown-item">flutter插件开发</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Unity3D插件 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="plugin_unity/" class="dropdown-item">unity3D插件开发</a>
+    <a href="flutterplugincoding/" class="dropdown-item">flutter插件开发</a>
 </li>
                                 </ul>
                             </li>
@@ -255,7 +255,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="basicDataType/" class="nav-link">
+                                <a rel="next" href="AnalysisMp4File/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -279,26 +279,24 @@
             
             
             
-            
-            
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
+<div class="toc">
+<ul>
+<li><a href="#-">安卓筑基-线程</a></li>
+<li><a href="#-_1">安卓筑基-线程池</a></li>
+<li><a href="#-_2">安卓筑基-集合</a></li>
+</ul>
+</div>
 <h4 id="-"><a href="https://gongluis.github.io/essay/thread/">安卓筑基-线程</a></h4>
 <p>”九层之台，起于垒土。“，线程作为最小的工作单元，和开发中最常用的工具，自然要熟知其一些常规知识点。</p>
 <h4 id="-_1"><a href="https://gongluis.github.io/essay/threadPool/">安卓筑基-线程池</a></h4>
 <p>“单丝不成线，独木不成林”，作为线程们的管理者，在资源的重复利用和提升运行效率方便贡献突出。</p>
-<h4 id="-_2"><a href="https://gongluis.github.io/essay/collection/">安卓筑基-集合</a></h4>
-<p>“海纳百川，有容乃大，襟三江而带五湖”，面向对象语言，万物皆对象，为了方便对多个对象的操作，就需要对他们进行存储，集合就是最常用的方式。</p>
-<h4 id="-jvmjava"><a href="https://gongluis.github.io/essay/collection/">安卓筑基-jvm内存结构和java内存模型</a></h4>
-<p>“知其然知其所以然”，对于比较抽象的东西的理解，脑中有必要有个相对应的模型。</p>
-<h4 id="sdk-flutter"><a href="https://gongluis.github.io/essay/plugin_flutter/">安卓sdk跨平台方案-flutter插件</a></h4>
-<p>“白发渔樵江渚上，惯看秋月春风”，Flutter作为跨平台ui框架，也为sdk的跨平台提供了一种解决方案。</p>
-<h4 id="sdk-unity"><a href="https://gongluis.github.io/essay/plugin_flutter/">安卓sdk跨平台方案-unity插件</a></h4>
-<p>unity作为主流游戏框架之一，也提供了插件开发的功能，本文记录自学过程中的一些基本步骤和流程。</p></div>
+<h4 id="-_2"><a href="https://note.youdao.com/">安卓筑基-集合</a></h4>
+<p>“海纳百川，有容乃大，襟三江而带五湖”，面向对象语言，万物皆对象，为了方便对多个对象的操作，就需要对他们进行存储，集合就是最常用的方式。</p></div>
             </div>
         </div>
 
@@ -321,16 +319,13 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -381,6 +376,6 @@
 </html>
 
 <!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-06-21 10:21:59.112355+00:00
+MkDocs version : 1.3.0
+Build Date UTC : 2022-04-28 01:46:01.073182+00:00
 -->
