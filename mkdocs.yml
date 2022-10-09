@@ -1,5 +1,5 @@
 site_name: 小巩的网站    
-  
+
 theme:  
   name: 'mkdocs' 
   feature:
@@ -13,11 +13,11 @@ theme:
   logo:
     icon: 'cloud'
   language: 'zh'  
-  
+
 extra:
   search:
     language: 'jp'
-   
+
   social:  
     - type: 'github'
       link: 'https://github.com/gongluis'  
@@ -35,7 +35,8 @@ nav:
          - 集合: collection.md
   - sdk笔记: 
          - provider方式: sdk_provider.md 
-         - 总结: sdk.md           
+         - 总结: sdk.md 
+         - 进程间通信sdk: ipc.md          
   - Android: 
          - 四大组件: fourcomponent.md    
          - 设计模式:
@@ -72,4 +73,4 @@ nav:
   - 故障复盘记录: 
          - AndroidSDK故障记录: sdkexception.md 
                     
-    
+
