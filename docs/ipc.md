@@ -29,3 +29,37 @@
 
    
 
+#### 二、客户端
+
+1. 将服务端aidl接口连文件夹（包名）复制过来rebuild
+
+2. new Intent设置setPackage和setAction然后bindService,定义ServiceConnection,在onServiceConnection中获取service实例。
+
+   ```
+   				Intent intent = new Intent();
+           intent.setPackage("com.t3.aibox");
+           intent.setAction("com.t3.aibox.service.aiboxService.vdrsdk");
+           context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+           
+           private ServiceConnection serviceConnection = new ServiceConnection() {
+           @Override
+           public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+               Log.d(TAG, "onServiceConnected: " );
+               vdrSdkService= VdrSdkService.Stub.asInterface(iBinder);//后续通过该service调用aidl中具体的方法
+               isConnect=true;
+           }
+   
+           @Override
+           public void onServiceDisconnected(ComponentName componentName) {
+               isConnect = false;
+               Log.d(TAG, "onServiceDisconnected: " );
+           }
+       };
+       
+       
+       //调用实例
+       boolean isRecording = vdrSdkService.isRecording();
+       
+   ```
+
+   
