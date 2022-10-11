@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>集合 - 小巩的网站</title>
+        <title>mp4文件抽帧方法总结 - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">介绍</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">音视频 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -49,11 +49,11 @@
 </li>
                                     
 <li>
-    <a href="../crowdSourcing/" class="dropdown-item">mp4文件抽帧方法总结</a>
+    <a href="./" class="dropdown-item active">mp4文件抽帧方法总结</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">JAVA <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -78,7 +78,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">集合</a>
+    <a href="../collection/" class="dropdown-item">集合</a>
 </li>
                                 </ul>
                             </li>
@@ -262,12 +262,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../threadPool/" class="nav-link">
+                                <a rel="prev" href="../Encodemp4/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../sdk/" class="nav-link">
+                                <a rel="next" href="../basicDataType/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -294,149 +294,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h3 id="collection">collection集合</h3>
-<div class="toc">
-<ul>
-<li><a href="#collection">collection集合</a><ul>
-<li><a href="#_1">定义的理解</a></li>
-<li><a href="#_2">集合继承关系</a></li>
-<li><a href="#collection_1">Collection</a><ul>
-<li><a href="#set">Set</a><ul>
-<li><a href="#_3">定义的理解</a></li>
-<li><a href="#_4">简单使用</a></li>
-</ul>
-</li>
-<li><a href="#list">list</a><ul>
-<li><a href="#_5">定义的理解</a></li>
-</ul>
-</li>
-<li><a href="#map">map</a><ul>
-<li><a href="#_6">定义的理解</a></li>
-<li><a href="#_7">使用方法</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<h4 id="_1">定义的理解</h4>
-<blockquote>
-<p>java作为面向对象的语言，许多地方都是会对对象进行操作，那对于多个对象的操作，首相要进行存储，然后相应的操作，集合就是常用的存储方式，数组虽然也是个容器，但是只能存储基本数据类型，而且长度是固定的，不是很方便，集合只能存储对象，长度可以自增的，比较灵活。</p>
-</blockquote>
-<h4 id="_2">集合继承关系</h4>
-<pre><code>graph TD
-A[Iterator]--&gt;B[Collection]
-A--&gt;C[Map]
-B--无序不重复--&gt;D[Set]
-B--有序可重复--&gt;E[List]
-D--无序--&gt;D1[HashSet]
-D--排序--&gt;D2[TreeSet]
-E--查改优--&gt;E1[ArrayList]
-E--增删优--&gt;E2[LinkedList]
-C--无序--&gt;C1[HashMap]
-C--排序--&gt;C2[TreeMap]
-</code></pre>
-<blockquote>
-<p>vector和hashtable均被替代</p>
-</blockquote>
-<pre><code>vector与arralist区别，vector add方法同步，arraylist非同步，
-vector扩容1倍，arraylist0.5倍，
-vector构造方法是直接初始化10，arraylist第一次调用添加方法初始化容量为10，
-vector是jdk1.0,arraylist是jdk1.2
-vector是线程同步的效率低安全性高
-
-增加或者删除较多使用linkedList，查找多使用arraylist.
-
-hashtable
-
-被concurrenthashmap替代
-hashtable优点，同步，但是效率低。
-
-</code></pre>
-<h4 id="collection_1">Collection</h4>
-<h5 id="set">Set</h5>
-<h6 id="_3">定义的理解</h6>
-<ol>
-<li>为什么要使用这种容器，key和value相同，没有重复的value。无序，允许Null元素。</li>
-<li>set是一个接口，实现类有：<ul>
-<li>hashset:hash算法存取对象，存取速度快</li>
-<li>treeset: 能够对元素进行排序</li>
-</ul>
-</li>
-</ol>
-<h6 id="_4">简单使用</h6>
-<pre><code>Set&lt;Integer&gt; hashSet = new HashSet&lt;Integer&gt;();
- hashSet.add(3);
- hashSet.add(4);
-
- 遍历
- for (Integer integer :hashSet){
-
-   }
- Iterator&lt;Integer&gt; iterator =hashSet.iterator();
-while (iterator.hasNext()){
-     Integer integer=iterator.next();
-   }
-</code></pre>
-<blockquote>
-<p>在放入自己定义的类实例时，需要重写hashcode和equals方法，用自己的关键字来重写，因为当使用HashSet时，hashCode()方法就会得到调用，判断已经存储在集合中的对象的hash code值是否与增加的对象的hash code值一致；如果不一致，直接加进去；如果一致，再进行equals方法的比较，equals方法如果返回true，表示对象已经加进去了，就不会再增加新的对象，否则加进去。</p>
-</blockquote>
-<h5 id="list">list</h5>
-<h6 id="_5">定义的理解</h6>
-<ol>
-<li>是一个继承collection的接口，实现类有：<ul>
-<li>ArrayList:查询快，增删慢，不同步，0.5增长</li>
-<li>LinkedList:增删快</li>
-<li>Vector: 都慢，被arraylist替代，线程安全</li>
-<li>Stack: 继承于vector</li>
-</ul>
-</li>
-</ol>
-<h5 id="map">map</h5>
-<h6 id="_6">定义的理解</h6>
-<ol>
-<li>Map是个接口，实现类有：<ul>
-<li>HahMap: 非同步，无序数组+链表+红黑树</li>
-<li>TreeMap:底层二叉树，不同步，可用于排序</li>
-<li>LinkedHashMap:遍历时时是插入顺序，或者最近最少使用次序，速度稍慢，迭代更快</li>
-<li>HashTable:</li>
-<li>ConcurrentHashMap:并发效率更高用来替代hashtable
-...</li>
-</ul>
-</li>
-</ol>
-<h6 id="_7">使用方法</h6>
-<ol>
-<li>方法  <ul>
-<li>添加  <ul>
-<li>V put(K key, V value)可以相同的key，但是value会覆盖前一个</li>
-<li>putAll(Map&lt;? extend K, ? extends V&gt; m)</li>
-</ul>
-</li>
-<li>删除<ul>
-<li>remove() 删除关联对象，指定key对象</li>
-<li>clear() 清空集合对象</li>
-</ul>
-</li>
-<li>获取  <ul>
-<li>value get(key) 可以用于判断是否存在的情况，指定的key不存在时返回的是null</li>
-</ul>
-</li>
-<li>判断<ul>
-<li>boolean isEmpty()长度为0返回true,否则false</li>
-<li>boolean containsKey(Object key) 判断集合中是否包含key</li>
-<li>boolean containsValue(Object value),是否包含指定value</li>
-</ul>
-</li>
-<li>长度<ul>
-<li>int size()</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol></div>
+<h4 id="_1">视频抽帧方法总结</h4></div>
             </div>
         </div>
 
