@@ -288,13 +288,24 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h4 id="_1">视频抽帧方法总结</h4></div>
+<blockquote>
+<p>视频抽帧方法总结</p>
+</blockquote>
+<p>视频文件可以分解成一帧一帧的图片，本文要分享的部分就是根据具体的时间戳从制定的视频文件中抽取对应的帧图片。尝试过三种方式。</p>
+<pre><code>1. 采用安卓原生api的抽帧方式
+2. 采用FFmpegMediaMetadataRetriever三方github开源库的方式
+3. 采用MediaCodec 调用系统硬件编解码器类进行抽帧 速度最快
+</code></pre>
+<p>​   </p>
+<blockquote>
+<p>附注：参考博客</p>
+<p>https://www.jianshu.com/p/12c3da125ece</p>
+</blockquote></div>
             </div>
         </div>
 
