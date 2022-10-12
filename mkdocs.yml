@@ -22,10 +22,14 @@ extra:
     - type: 'github'
       link: 'https://github.com/gongluis'  
       
+
 nav:   
+
   - 介绍: index.md
   - 音视频: 
-         - mp4文件解析: AnalysisMp4File.md    
+         - mp4文件解析: AnalysisMp4File.md
+         - mp4文件加解密思考: encodeMp4.md 
+         - mp4文件抽帧方法总结: crowdSourcing.md   
   - JAVA: 
          - 基础数据类型: basicDataType.md
          - 算法: algorithm.md
