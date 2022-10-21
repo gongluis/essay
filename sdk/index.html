@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>总结 - 小巩的网站</title>
+        <title>sdk笔记 - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -42,22 +42,8 @@
                             <li class="navitem">
                                 <a href="../java/" class="nav-link">JAVA</a>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">sdk笔记 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../sdk_provider.md" class="dropdown-item">provider方式</a>
-</li>
-                                    
-<li>
-    <a href="./" class="dropdown-item active">总结</a>
-</li>
-                                    
-<li>
-    <a href="../ipc/" class="dropdown-item">进程间通信sdk</a>
-</li>
-                                </ul>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">sdk笔记</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
@@ -227,7 +213,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../ipc/" class="nav-link">
+                                <a rel="next" href="../fourcomponent/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -255,11 +241,6 @@
             
             
             
-            
-            
-            
-            
-            
         </ul>
     </div>
 </div></div>
@@ -267,40 +248,157 @@
 
 <div class="toc">
 <ul>
-<li><a href="#_1">定义</a></li>
-<li><a href="#_2">接口设计</a><ul>
-<li><a href="#_3">出入参设计</a></li>
+<li><a href="#_1">一、初识：</a></li>
+<li><a href="#_2">二、交互流程设计</a></li>
+<li><a href="#-">三、接口设计-初始化接口</a></li>
+<li><a href="#-_1">四、接口设计-业务接口</a><ul>
+<li><a href="#_3">（一）、出入参设计</a></li>
+<li><a href="#_4">（二）、调用封装设计</a></li>
+<li><a href="#_5">（三）、数据返回设计</a></li>
+<li><a href="#_6">（四）、发送数据</a></li>
+<li><a href="#_7">（五）、接收数据</a></li>
+<li><a href="#_8">（六）、参数过滤设计</a></li>
+<li><a href="#_9">（七）、异常处理</a></li>
 </ul>
 </li>
-<li><a href="#_4">调用封装设计</a></li>
-<li><a href="#_5">数据返回设计</a><ul>
-<li><a href="#_6">发送数据</a></li>
-<li><a href="#_7">接收数据</a></li>
+<li><a href="#_10">五、个性化配置</a></li>
+<li><a href="#sdk">六、SDK安全与校验</a></li>
+<li><a href="#sdk_1">七、SDK打包方法</a><ul>
+<li><a href="#library-modulebuildgradle">（一）、library module下的build.gradle模板配置：</a></li>
+<li><a href="#aar">（二）、自定义aar名称</a></li>
 </ul>
 </li>
-<li><a href="#_8">参数过滤设计</a></li>
-<li><a href="#_9">交互流程设计</a></li>
-<li><a href="#_10">异常处理</a></li>
-<li><a href="#_11">初始化</a></li>
-<li><a href="#_12">个性化配置</a></li>
-<li><a href="#sdk">SDK安全与校验</a></li>
-<li><a href="#sdk_1">SDK打包方法</a><ul>
-<li><a href="#library-modulebuildgradle">library module下的build.gradle模板配置：</a></li>
-<li><a href="#_13">依赖原则，尽量避免第三方库的依赖</a></li>
-<li><a href="#_14">如何解决组件依赖冲突：</a></li>
-</ul>
-</li>
-<li><a href="#aar">自定义aar名称</a></li>
 </ul>
 </div>
-<h4 id="_1">定义</h4>
-<p>jar so aar 一些方法和逻辑合集，对资源api封装后的产物。</p>
-<h4 id="_2">接口设计</h4>
+<h4 id="_1">一、初识：</h4>
+<p>工作中有很大一部分时间是在参与开发或者主导开发一些sdk产品，本篇着重在于记录开发过程总结的一些经验和个人见解，以及遇到的一些常见问题和处理方式。对于sdk的定义可以概括为：“sdk即对于jar so aar 一些方法和逻辑合集，对资源api封装后的产物“，从功能方面细分的话可以分为以下几类：</p>
+<ol>
+<li>工具类sdk,常见于大公司内部的公共组件，目的是为了提高不同安卓部门间的工作效率减少造轮子和规范符合公司规定的标准数据处理方式，比如各种FileUtils,ByteUtile,ListUtils,SPUtils的合集等，这类sdk不用考虑功能的多样性及各种设计，只需提供一套标准且稳定的接口能力即可。很多公司公共组件部门会引起其它部门同事的吐槽，原因有三点，一是接口对于通用性的设计不够，不能满足不能部门间的使用；二是不够稳定，经常引起调用方应用闪退；三是调用方提出的不合理的定制化要求。对于一二两点需要开发者做一些提升，不管是从了解实际需求角度、接口设计、还是异常处理等方面，后文回逐步介绍，第三点定制化需求，要尽量的拒绝过度定制化的接口，该种需求不在sdk能提供的通用能力之中，或者实在要做就要想办法尽量规范这些需求。</li>
+<li>功能（业务）类sdk,用于提供某一个完整的业务功能类sdk,如短信SMSSDK,支付类sdk,分享类sdk等，多见于公司提供出售的一些有技术优势的软件产品，该类产品功能单一，但是要保证功能的可用性和产品的稳定性，其次就是要突出的与竞品的优势，比如sdk体积小，无侵入性，接入简单，一行代码引入，崩溃率低等。</li>
+<li>跨进程通信类sdk，用于某块功能很复杂但是足够独立，可以单独放到另一个应用来做，通过进程间通信与主程序进行通信，比如当下比较热门的地图众包类应用，或者其他一些因为法律法规不能在自己应用中做的一些功能，该类应用要求开发者在主程序中完成服务端和接口端设计开发，然后提供一个包含客户端功能的sdk给另一个程序来集成调用，在保持上面两点需要注意的点外，需要注意下进程间通信的稳定性，断开重连机制，还有各种异常返回设计。</li>
+</ol>
+<h4 id="_2">二、交互流程设计</h4>
+<p>在实际开发sdk前，绘制下交互流程图，不仅可以让自己和团队以及接入方清晰的理解业务交互方式和步骤，更重要的是还可以去查漏补缺，及时的发现流程设计的问题及风险点。</p>
+<p>这里举一个自己参与设计开发过的支付sdk例子：</p>
+<pre><code>需要重点考虑的如下三点：
+1. 核心是前端没有绝对的安全
+2. 错误的返回  
+   错误的返回并不会对业务造成损失，比如支付失败，直接当作失败处理即可。
+3. 成功的返回
+   成功的返回有时候会造成损失，比如支付后发货行为，因此必须要判断返回的可靠性。
+   前端代码，容易被破解者通过hook等非正常手段伪造或者篡改，不能信任前端返回码。
+</code></pre>
+<p>所以一般支付类sdk产品基本要包含以下重要流程：</p>
+<p><img alt="sdk-safe.jpg" src="https://i.loli.net/2020/08/25/Tizgt8PYWMeQEVr.png" /></p>
+<h4 id="-">三、接口设计-初始化接口</h4>
+<blockquote>
+<p>初始化的本质是将APP的上下文注入到SDK，使其能通过上下文获取到app的资源和上下文</p>
+</blockquote>
+<p>初始化的方式基本可以概括为以下三种：</p>
+<ol>
+<li>自定义Application（已经被废弃）</li>
+</ol>
+<p>```
+   跟调用者自己定义的application冲突，接口反射什么的来处理，没必要  </p>
+<p>public class App extends Application {</p>
+<pre><code>   @SuppressLint("StaticFieldLeak")
+   private static Context sContext;
+
+   @Override
+   public void onCreate() {
+       super.onCreate();
+       sContext = this;
+   }
+
+   public static Context getContext() {
+       return sContext;
+   }
+</code></pre>
+<p>}
+   ```</p>
+<p>早期sdk多采用该种方式，后因其侵入性太强，及多sdk兼容问题已逐渐被替代。</p>
+<ol>
+<li>静态方法初始化（最常用）</li>
+</ol>
+<p>```
+   public class MySDK {</p>
+<pre><code>   private static Context sContext;
+
+   private MySDK() {
+   }
+
+   public static void initSdk(Context context) {
+               //获取ApplicationContext防止内存泄漏
+       sContext = context.getApplicationContext();
+       initSomething();
+
+   }
+
+   public static Context getContext() {
+       return sContext;
+   }
+
+   private static void initSomething() {
+       //init something
+   }
+</code></pre>
+<p>}  </p>
+<pre><code> //调用方
+</code></pre>
+<p>public class App extends Application {</p>
+<pre><code>   @Override
+   public void onCreate() {
+       super.onCreate();
+
+       //初始化SDK
+       MySDK.initSdk(this);
+
+   }
+</code></pre>
+<p>}
+   ```</p>
+<p>使用方式最简单，方便，因此为目前最常用的方式。</p>
+<ol>
+<li>
+<p>"无侵入"contentProvider初始化方案</p>
+<p>```
+  利用contentProvider获取了app的上下文<br />
+  源码：App的启动过程中加载了provider，并且传了一个Application实例进去，最终在ContentProvider中调用了onCreate()方法。因此，在自定义的ContentProvider中，通过getContext()方法就可以获取到Application的实例了，ContentProvider中的onCreate()方法是先于Application中的onCreate()方法执行的（注意：此时Application对象已经创建）。关于App启动耗时的优化思路，是不是又多了一个关注点？  </p>
+<ol>
+<li>自定义用于初始化的provider</li>
+</ol>
+<p>public class MySDKInitProvider extends FileProvider{</p>
+<pre><code>  @Override
+  public boolean onCreate() {
+      //初始化
+      MySDK.initSdk(getContext());
+      return super.onCreate();
+  }
+</code></pre>
+<p>} </p>
+<p>在SDK Module下的manifest中注册，编译时将会合并至主工程项目</p>
+<p><provider
+      android:name=".MySDKInitProvider"
+      android:authorities="${applicationId}.MySDKInitProvider"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/my_sdk_provider_paths" />
+  </provider>  </p>
+<p>这里需要注意的是Provider的authorities千万别写死，否则两个引入同样SDK的App就无法共存了，这大概是SDK最不该犯的错误之一吧！
+  ```</p>
+<ol>
+<li>初始化新姿势-App 谷歌新组件，Startup(alpha的阶段，就不太建议用于生产环境中) </li>
+</ol>
+</li>
+</ol>
+<h4 id="-_1">四、接口设计-业务接口</h4>
 <blockquote>
 <p>如无必要勿增实体，如无必要勿增依赖<br />
 1. sdk接收什么？输出什么？明确职责</p>
 </blockquote>
-<h5 id="_3">出入参设计</h5>
+<h5 id="_3">（一）、出入参设计</h5>
 <ol>
 <li>map</li>
 <li>String</li>
@@ -311,7 +409,7 @@
     * 实现parcelabel接口，通过budle传输
 2. intent中的bundle是通过Binder机制进行数据传输，有大小限制，建议最大不超过500k越小越好，避免传输图片
 </code></pre>
-<h4 id="_4">调用封装设计</h4>
+<h5 id="_4">（二）、调用封装设计</h5>
 <p>如果app需要通过sdk的入口activity进行调用与业务开发，如何做一个优雅的调用封装。  </p>
 <p>封装前的调用：</p>
 <pre><code>//繁琐的调用代码
@@ -339,7 +437,7 @@ public static void launchSdk(Context context, ReqContent request) {
     context.startActivity(intent);
 }
 </code></pre>
-<h4 id="_5">数据返回设计</h4>
+<h5 id="_5">（三）、数据返回设计</h5>
 <p>调用即响应，不可无响应无回调<br />
 背景：  </p>
 <pre><code>1. 需要在app与sdk的activity间进行数据传输
@@ -354,7 +452,7 @@ public static void launchSdk(Context context, ReqContent request) {
 
 采用应用内广播，无进程间通信，效率更高，更安全
 </code></pre>
-<h5 id="_6">发送数据</h5>
+<h5 id="_6">（四）、发送数据</h5>
 <pre><code>//SDK内部封装的静态方法，提供给SDK内部模块统一调用
 public static void sendResult(String token, int code, String message) {
 
@@ -372,7 +470,7 @@ public static void sendResult(String token, int code, String message) {
     LocalBroadcastManager.getInstance(MySDK.getContext()).sendBroadcast(intent);
 }
 </code></pre>
-<h5 id="_7">接收数据</h5>
+<h5 id="_7">（五）、接收数据</h5>
 <pre><code>
 //SDK内部封装的注册方法，提供给APP模块统一调用
 public static void registerReceiver(BroadcastReceiver receiver) {
@@ -403,7 +501,7 @@ public class MyReceiver extends BroadcastReceiver {
     }
 }
 </code></pre>
-<h4 id="_8">参数过滤设计</h4>
+<h5 id="_8">（六）、参数过滤设计</h5>
 <p>对入参数据进行过滤，避免无意义的后续业务流程，及时提供调用反馈。 <br />
 非空检测，数据类型检测，数据格式检测，自定义注解。  </p>
 <pre><code>    public static final String PRINTER = &quot;PRINTER&quot;;
@@ -417,20 +515,7 @@ public class MyReceiver extends BroadcastReceiver {
 
     }
 </code></pre>
-<h4 id="_9">交互流程设计</h4>
-<blockquote>
-<p>前端没有绝对的安全  </p>
-</blockquote>
-<ol>
-<li>错误的返回<br />
-错误的返回并不会对业务造成损失，比如支付失败，直接当作失败处理即可。</li>
-<li>成功的返回
-成功的返回有时候会造成损失，比如支付后发货行为，因此必须要判断返回的可靠性。
-前端代码，容易被破解者通过hook等非正常手段伪造或者篡改，不能信任前端返回码。</li>
-<li>一般支付的交互流程图  </li>
-</ol>
-<p><img alt="sdk-safe.jpg" src="https://i.loli.net/2020/08/25/Tizgt8PYWMeQEVr.png" />   </p>
-<h4 id="_10">异常处理</h4>
+<h5 id="_9">（七）、异常处理</h5>
 <ol>
 <li>异常概念（throwable为exception和error父类）</li>
 <li>异常的层次<ul>
@@ -454,108 +539,7 @@ public class MyReceiver extends BroadcastReceiver {
 <p>在与业务有关的逻辑且涉及用户（非app开发者）可以重试的部分，应该采用返回码，方便后续处理，比如用户输入了不符合手机号码规则的信息，可以通过我们的检查逻辑返回对应的返回码，集成sdk的开发者针对处理即可。<br />
 在与业务无关的逻辑且一旦发生用户无法处理的部分，可以采用抛出自定异常的方式，如sdk对app包名的校验，是一个面向开发者的校验逻辑，坦然让app崩溃，让开发者从错误堆栈中找问题,这就是uncheck exception的使用场景<br />
 开发者未遵循约定造成的无法重试的专有异常  </p>
-<h4 id="_11">初始化</h4>
-<blockquote>
-<p>初始化的本质是将APP的上下文注入到SDK，使其能通过上下文获取到app的资源和上下文  </p>
-</blockquote>
-<ol>
-<li>自定义Application（已经被废弃）</li>
-</ol>
-<pre><code>
-跟调用者自己定义的application冲突，接口反射什么的来处理，没必要  
-
-public class App extends Application {
-
-    @SuppressLint(&quot;StaticFieldLeak&quot;)
-    private static Context sContext;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        sContext = this;
-    }
-
-    public static Context getContext() {
-        return sContext;
-    }
-}
-</code></pre>
-<ol>
-<li>静态方法初始化（最常用）  </li>
-</ol>
-<pre><code>public class MySDK {
-
-    private static Context sContext;
-
-    private MySDK() {
-    }
-
-    public static void initSdk(Context context) {
-                //获取ApplicationContext防止内存泄漏
-        sContext = context.getApplicationContext();
-        initSomething();
-
-    }
-
-    public static Context getContext() {
-        return sContext;
-    }
-
-    private static void initSomething() {
-        //init something
-    }
-
-}  
-
-  //调用方
-public class App extends Application {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        //初始化SDK
-        MySDK.initSdk(this);
-
-    }
-}
-</code></pre>
-<ol>
-<li>"无侵入"contentProvider初始化方案  </li>
-</ol>
-<pre><code>利用contentProvider获取了app的上下文  
-源码：App的启动过程中加载了provider，并且传了一个Application实例进去，最终在ContentProvider中调用了onCreate()方法。因此，在自定义的ContentProvider中，通过getContext()方法就可以获取到Application的实例了，ContentProvider中的onCreate()方法是先于Application中的onCreate()方法执行的（注意：此时Application对象已经创建）。关于App启动耗时的优化思路，是不是又多了一个关注点？  
-
-1. 自定义用于初始化的provider
-
-public class MySDKInitProvider extends FileProvider{
-
-    @Override
-    public boolean onCreate() {
-        //初始化
-        MySDK.initSdk(getContext());
-        return super.onCreate();
-    }
-} 
-
-在SDK Module下的manifest中注册，编译时将会合并至主工程项目
-
-&lt;provider
-    android:name=&quot;.MySDKInitProvider&quot;
-    android:authorities=&quot;${applicationId}.MySDKInitProvider&quot;
-    android:exported=&quot;false&quot;
-    android:grantUriPermissions=&quot;true&quot;&gt;
-    &lt;meta-data
-        android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
-        android:resource=&quot;@xml/my_sdk_provider_paths&quot; /&gt;
-&lt;/provider&gt;  
-
-这里需要注意的是Provider的authorities千万别写死，否则两个引入同样SDK的App就无法共存了，这大概是SDK最不该犯的错误之一吧！
-</code></pre>
-<ol>
-<li>初始化新姿势-App 谷歌新组件，Startup(alpha的阶段，就不太建议用于生产环境中)  </li>
-</ol>
-<h4 id="_12">个性化配置</h4>
+<h4 id="_10">五、个性化配置</h4>
 <blockquote>
 <p>使用流式比较优雅的实现sdk的个性化配置。<br />
 sdk配置的本质是为sdk相关功能提供默认配置，并且接收开发者的自定义配置  </p>
@@ -599,7 +583,7 @@ private static final LuisSDKConfig.Config CONFIG = new LuisSDKConfig.Congi();
 LuisSDKConfig.getConfig().setdebug(true);
 
 </code></pre>
-<h4 id="sdk">SDK安全与校验</h4>
+<h4 id="sdk">六、SDK安全与校验</h4>
 <ol>
 <li>资源安全，如何保证sdk包的完整性  <ul>
 <li>在编译的时候aar被合并到apk中，直接校验aar包的摘要不可行，但是可以通过校验aar包中的资源,raw,assets包中文件的摘要，这两个目录下的文件在编译的时候不会被压缩，摘要也不会变。</li>
@@ -629,8 +613,8 @@ as4.0新建library会会自动创建出两个***rules.pro文件，其中consumer
 区别：
 default下的consumerProguardFiles配置的*.pro文件将会在library mopduler打包成aar,以proguard.txt的形式存在
 </code></pre>
-<h4 id="sdk_1">SDK打包方法</h4>
-<h5 id="library-modulebuildgradle">library module下的build.gradle模板配置：</h5>
+<h4 id="sdk_1">七、SDK打包方法</h4>
+<h5 id="library-modulebuildgradle">（一）、library module下的build.gradle模板配置：</h5>
 <pre><code>//区别于application，这意味着该module将被视为library
 apply plugin: 'com.android.library'
 
@@ -717,13 +701,8 @@ dependencies {
 <pre><code>双击gradle脚本assembleRelease，执行正式aar编译生成过程;
 编译完成，可以看到outputs目录下自动生成了一个aar文件，同时我们的脚本也生效了，将其复制到了指定的目录下（这里可以做一下自动版本命名之类的工作）
 </code></pre>
-<h5 id="_13">依赖原则，尽量避免第三方库的依赖</h5>
-<h5 id="_14">如何解决组件依赖冲突：</h5>
-<ol>
-<li>强制使用指定版本  </li>
-<li></li>
-</ol>
-<h4 id="aar">自定义aar名称</h4>
+<p>依赖原则，尽量避免第三方库的依赖  </p>
+<h5 id="aar">（二）、自定义aar名称</h5>
 <pre><code>//如果是修改apk和jar的名称直接修改后缀即可。
 android{
     //...
