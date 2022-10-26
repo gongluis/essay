@@ -225,48 +225,39 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#jvm" class="nav-link">jvm内存模型</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">堆内存模型</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">可回收对象的判定</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">几种垃圾回收算法</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             
-            <li class="nav-item" data-level="2"><a href="#gc" class="nav-link">通过日志分析GC类型</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="jvm">jvm内存模型</h2>
+<div class="toc">
+<ul>
+<li><a href="#jvm">一、jvm内存模型</a></li>
+<li><a href="#_1">二、堆内存模型</a></li>
+<li><a href="#_2">三、可回收对象的判定</a></li>
+<li><a href="#_3">四、几种垃圾回收算法</a></li>
+<li><a href="#java">五、java 的四种引用及区别</a></li>
+<li><a href="#gc">六、通过日志分析GC类型</a></li>
+</ul>
+</div>
+<h4 id="jvm">一、jvm内存模型</h4>
 <p>要理解gc必须理解jvm，jvm主要管理两种内存：堆非堆<br />
 堆(Heap Memory)：类实例和数组的内存<br />
 非堆(No-heap Memory)：方法区，类结构（运行时常数池，字段和方法），类加载信息  </p>
 <p>GC主要回收的内存是堆内存  </p>
-<h2 id="_1">堆内存模型</h2>
+<h4 id="_1">二、堆内存模型</h4>
 <pre><code>1. 堆内存分两块，新生代和老年代，比例(1:2)
     * 老年代主要存放应用程序中生命周期较长的的存活对象
 2. 新生代分三个部分，一个eden区和两个survivor区，比例8：1：1
     * eden区存放新生的对象
     * survivor区存放每次垃圾回收后存活的对象
 </code></pre>
-<h2 id="_2">可回收对象的判定</h2>
+<h4 id="_2">三、可回收对象的判定</h4>
 <p>什么样的对象是垃圾？
 1. 引用计数算法 </p>
 <pre><code>原理就是给对象添加一个引用计数器，每当有一个地方引用它，计数器就加1， 当引用失效时，计数值就减1，计数器为0的对象就是不在被使用的。
@@ -287,7 +278,7 @@
 垃圾回收时需要整个引用状态保持不变，否则判定是垃圾，等会就不是了，GC的时候所有的程序执行处于暂停的状态，卡住，这种卡顿非常短，对程序的影响微乎其微，GC的卡顿由此而来。
 
 </code></pre>
-<h2 id="_3">几种垃圾回收算法</h2>
+<h4 id="_3">四、几种垃圾回收算法</h4>
 <p>如何回收？Java虚拟机采用的是分代回收算法，想要理解分代回收算法，有必要先了解其它几种简单算法
 1. 标记清楚算法(Mark-Sweep)  </p>
 <pre><code>标记阶段：标记所有需要被回收的对象
@@ -360,7 +351,13 @@ Old区慢慢的整理一番，空间又够了
 // ...
 // ...
 </code></pre>
-<h2 id="gc">通过日志分析GC类型</h2>
+<h4 id="java">五、java 的四种引用及区别</h4>
+<pre><code>强：不会被回收，即使发生oom
+软：内存不足会被回收
+弱：只要扫描到就会被回收
+虚：形同虚设不会决定对象的生命周期，任何时候都可能被回收，回收的时候会向reference队列放一条消息，用于堆内存管理
+</code></pre>
+<h4 id="gc">六、通过日志分析GC类型</h4>
 <pre><code>GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。
 GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。
 GC_EXPLICIT: 表示是应用程序调用System.gc、VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。
