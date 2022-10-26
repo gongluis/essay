@@ -366,7 +366,41 @@ A线程（state:1 队列头指针：null 队列尾指针：B线程节点）
 <h4 id="_5">参考博客</h4>
 <p>https://www.cnblogs.com/yulinfeng/p/11020576.html</p>
 <h4 id="_6">并发编程</h4>
-<h5 id="countdownlatch">CountDownLatch用法</h5>
+<h5 id="1-join">1. join用法</h5>
+<p>问如何让t1、t2、t3按照顺序依次执行？</p>
+<pre><code>Thread t1 = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+            }
+        };
+        Thread t2 = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    t1.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        Thread t3 = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    t2.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        t1.start();
+        t2.start();
+        t3.start();
+</code></pre>
+<h5 id="2-countdownlatch">2. CountDownLatch用法</h5>
 <p>CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；</p>
 <blockquote>
 <p>利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了。</p>
@@ -436,7 +470,7 @@ public void countDown() { };  //将count值减1
 2个子线程已经执行完毕
 继续执行主线程
 </code></pre>
-<h5 id="semaphore">Semaphore用法</h5>
+<h5 id="3-semaphore">3. Semaphore用法</h5>
 <p>Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。</p>
 <blockquote>
 <p>Semaphore翻译成字面意思为 信号量，Semaphore可以控同时访问的线程个数，通过 acquire() 获取一个许可，如果没有就等待，而 release() 释放一个许可</p>
@@ -521,7 +555,7 @@ public boolean tryAcquire(int permits, long timeout, TimeUnit unit) throws Inter
 工人7释放出机器
 工人6释放出机器
 </code></pre>
-<h5 id="reentrantlock">reentrantLock</h5>
+<h5 id="4-reentrantlock">4. reentrantLock</h5>
 <blockquote>
 <p>concurrent包下高级并发工具 须先获取到锁，再进入try {...}代码块，最后使用finally保证释放锁,可以使用tryLock()尝试获取锁。</p>
 </blockquote>
