@@ -234,9 +234,9 @@
 <div class="toc">
 <ul>
 <li><a href="#collection">collection集合</a><ul>
-<li><a href="#_1">定义的理解</a></li>
-<li><a href="#_2">集合继承关系</a></li>
-<li><a href="#collection_1">Collection</a><ul>
+<li><a href="#_1">一、定义的理解</a></li>
+<li><a href="#_2">二、集合继承关系</a></li>
+<li><a href="#collection_1">三、Collection</a><ul>
 <li><a href="#set">Set</a><ul>
 <li><a href="#_3">定义的理解</a></li>
 <li><a href="#_4">简单使用</a></li>
@@ -253,15 +253,16 @@
 </li>
 </ul>
 </li>
+<li><a href="#_8">四、常见问题</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<h4 id="_1">定义的理解</h4>
+<h4 id="_1">一、定义的理解</h4>
 <blockquote>
 <p>java作为面向对象的语言，许多地方都是会对对象进行操作，那对于多个对象的操作，首相要进行存储，然后相应的操作，集合就是常用的存储方式，数组虽然也是个容器，但是只能存储基本数据类型，而且长度是固定的，不是很方便，集合只能存储对象，长度可以自增的，比较灵活。</p>
 </blockquote>
-<h4 id="_2">集合继承关系</h4>
+<h4 id="_2">二、集合继承关系</h4>
 <pre><code>graph TD
 A[Iterator]--&gt;B[Collection]
 A--&gt;C[Map]
@@ -291,7 +292,7 @@ hashtable
 hashtable优点，同步，但是效率低。
 
 </code></pre>
-<h4 id="collection_1">Collection</h4>
+<h4 id="collection_1">三、Collection</h4>
 <h5 id="set">Set</h5>
 <h6 id="_3">定义的理解</h6>
 <ol>
@@ -372,7 +373,21 @@ while (iterator.hasNext()){
 </li>
 </ul>
 </li>
-</ol></div>
+</ol>
+<h4 id="_8">四、常见问题</h4>
+<ol>
+<li>为什么arraylist插入效率低于linklist?</li>
+</ol>
+<p>可以看作是一个数组的数据结构为啥插入效率低于链表数据结构的问题，从arraylist的add方法源码可以知道，插入一个元素到索引为i的位置，是要把从i开始往后的所有元素做一个arrayCopy，总体向后移动一位来做到的，删除元素是同样总体做arrayCopy往前移动一个位置。</p>
+<p>链表结构的每一个元素都是一个node，包含next prev data三个属性，插入一个元素，只需要修改上一个元素的next属性和下一个元素的prev属性，只要修改引用就可以了，所以速度是很快的。</p>
+<ol>
+<li>为什么arraylist查找效率高于linklist?</li>
+</ol>
+<p>arraylist数组数据结构直接拿着下标查询即可，连标需要做轮询查找。</p>
+<ol>
+<li>如果一个数组要反复的插入删除怎么优化降低时间复杂度？</li>
+</ol>
+<p>时间复杂主要浪费在频繁的插入需要频繁的进行数组的arrayCopy，这个时候我们可以借助jvm的垃圾回收算法中的markswap算法的思路，先对垃圾进行标记，然后统一进行清除，这里可以先对删除的索引做个标记，比如标记为null，在内存不足的时候进行统一清理。以空间换时间。</p></div>
             </div>
         </div>
 
