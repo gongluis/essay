@@ -26,21 +26,9 @@ extra:
 nav:   
 
   - 介绍: index.md
-  - 音视频: 
-         - mp4文件解析: AnalysisMp4File.md
-         - mp4文件加解密思考: encodeMp4.md 
-         - mp4文件抽帧方法总结: crowdSourcing.md   
-  - JAVA: 
-         - 基础数据类型: basicDataType.md
-         - 算法: algorithm.md
-         - 垃圾回收机制: garbage.md
-         - 线程: thread.md
-         - 线程池: threadPool.md
-         - 集合: collection.md
-  - sdk笔记: 
-         - provider方式: sdk_provider.md 
-         - 总结: sdk.md 
-         - 进程间通信sdk: ipc.md          
+  - 音视频: audioVideo.md   
+  - JAVA: java.md
+  - sdk笔记: sdk.md         
   - Android: 
          - 四大组件: fourcomponent.md    
          - 设计模式:

@@ -1,5 +1,5 @@
 [Toc]
-#### 定义的理解
+#### 一、定义的理解
 > 主线程、工作线程、线程通信
 1. 主线程
 应用启动时，系统会为该应用创建一个主线程，该线程很重要，所有的ui操作必须在该线程执行，并且该线程不能阻塞，5s会发生anr。
@@ -55,7 +55,7 @@ private class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
 
 ```
 
-#### Thread类的常用方法  
+#### 二、Thread类的常用方法  
 1. start()方法：开始执行该线程
 3. stop()方法：强制结束该线程
 4. join()方法 ：等待该线程结束
@@ -65,7 +65,7 @@ private class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
 wait()与sleep()的区别：wait()会释放对象锁，sleep()不会释放对象锁
 
 
-#### 线程的5大状态与转换
+#### 三、线程的5大状态与转换
 1. 新建状态：新建线程对象，并没有调用start之前；
 2. 就绪状态：调用start方法之后就进入就绪状态，另外线程在睡眠和挂起中恢复的时候也会进入就绪状态；
 3. 运行状态：线程被设置为当前线程开始执行run方法；
@@ -73,7 +73,18 @@ wait()与sleep()的区别：wait()会释放对象锁，sleep()不会释放对象
 5. 死亡状态：线程执行结束。
 > 注意，由阻塞状态不可以直接回到运行状态，要先经历就绪状态然后到运行状态
 
-#### 锁的类型  
+#### 四、线程安全  
+
+```
+原子性：一个线程一旦开始，就不会被其他线程干扰
+可见性：每个线程都有自己的工作内存，一个更改其它都知道
+有序性：代码的执行并不是按照我们写的顺序执行锁定规则，volatile规则
+```
+
+多个线程对共享资源进行操作，会造成数据污染，在java中即变成如何保证线程安全的问题？
+
+##### （一）、锁的分类
+
 1. 可重入锁：在执行对象中所有同步方法不用再次获得锁
 ```
 例子，排队打水，一家中任何人先到了，这家的其他人来了都可以不用排队直接打水。
@@ -86,15 +97,22 @@ A线程（state:1 队列头指针：null 队列尾指针：B线程节点）
 非公平锁模型：当线程A执行完之后，要唤醒线程B是需要时间的，而且线程B醒来后还要再次竞争锁，所以如果在切换过程当中，来了一个线程C，那么线程C是有可能获取到锁的，如果C获取到了锁，B就只能继续乖乖休眠了。
 ```
 2.可中断锁：在等待获取锁过程中可中断
-3.公平锁：按等待获取锁的线程的等待时间进行获取，等待时间长的具有优先获取锁的权力
-4. 读写锁：对资源读取和写入的时候拆分为2部分处理，读的时候可以多线程一起读，写的时候必须同步的写
+3.公平锁：所有的申请线程按照申请的顺序获取锁每个线程都是公平的，等待时间长的具有优先获取锁的权力
 
-#### synchronized和lock的区别和使用  
+​	非公平锁：所有申请锁的线程没有排队，随机一个线程获得锁，不公平可以被抢占
+
+4. 读写锁：对资源读取和写入的时候拆分为2部分处理，读的时候可以多线程一起读，写的时候必须同步的写
+4. 互斥锁：一个线程上锁后，其它线程无法进入上锁区域
+
+##### （二）、常见锁的区别
+
+1. synchronized和lock的区别和使用  
+
 synchronized  
 存在层次：Java的关键字，在jvm层面上；  
 
-锁的释放：1.以获取锁的线程执行同步代码，释放锁；
-2.线程执行发生异常，jvm会让线程释放锁；  
+锁的释放：a.以获取锁的线程执行同步代码，自动释放锁；
+b.线程执行发生异常，jvm会让线程自动释放锁；  
 
 锁的获取：假设A线程获得锁，B线程等待，如果A线程阻塞，B线程会一直等待；  
 
@@ -104,7 +122,6 @@ synchronized
 性能：少量同步
 
 不可中断锁
-
 
 lock  
 存在层次：是一个类  
@@ -117,7 +134,21 @@ lock
 锁类型：可重入，可判断，可公平（两者皆可）  
 
 性能：大量同步
-##### 设置线程优先级  
+
+2. wait和sleep方法不同？
+
+   来自不同的类分别是Thread和object
+
+   sleep没有释放锁，而wait方法释放了锁，使其它线程可以使用同步控制快或者方法
+
+   
+
+##### （三）、其它点
+
+1. Volatile的作用和使用方式：让变量在使用的时候都从主内存中取而不是从各个线程的工作内存取，不能代替synchronize,不能保证操作的原子性。
+
+2. 设置线程优先级  
+
 * Thread.setPrioriy()
 * Process.setThreadPriority()  
 * 
@@ -125,30 +156,57 @@ lock
 第二种是android，范围-19~19推荐  
 
 原因;java设计的1~10不能对应每一个平台的等级比如linuxAndroid，就是-5~4
-#### 锁方法和锁静态方法区别？锁方法和锁方法块区别？
+#### 六、锁方法和锁静态方法区别？锁方法和锁方法块区别？
 
 静态方法是类锁，方法是对象锁
 锁方法对象锁，所代码块，锁对象不一样
 
-#### 参考博客  
-https://www.cnblogs.com/yulinfeng/p/11020576.html
+#### 七、并发编程
 
-#### 并发编程
-##### CountDownLatch用法  
-CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；
-> 利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了。
+##### 1. join用法
 
-* CountDownLatch类只提供了一个构造器：
+问如何让t1、t2、t3按照顺序依次执行？
+
 ```
-public CountDownLatch(int count) {  };  //参数count为计数值
+Thread t1 = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+            }
+        };
+        Thread t2 = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    t1.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        Thread t3 = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    t2.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        t1.start();
+        t2.start();
+        t3.start();
 ```
-* 然后下面这3个方法是CountDownLatch类中最重要的方法：
-```
-public void await() throws InterruptedException { };   //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行
-public boolean await(long timeout, TimeUnit unit) throws InterruptedException { };  //和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行
-public void countDown() { };  //将count值减1
-```
-* 例子
+
+
+
+##### 2. CountDownLatch用法  
+
+问：线程a一定要在a和b执行完毕后在执行，怎么实现？
+
 ```
 public class Test {
      public static void main(String[] args) {   
@@ -190,9 +248,9 @@ public class Test {
         }
      }
 }
-```
+
+
 执行结果：
-```
 线程Thread-0正在执行
 线程Thread-1正在执行
 等待2个子线程执行完毕...
@@ -201,7 +259,21 @@ public class Test {
 2个子线程已经执行完毕
 继续执行主线程
 ```
-##### Semaphore用法  
+
+CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；
+> 利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了。
+
+* CountDownLatch类只提供了一个构造器：
+```
+public CountDownLatch(int count) {  };  //参数count为计数值
+```
+* 然后下面这3个方法是CountDownLatch类中最重要的方法：
+```
+public void await() throws InterruptedException { };   //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行
+public boolean await(long timeout, TimeUnit unit) throws InterruptedException { };  //和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行
+public void countDown() { };  //将count值减1
+```
+##### 3. Semaphore用法  
 Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。
 > 　Semaphore翻译成字面意思为 信号量，Semaphore可以控同时访问的线程个数，通过 acquire() 获取一个许可，如果没有就等待，而 release() 释放一个许可
 
@@ -288,7 +360,7 @@ public class Test {
 工人7释放出机器
 工人6释放出机器
 ```
-##### reentrantLock 
+##### 4. reentrantLock 
 > concurrent包下高级并发工具 须先获取到锁，再进入try {...}代码块，最后使用finally保证释放锁,可以使用tryLock()尝试获取锁。
 
 Java语言直接提供了synchronized关键字用于加锁，但这种锁一是很重，二是获取时必须一直等待，没有额外的尝试机制。
@@ -333,8 +405,13 @@ if (lock.tryLock(1, TimeUnit.SECONDS)) {
         lock.unlock();
     }
 }
-```  
+```
 上述代码在尝试获取锁的时候，最多等待1秒。如果1秒后仍未获取到锁，tryLock()返回false，程序就可以做一些额外处理，而不是无限等待下去。
 
 所以，使用ReentrantLock比直接使用synchronized更安全，线程在tryLock()失败的时候不会导致死锁。
+
+> 参考博客 
+
+https://www.cnblogs.com/yulinfeng/p/11020576.html
+
 #### [下一篇 线程池](https://gongluis.github.io/essay/threadPool/)
