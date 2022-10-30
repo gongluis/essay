@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Mqtt - 小巩的网站</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">小巩的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">介绍</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../audioVideo/" class="nav-link">音视频</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../java/" class="nav-link">JAVA</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../sdk/" class="nav-link">sdk笔记</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../fourcomponent/" class="dropdown-item">四大组件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">设计模式</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../designpattern/singleInstance/" class="dropdown-item">单例</a>
+</li>
+            
+<li>
+    <a href="../designpattern/factory/" class="dropdown-item">工厂</a>
+</li>
+            
+<li>
+    <a href="../designpattern/builder/" class="dropdown-item">Builder</a>
+</li>
+            
+<li>
+    <a href="../designpattern/observer/" class="dropdown-item">观察者</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">自定义控件</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
+</li>
+            
+<li>
+    <a href="../customView/customView/" class="dropdown-item">自定义View</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">APP架构</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../constructure/mvc/" class="dropdown-item">MVC</a>
+</li>
+            
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVP</a>
+</li>
+            
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVvm</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../touchEvent/" class="dropdown-item">事件分发</a>
+</li>
+                                    
+<li>
+    <a href="../handler/" class="dropdown-item">Handler原理</a>
+</li>
+                                    
+<li>
+    <a href="../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
+</li>
+                                    
+<li>
+    <a href="../better/" class="dropdown-item">APP整体优化</a>
+</li>
+                                    
+<li>
+    <a href="../app_start_process/" class="dropdown-item">APP启动流程</a>
+</li>
+                                    
+<li>
+    <a href="../adaption/" class="dropdown-item">屏幕适配</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">一些小的点</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../context/" class="dropdown-item">ConText</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../login.md" class="dropdown-item">登录</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../test/" class="dropdown-item">单元测试Monkey</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flutter插件 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../whyflutterplugin/" class="dropdown-item">什么是flutter插件及作用</a>
+</li>
+                                    
+<li>
+    <a href="../howflutterenvironment/" class="dropdown-item">如何配置flutter环境</a>
+</li>
+                                    
+<li>
+    <a href="../flutterplugincoding/" class="dropdown-item">flutter插件开发</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">git <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../git_scenes/" class="dropdown-item">常见场景操作</a>
+</li>
+                                    
+<li>
+    <a href="../git_client_steps/" class="dropdown-item">Android端git版本管理</a>
+</li>
+                                    
+<li>
+    <a href="../git_commit_log/" class="dropdown-item">commit log</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">故障复盘记录 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../sdkexception/" class="dropdown-item">AndroidSDK故障记录</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h4 id="_1">一、为什么使用该种方式？</h4>
+<p>mqtt的请求数据量很小，灵活便捷，而且单个应用也可很方便的作为一个服务端与其它应用进行协议交互。在物联网领域应用广泛。</p>
+<h3 id="_2">二、如何使用？</h3>
+<pre><code> 1.引入开源库
+ api &quot;org.eclipse.paho:org.eclipse.paho.client.mqttv3:${outer['1.2.1']}&quot;
+ api &quot;org.eclipse.paho:org.eclipse.paho.android.service:${outer['1.1.1']}&quot;
+ 2.初始化
+ public synchronized void init(Context context, String serverUri, String userName, String password,
+                                  String clientId, MqttCallbackExtended callbackExtended, IMyMqttCallback callback) {
+        Log.d(TAG, &quot;mqtt---init--connect&quot;);
+        if (client != null) {
+            if (!client.getClientId().equals(clientId)) {
+                try {
+                    if (client.isConnected()) {
+                        client.disconnect();
+                    }
+                } catch (MqttException e) {
+                    e.printStackTrace();
+                }
+                //clientId不能使用变化的值，否则sdcard/Android/data/com.t3.driver/files/MqttConnection中文件不断创建，从而导致app占用数据一直增加
+                //封装好的MQTTClient供操作，发送和接手等设置都用它
+                client = new MqttAndroidClient(context, serverUri, clientId);
+            }
+        } else {
+            //clientId不能使用变化的值，否则sdcard/Android/data/com.t3.driver/files/MqttConnection中文件不断创建，从而导致app占用数据一直增加
+            //封装好的MQTTClient供操作，发送和接手等设置都用它
+            client = new MqttAndroidClient(context, serverUri, clientId);
+        }
+        if (client.isConnected()) {
+            if (callback != null) {
+                callback.onConnectSuccess(client);
+            }
+            return;
+        }
+        //设置回调
+        client.setCallback(callbackExtended);
+
+        //mqtt连接参数设置
+        MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
+        //设置自动重连
+        mqttConnectOptions.setAutomaticReconnect(true);
+        //设置是否清空session,这里如果设置为false表示服务器会保留客户端的连接记录，设置为true表示每次连接到服务器都以新的身份连接
+        mqttConnectOptions.setCleanSession(false);
+        //设置连接的用户名
+        if (!TextUtils.isEmpty(userName)) {
+            mqttConnectOptions.setUserName(userName);
+        }
+        //设置连接的密码
+        if (!TextUtils.isEmpty(password)) {
+            mqttConnectOptions.setPassword(password.toCharArray());
+        }
+        //设置超时时间 单位为秒
+        mqttConnectOptions.setConnectionTimeout(10);
+        //设置会话心跳时间 单位为秒 服务器会每隔1.5*20秒的时间向客户端发送个消息判断客户端是否在线，但这个方法并没有重连的机制
+        mqttConnectOptions.setKeepAliveInterval(20);
+        //设置最大重连时间，单位毫秒，默认128000，重连机制：第一次重连在1秒后，第二次2秒后，第三次4秒后，每次翻倍，一直到最大时间
+        mqttConnectOptions.setMaxReconnectDelay(8000);
+        //选择MQTT版本
+        mqttConnectOptions.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
+        //证书验证
+//        try {
+//            KeyStore keyStore = KeyStore.getInstance(&quot;PKCS12&quot;);
+//            InputStream is = context.getAssets().open(&quot;mqtt.jks&quot;);
+//            keyStore.load(is, password.toCharArray());
+//            SSLContext sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+//            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(&quot;X509&quot;);
+//            trustManagerFactory.init(keyStore);
+//            sslContext.init(null, trustManagerFactory.getTrustManagers(), null);
+//            mqttConnectOptions.setSocketFactory(sslContext.getSocketFactory());
+//            is.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        try {
+            LogExtKt.log(TAG, serverUri);
+            //设置好相关参数后，开始连接
+            final MqttAndroidClient finalClient = client;
+            client.connect(mqttConnectOptions, null, new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    //连接成功之后设置连接断开的缓冲配置
+                    DisconnectedBufferOptions disconnectedBufferOptions = new DisconnectedBufferOptions();
+                    //开启缓存
+                    disconnectedBufferOptions.setBufferEnabled(true);
+                    //离线后最多缓存100调
+                    disconnectedBufferOptions.setBufferSize(100);
+                    //不一直持续留存
+                    disconnectedBufferOptions.setPersistBuffer(false);
+                    //删除旧消息
+                    disconnectedBufferOptions.setDeleteOldestMessages(false);
+                    finalClient.setBufferOpts(disconnectedBufferOptions);
+
+                    //连接成功回调client
+                    if (callback != null) {
+                        callback.onConnectSuccess(finalClient);
+                    }
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+
+                    Log.d(&quot;connect fail message&quot;, exception.getMessage());
+                    exception.printStackTrace();
+                    if (!TextUtils.isEmpty(exception.getMessage()) &amp;&amp; exception.getMessage().contains(&quot;已连接客户机&quot;)) {
+                       /* if (callback != null) {
+                            callback.onConnectSuccess(finalClient);
+                        }*/
+                    } else {
+                        //连接失败回调错误
+                        if (callback != null) {
+                            callback.onConnectFail(exception);
+                        }
+                    }
+                }
+            });
+        } catch (MqttException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public boolean isConnected() {
+        return client != null &amp;&amp; client.isConnected();
+    }
+    public void disConnect() {
+        LogExtKt.log(TAG, &quot;disConnect----&quot;);
+        if (isConnected()) {
+            try {
+                LogExtKt.log(TAG, &quot;disConnect----start&quot;);
+                client.unregisterResources();
+                client.close();
+                client.disconnect();
+                client.setCallback(null);
+                client = null;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public interface IMyMqttCallback {
+        /**
+         * 连接成功回调client，注意连接成功后才能订阅主题或发送消息
+         *
+         * @param client MqttAndroidClient
+         */
+        void onConnectSuccess(MqttAndroidClient client);
+
+        /**
+         * 连接失败回调错误
+         *
+         * @param throwable 异常信息
+         */
+        void onConnectFail(Throwable throwable);
+    }
+    3. 定义发送接口
+     /**
+     * 发送消息
+     * //设置优先级
+     * //qos代表服务质量，指的是交通优先级和资源预留控制机制，而不是接收的服务质量。 服务质量是为不同应用程序，用户或数据流提供的不同优先级的能力，或者也可以说是为数据流保证一定的性能水平的能力。
+     * //以下是每一个服务质量级别的具体描述
+     * //0 ：最多一次传送 (只负责传送，发送过后就不管数据的传送情况)
+     * //1 ：至少一次传送 (确认数据交付) 正常使用1
+     * //2 ：正好一次传送 (保证数据交付成功)
+     */
+    public void publish(String topic, String content, int qos, boolean... retained) {
+        publish(topic, content, false, qos, retained);
+    }
+    public void publish(String topic, String content, boolean gzip, int qos, boolean... retained) {
+        if (client == null || !client.isConnected()) {
+            Log.d(TAG, &quot;publish fail, not connected&quot;);
+            return;
+        }
+        Log.d(TAG, &quot;publish topic: &quot; + topic + &quot;, message: &quot; + content); // 执行
+        //封装Message
+        byte[] datas = content.getBytes();
+        if (gzip) {
+            datas = GZIPUtils.compress(content);
+        }
+        MqttMessage message = new MqttMessage(datas);
+        //设置优先级
+        //qos代表服务质量，指的是交通优先级和资源预留控制机制，而不是接收的服务质量。 服务质量是为不同应用程序，用户或数据流提供的不同优先级的能力，或者也可以说是为数据流保证一定的性能水平的能力。
+        //以下是每一个服务质量级别的具体描述
+        //0 ：最多一次传送 (只负责传送，发送过后就不管数据的传送情况)
+        //1 ：至少一次传送 (确认数据交付)
+        //2 ：正好一次传送 (保证数据交付成功)
+        message.setQos(qos);
+        //设置是否被服务器保留
+        if (retained != null &amp;&amp; retained.length &gt; 0) {
+            message.setRetained(retained[0]);
+        } else {
+            message.setRetained(false);
+        }
+        //发送到对应主题
+        try {
+            client.publish(topic, message);
+        } catch (MqttException e) {
+            e.printStackTrace();
+
+        }
+    }
+    4. 订阅主题
+    public &lt;T&gt; void subscribe(String topic, String msgId, IMyMqttMessageListener&lt;T&gt; listener) {
+        subscribe(topic, msgId, true, listener);
+    }
+    /**
+     * 订阅主题，过滤对应msgId的payload content.
+     *
+     * @param topic     订阅的主题
+     * @param msgId     过滤对应的msgid.当传入的参数为null，则listenr将返回整个payload body
+     *                  注意：
+     * @param enableLog 是否需要输出日志
+     * @param listener  订阅回调
+     */
+    public void subscribe(String topic, String msgId, boolean enableLog, IMyMqttMessageListener listener) {
+        if (client == null || !client.isConnected()) {
+            Log.d(TAG, &quot;subscribe fail, not connected&quot;);
+            return;
+        }
+        try {
+            Log.d(TAG, &quot;subscribe &quot; + topic);  // 执行
+//            client.unsubscribe(topic);
+            //主题、QOS、context,订阅监听，消息监听
+            client.subscribe(topic, 1, null, new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    LogUtil.e(&quot;Subscribed!&quot;);
+                    LogExtKt.log(TAG, asyncActionToken.getResponse().getToken().toString());
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                    Log.e(&quot;Failed to subscribe&quot;);
+                    Log.d(TAG, asyncActionToken.getResponse().getToken().toString());
+                }
+            }, (topic1, message) -&gt; {
+                fixExecutors.execute(() -&gt; {
+                    if (enableLog) { // 执行
+                        LogExtKt.log(&quot;incoming--&gt;mqtt&quot;, &quot;topic=&quot; + topic1 + &quot;, message=&quot; + message.toString());
+                    }
+                    if (listener == null || message == null) {
+                        return;
+                    }
+                    String payloadContent = message.toString();
+                    if (TextUtils.isEmpty(msgId)) {
+                        listener.messageArrived(topic1, payloadContent);
+                        return;
+                    }
+                    try {
+                        PayloadEntity entity = (PayloadEntity) JSON.parseObject(payloadContent, listener);
+                        if (entity != null &amp;&amp; TextUtils.equals(entity.msgHdr.msgID, msgId)) {
+                            listener.messageArrived(topic1, entity);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            });
+        } catch (MqttException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void unsubscribe(String topic) {
+        if (client == null || !client.isConnected()) {
+            Log.d(TAG, &quot;subscribe fail, not connected&quot;);
+            return;
+        }
+        Log.d(TAG, &quot;unsubscribe &quot; + topic);
+        try {
+            client.unsubscribe(topic);
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void cleanCache() {
+        // 清除mqtt数据，否则占用空间会越来越大
+        FileUtil.deleteFile(AppUtils.context.getExternalFilesDir(null) + &quot;/MqttConnection&quot;);
+    }
+    public static abstract class IMyMqttMessageListener&lt;T&gt; extends TypeReference&lt;T&gt; {
+        /**
+         * 订阅收到消息回调
+         *
+         * @param topic  主题
+         * @param entity 消息
+         */
+        protected abstract void messageArrived(String topic, T entity);
+    }
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
