@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>crowdSourcing - 小巩的网站</title>
+        <title>Normalquestion - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -224,264 +224,32 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
-            
-            
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<blockquote>
-<p>视频抽帧方法总结</p>
-</blockquote>
-<p>视频文件可以分解成一帧一帧的图片，本文要分享的部分就是根据具体的时间戳从制定的视频文件中抽取对应的帧图片。尝试过三种方式。</p>
-<pre><code>1. 采用安卓原生api的抽帧方式
-2. 采用FFmpegMediaMetadataRetriever三方github开源库的方式
-3. 采用MediaCodec 调用系统硬件编解码器类进行抽帧 速度最快
-</code></pre>
-<h4 id="api">一、安卓原生api的抽帧方式</h4>
-<blockquote>
-<p>缺点是在某些机型会存在截图失败率高的问题，在频繁操作的业务场景下也会出现失败的情况。</p>
-</blockquote>
-<pre><code>fun getFrameBitmap(uri: String, isSd: Boolean = true): Bitmap? {
-        var bitmap: Bitmap? = null
-        //MediaMetadataRetriever 是android中定义好的一个类，提供了统一的接口，用于从输入的媒体文件中取得帧和元数据
-        val retriever = MediaMetadataRetriever()
-        try {
-            if (isSd) {
-                //（）根据文件路径获取缩略图
-                retriever.setDataSource(context, Uri.fromFile(File(uri)))
-            } else {
-                //根据网络路径获取缩略图
-                retriever.setDataSource(uri, HashMap())
-            }
-            //获得第一帧图片
-            bitmap = retriever.frameAtTime
-        } catch (e: IllegalArgumentException) {
-            LogUtils.e(TAG, e)
-        } finally {
-            retriever.release()
-        }
-        return bitmap
-    }
-</code></pre>
-<h4 id="ffmpeg">二、三方库FFMPEG</h4>
-<blockquote>
-<p>该库是对原生方案的升级，截图速度仍不理想，超过1s。</p>
-</blockquote>
-<pre><code> public static Bitmap getPicFromMp4(long timeMillis, File file) {
-        if (file == null) {
-            Log.d(TAG, &quot;file == null： &quot;);
-            return null;
-        }
-        //1.先解密视频
-        Bitmap bitmap = null;
-        try {
-
-            //Mp4FileUtils.deCodeRecoveryMp4File(file.getAbsoluteFile());
-            LogExtKt.log(TAG, &quot;getPicFromMp4: &quot; + file.getAbsoluteFile());
-            FFmpegMediaMetadataRetriever mmr = new FFmpegMediaMetadataRetriever();
-            mmr.setDataSource(file.getAbsolutePath());
-
-            long start = System.currentTimeMillis();
-            //单位微秒 OPTION_CLOSEST 最近的i帧,  OPTION_PREVIOUS_SYNC 前一个i帧 ，OPTION_NEXT_SYNC后一个i帧，OPTION_CLOSEST 最近的帧，需要decode多张frame才能接近输入的timestamp，因此速度会慢些。
-            bitmap = mmr.getFrameAtTime(timeMillis * 1000, FFmpegMediaMetadataRetriever.OPTION_CLOSEST); // frame at 2 seconds
-            if(bitmap == null){
-                LogExtKt.log(TAG, &quot;getFrameAtTime bitmap == null： &quot;);
-            }
-            LogExtKt.log(TAG, &quot;interceptPic spend time： &quot; + (System.currentTimeMillis() - start));
-            mmr.release();
-            //3.将视频加密回去
-            //Mp4FileUtils.enCodeRecoveryMp4File(file);
-        } catch (Exception e) {
-            e.printStackTrace();
-            mmr.release();
-            Mp4FileUtils.enCodeRecoveryMp4File(file);
-            LogExtKt.log(TAG, &quot;getPicFromMp4 exception: &quot;+e.getMessage());
-            return null;
-        }
-        return bitmap;
-    }
-</code></pre>
-<h4 id="mediacodec">三、MediaCodeC方案调动系统硬件编解码器进行抽帧</h4>
-<blockquote>
-<p>目前最优解，截图速度最快差不多三百毫秒，对于系统内存和cpu占用率也比较理想</p>
-</blockquote>
-<pre><code>/**
-     * 视频抽帧
-     * context:[Context]
-     * path:[Long]视频路径
-     * timestamps:[Long]截取视频的时间戳(微妙)
-     * callBack:[MediaCallBack]Bitmap回调
-     */
-    fun cutVideoFrame(
-        path: String,
-        timeUs: Long,
-        callBack: MediaCallBack
-    ) {
-        var count = 0
-        log(TAG, &quot;start path: $path&quot;)
-        val file = File(path)
-        val exists = file.exists()
-        val canRead = file.canRead()
-        val canWrite = file.canWrite()
-        log(TAG, &quot;media path:$path&quot;)
-        log(TAG, &quot;media exists:$exists canRead:$canRead canWrite:$canWrite&quot;)
-        var videoFormat: MediaFormat? = null
-        val mediaExtractor = MediaExtractor()
-        try {
-            mediaExtractor.setDataSource(path)
-        } catch (e: Exception) {
-            callBack.onFailure(&quot;file not exits&quot;)
-            return
-        }
-        val trackCount = mediaExtractor.trackCount
-        log(TAG, &quot;trackCount : $trackCount&quot;)
-        for (i in 0 until trackCount) {
-            val trackFormat = mediaExtractor.getTrackFormat(i)
-            if (trackFormat.getString(MediaFormat.KEY_MIME)?.contains(&quot;video&quot;) == true) {
-                videoFormat = trackFormat
-                mediaExtractor.selectTrack(i)
-                break
-            }
-        }
-        log(TAG, &quot;MediaFormat : $videoFormat&quot;)
-        if (videoFormat == null) {
-            callBack.onFailure(&quot;videoFile cannot read&quot;)
-            return
-        }
-        videoFormat.setInteger(
-            MediaFormat.KEY_COLOR_FORMAT,
-            MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420Flexible
-        )
-        videoFormat.setInteger(MediaFormat.KEY_WIDTH, videoFormat.getInteger(MediaFormat.KEY_WIDTH))
-        videoFormat.setInteger(
-            MediaFormat.KEY_HEIGHT,
-            videoFormat.getInteger(MediaFormat.KEY_HEIGHT)
-        )
-        if (videoFormat.containsKey(MediaFormat.KEY_ROTATION)) {
-            val rotate = videoFormat.getInteger(MediaFormat.KEY_ROTATION)
-        }
-        val duration = videoFormat.getLong(MediaFormat.KEY_DURATION)
-        var frameRate = videoFormat.getInteger(MediaFormat.KEY_FRAME_RATE)
-        val diff = 1000_000 / frameRate
-        log(TAG, &quot;frameRage:$frameRate diff:$diff&quot;)
-        val codec =
-            MediaCodec.createDecoderByType(videoFormat.getString(MediaFormat.KEY_MIME)!!)
-        codec.configure(videoFormat, null, null, 0)
-        codec.start()
-
-        val bufferInfo = MediaCodec.BufferInfo()
-        var inputDone = false
-        var outputDone = false
-        mediaExtractor.seekTo(timeUs, MediaExtractor.SEEK_TO_PREVIOUS_SYNC)
-        Log.i(TAG, &quot;seekTo: $timeUs&quot;)
-        var getFrame = false
-        while (!outputDone) {
-            if (!inputDone) {
-                //获取输入缓存
-                val inputBufferIndex = codec.dequeueInputBuffer(30)
-                if (inputBufferIndex &gt;= 0) {
-                    Log.i(TAG, &quot;inputBufferIndex: $inputBufferIndex&quot;)
-                    var keyTime = mediaExtractor.sampleTime
-                    var sampleFlags = mediaExtractor.sampleFlags
-                    Log.i(TAG, &quot;sampleTime: $keyTime  sampleFlags:$sampleFlags&quot;)
-                    val inputBuffer = codec.getInputBuffer(inputBufferIndex)
-                    val readSampleData = mediaExtractor.readSampleData(inputBuffer!!, 0)
-                    Log.i(TAG, &quot;readSampleData: $readSampleData&quot;)
-                    if (readSampleData &gt; 0) {
-                        if (keyTime == timeUs) {
-                            getFrame = true
-                        }
-                        codec.queueInputBuffer(
-                            inputBufferIndex,
-                            0,
-                            readSampleData,
-                            keyTime,
-                            if (getFrame) MediaCodec.BUFFER_FLAG_END_OF_STREAM else 0
-                        )
-                        Log.i(TAG, &quot;queueInputBuffer nowTime: $keyTime &quot;)
-
-                        if (!getFrame) {
-                            mediaExtractor.advance()
-                            keyTime = mediaExtractor.sampleTime
-                            sampleFlags = mediaExtractor.sampleFlags
-                            if (keyTime &gt;= timeUs - diff / 2 &amp;&amp; keyTime &lt;= timeUs + diff / 2 || keyTime &gt;= timeUs) {
-                                //当前时间到达指定时间戳附件，即帧间隔的一半
-                                getFrame = true
-                                Log.i(TAG, &quot;getFrame &quot;)
-                            }
-                        } else {
-                            inputDone = true
-                            Log.i(TAG, &quot;inputDone &quot;)
-                        }
-                    } else {
-                        codec.queueInputBuffer(
-                            inputBufferIndex,
-                            0,
-                            0,
-                            0,
-                            MediaCodec.BUFFER_FLAG_END_OF_STREAM
-                        )
-                        inputDone = true
-                    }
-                }
-            }
-            val outputBufferIndex = codec.dequeueOutputBuffer(bufferInfo, 30)
-
-            if (outputBufferIndex &gt;= 0) {
-                count++
-                Log.i(
-                    TAG,
-                    &quot;outputBufferIndex: $outputBufferIndex count:${count} flag:${bufferInfo.flags}&quot;
-                )
-                val image = codec.getOutputImage(outputBufferIndex)
-                Log.i(TAG, &quot;getOutputImage: $image&quot;)
-                if (bufferInfo.flags == MediaCodec.BUFFER_FLAG_END_OF_STREAM || bufferInfo.flags == 5) {
-                    outputDone = true
-                    if (image != null) {
-                        log(
-                            TAG,
-                            &quot;getOutputImage count:$count  width:${image.width}  height:${image.height}&quot;
-                        )
-                        val imageToBitmap = MediaUtil.imageToBitmap(image)
-                        callBack.onSuccess(imageToBitmap)
-                    } else {
-                        callBack.onFailure(&quot;&quot;)
-                    }
-                    Log.i(TAG, &quot;outputDone&quot;)
-                }
-                codec.releaseOutputBuffer(outputBufferIndex, false)
-            }
-        }
-        codec.stop()
-        codec.release()
-        mediaExtractor.release()
-        Log.i(TAG, &quot;release&quot;)
-    }
-
-    interface MediaCallBack {
-        fun onSuccess(bitmap: Bitmap?)
-
-        fun onFailure(msg: String)
-    }
-</code></pre>
-<p>调用：</p>
-<pre><code>MediaManager.INSTANCE.cutVideoFrame(interceptFile.getAbsolutePath(), interceptTimeMillis * 1000, new MediaManager.MediaCallBack() {
-            @Override
-            public void onSuccess(@Nullable Bitmap picFromMp4) {
-
-            }
-            @Override
-            public void onFailure(@NonNull String msg) {
-            }
-        });
-</code></pre>
-<blockquote>
-<p>附注：参考博客</p>
-<p>https://www.jianshu.com/p/12c3da125ece</p>
-</blockquote></div>
+<ol>
+<li>java中String的“==”与equals区别？</li>
+</ol>
+<p>```
+   “==”比较的是内存地址
+   “equals”比较的内容
+   例子：
+   String str1 = "a"+"b"+"c";
+   String str2 = "abc";
+   String str3 = new String ("abc");
+   str1==str2;
+   str1!=str3;
+   str2!=str3;
+   三个变量的hashcode相等的，都在堆内存中能找到对应的映射。
+   java中String 存在常量池中，String str1 = "a"+"b"+"c"会在常量池中产生四个对象，a,b,c,abc,此时str1会指向常量池中的"abc",同时在执行完String str1 = "a"+"b"+"c"后会在堆内存中的对象映射表中会对应一个对象"abc"，此时常量池中有一个abc堆内存中也有个abc。在执行String str2 = "abc";时会首先去常量池中找,也就是str2会指向常量池中的abc。在执行String str3 = new String ("abc");会直接到堆内存中找</p>
+<p>String 的equals比较的是内存序列，及字符串的每一个字符。
+   ```</p>
+<ol>
+<li>String为什么是不可变的？</li>
+</ol>
+<p>final类型，长度不能修改</p></div>
             </div>
         </div>
 

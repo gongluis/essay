@@ -403,8 +403,8 @@ ISO126Padding:如果明文块少于16字节（128bit），在明文块末尾不�
 </blockquote>
 <ol>
 <li>模式  <br />
-AES的工作模式，体现在把明文块加密成密文块的处理过程中，AES加密算法提供了五种不同的工作模式：ECB,CBC,CTR,CFB,OFB<br />
-模式之间的主体思想是近似的，处理细节上有些差别  <ul>
+   AES的工作模式，体现在把明文块加密成密文块的处理过程中，AES加密算法提供了五种不同的工作模式：ECB,CBC,CTR,CFB,OFB<br />
+   模式之间的主体思想是近似的，处理细节上有些差别  <ul>
 <li>ECB模式（默认）电码本模式Electronic CodeBook Book</li>
 <li>CBC 密码分组链接模式Cipher Block Chaining</li>
 <li>CTR 计算器模式 Counter</li>
@@ -558,7 +558,18 @@ Mi是第一步处理后的原文。在第一步中，处理后原文的长度是
 新D = 原c  </p>
 <h2 id="base64">Base64</h2>
 <h2 id="_10">排序</h2>
-<h4 id="_11">冒泡算法和优化</h4></div>
+<h4 id="_11">冒泡算法和优化</h4>
+<pre><code> int[] arr = {3,7,4,8,1};
+        for (int i = 0; i &lt; arr.length - 1; i++) {
+            for (int j = 0; j &lt; arr.length - i - 1; j++) {
+                if(arr[j]&gt;arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+</code></pre></div>
             </div>
         </div>
 
