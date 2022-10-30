@@ -22,6 +22,10 @@
 
 了解常用算法原理。
 
+#### [java基础-队列的使用](https://gongluis.github.io/essay/queue/)  
+
+了解常见队列的使用。
+
 #### [java基础-常见问题解答](https://gongluis.github.io/essay/normalquestion/) 
 
 了解常见问题。
