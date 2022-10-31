@@ -13,3 +13,8 @@
 #### [物联网-mqtt网络请求方式使用总结](https://gongluis.github.io/essay/mqtt/)  
 
 物联网应用最广的通信方式。
+
+#### [交通部标-netty网络请求方式使用总结](https://gongluis.github.io/essay/netty/)  
+
+808\905\1078等部标协议应用最广的通信方式。
+
