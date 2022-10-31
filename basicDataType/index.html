@@ -230,17 +230,31 @@
             
             
             
+            
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h3 id="_1">二进制简介</h3>
+<div class="toc">
+<ul>
+<li><a href="#_1">一、二进制简介</a></li>
+<li><a href="#1">二、负数的二进制(补码=反码+1)</a></li>
+<li><a href="#_2">三、进制间转换</a></li>
+<li><a href="#_3">四、基本数据类型占的位数</a></li>
+<li><a href="#0xff">五、与运算&amp;0XFF</a></li>
+<li><a href="#_4">六、移位运算</a></li>
+<li><a href="#_5">七、位异或运算符</a></li>
+<li><a href="#byte">八、byte数组的常见运算</a></li>
+</ul>
+</div>
+<h4 id="_1">一、二进制简介</h4>
 <p>假设有一 int 类型的数，值为5，那么，我们知道它在计算机中表示为：  </p>
 <pre><code>00000000 00000000 00000000 00000101
 5转换成二制是101，不过int类型的数占用4字节（32位），所以前面填了一堆0。
 </code></pre>
-<h4 id="1">负数的二进制(补码=反码+1)</h4>
+<h4 id="1">二、负数的二进制(补码=反码+1)</h4>
 <p>-5在计算机中如何表示？  </p>
 <pre><code>在计算机中负数以其正值的补码形式表达
 比如 00000000 00000000 00000000 00000101 是 5的 原码。
@@ -252,7 +266,7 @@
 -5在计算机中表示为：11111111 11111111 11111111 11111011  
 
 </code></pre>
-<h3 id="_2">进制间转换</h3>
+<h4 id="_2">三、进制间转换</h4>
 <pre><code>十进制转二进制
 转二进制就除2把余数都标在右侧
 最下面的余数放在最左面
@@ -274,7 +288,7 @@
 0001 0010 0011 0100--&gt;0x1234
 
 </code></pre>
-<h3 id="_3">基本数据类型占的位数</h3>
+<h4 id="_3">四、基本数据类型占的位数</h4>
 <pre><code>bit: 1 bit位 = 1 二进制数据
 
 byte: 1 byte = 8 bit位 （-128 ~ 127）
@@ -299,7 +313,7 @@ string:
 
 《《***这里不是很准确，当编码不同的时候，1个汉字所占的字节数也会有所不同，有些编码是占 2个字节，有些则不是，可能是 3个或者 4个***》》
 </code></pre>
-<h3 id="0xff">与运算&amp;0XFF</h3>
+<h4 id="0xff">五、与运算&amp;0XFF</h4>
 <pre><code>&amp;作为位运算 （还可以作为逻辑运算符）  
 操作数的二进制形式，同为1结果才是1，其它则为0，操作数可以是二进制八进制十六进制
 0xff的十进制是255，八位二进制11111111,一个数&amp;上它应该是不变的，但是
@@ -328,15 +342,192 @@ float 4byte 32bit
 <pre><code>byte类型的-127，其计算机存储的补码是10000001（8位），将其作为int类型向控制台输出的时候，jvm作了一个补位的处理，因为int类型是32位，所以补位后的补码就是1111111111111111111111111 10000001（32位），这个32位二进制补码表示的也是-127.虽然byte-&gt;int（八位扩展到32位），计算机背后存储的二进制补码由10000001（8位）转化成了1111111111111111111111111 10000001（32位）很显然这两个补码表示的十进制数字依然是相同的。
 
 </code></pre>
-<h3 id="_4">移位运算</h3>
+<h4 id="_4">六、移位运算</h4>
 <pre><code>&lt;&lt;:左移运算符，num &lt;&lt; 1,相当于num乘以2
 &gt;&gt;:右移运算符，num &gt;&gt; 1,相当于num除以2
 &gt;&gt;&gt;:无符号右移，忽略符号位，空位都以0补齐!
 </code></pre>
-<h3 id="_5">位异或运算符</h3>
+<h4 id="_5">七、位异或运算符</h4>
 <pre><code>位异或运算符为^，其运算规则是：参与运算的数字，低位对齐，高位不足的补零，如果对应的二进制位相同（同时为 0 或同时为 1）时，结果为 0；如果对应的二进制位不相同，结果则为 1。
 11^7=12  (化成二进制然后计算)
-</code></pre></div>
+</code></pre>
+<h4 id="byte">八、byte数组的常见运算</h4>
+<ol>
+<li>多个数组合并成一个数组,采用arraycopy来进行</li>
+</ol>
+<p><code>public static byte[] byteMergerAll(byte[]... bytes) {
+           int allLength = 0;
+           for (byte[] b : bytes) {
+               allLength += b.length;
+           }
+           byte[] allByte = new byte[allLength];
+           int countLength = 0;
+           for (byte[] b : bytes) {
+               System.arraycopy(b, 0, allByte, countLength, b.length);
+               countLength += b.length;
+           }
+           return allByte;
+       }</code></p>
+<ol>
+<li>数据类型转换</li>
+</ol>
+<p>```
+   public static int byte2Int(byte value) {
+           return value &amp; 0xFF;
+   }</p>
+<p>//两个十六进制字节转成一个int
+   public static int bytes2Int(byte[] bytes) {
+           int a = ((bytes[0] &amp; 0xf0) &gt;&gt; 4) * 4096;
+           int b = (bytes[0] &amp; 0x0f) * 256;
+           int c = bytes[1] &amp; 0xf0;
+           int d = bytes[1] &amp; 0x0f;
+           return a + b + c + d;
+   }
+   //4字节byte转int
+   public static int fourBytes2Int(byte[] bytes) {
+           int mask = 0xff;
+           int temp;
+           int n = 0;
+           for (byte b : bytes) {
+               n &lt;&lt;= 8;
+               temp = b &amp; mask;
+               n |= temp;
+           }
+           return n;
+   }
+   //byte字节转Bit bit位（0～8位）是从右往左数的 eg:10000011 (位0：1，位2：1，位3：0)
+   public static byte[] byteToBit(byte b) {
+           byte[] array = new byte[8];
+           for (int i = 7; i &gt;= 0; i--) {
+               array[i] = (byte) (b &amp; 1);
+               b = (byte) (b &gt;&gt; 1);
+           }
+           return array;
+   }
+   //byte字节转Bitstr
+   public static String byteToBitStr(byte b) {
+           String mBit = "" +
+                   + (byte) ((b &gt;&gt; 7) &amp; 0x1) + (byte) ((b &gt;&gt; 6) &amp; 0x1)
+                   + (byte) ((b &gt;&gt; 5) &amp; 0x1) + (byte) ((b &gt;&gt; 4) &amp; 0x1)
+                   + (byte) ((b &gt;&gt; 3) &amp; 0x1) + (byte) ((b &gt;&gt; 2) &amp; 0x1)
+                   + (byte) ((b &gt;&gt; 1) &amp; 0x1) + (byte) ((b &gt;&gt; 0) &amp; 0x1);
+           return mBit;
+   }
+   //一个int转4个字节的byte数组
+   public static byte[] int2Bytes(int value) {
+           byte[] src = new byte[4];
+           src[0] = (byte) ((value &gt;&gt; 24) &amp; 0xFF);
+           src[1] = (byte) ((value &gt;&gt; 16) &amp; 0xFF);
+           src[2] = (byte) ((value &gt;&gt; 8) &amp; 0xFF);
+           src[3] = (byte) (value &amp; 0xFF);
+           return src;
+   }</p>
+<p>```</p>
+<ol>
+<li>
+<p>int 转word</p>
+<p><code>/**
+       * int 转WORD（无符号双字节整形）
+       */
+      public static byte[] numToByteArray(long num, int size) {
+          byte[] result = new byte[size];
+          for (int i = 0; i &lt; size; i++) {
+              result[i] = (byte) ((num &gt;&gt; (size - i - 1) * 8) &amp; 0xFF);
+          }
+          return result;
+      }</code></p>
+<ol>
+<li>
+<p>把byte[]转换为整形通常为指令用</p>
+<p><code>//把byte[]转化位整形,通常为指令用
+ public int byteToInteger(byte[] value) {
+         int result;
+         if (value.length == 1) {
+             result = oneByteToInteger(value[0]);
+         } else if (value.length == 2) {
+             result = twoBytesToInteger(value);
+         } else if (value.length == 3) {
+             result = threeBytesToInteger(value);
+         } else if (value.length == 4) {
+             result = fourBytesToInteger(value);
+         } else {
+             result = fourBytesToInteger(value);
+         }
+         return result;
+     }
+     //把一个byte转化位整形,通常为指令用
+     public int oneByteToInteger(byte value) {
+         return (int) value &amp; 0xFF;
+     }
+     //把一个2位的数组转化位整形
+    public int twoBytesToInteger(byte[] value) {
+         // if (value.length &lt; 2) {
+         // throw new Exception("Byte array too short!");
+         // }
+         int temp0 = value[0] &amp; 0xFF;
+         int temp1 = value[1] &amp; 0xFF;
+         return ((temp0 &lt;&lt; 8) + temp1);
+     }
+     //把一个3位的数组转化位整形
+      public int threeBytesToInteger(byte[] value) {
+         int temp0 = value[0] &amp; 0xFF;
+         int temp1 = value[1] &amp; 0xFF;
+         int temp2 = value[2] &amp; 0xFF;
+         return ((temp0 &lt;&lt; 16) + (temp1 &lt;&lt; 8) + temp2);
+     }
+     //把一个4位的数组转化位整形,通常为指令用
+     public int fourBytesToInteger(byte[] value) {
+         // if (value.length &lt; 4) {
+         // throw new Exception("Byte array too short!");
+         // }
+         int temp0 = value[0] &amp; 0xFF;
+         int temp1 = value[1] &amp; 0xFF;
+         int temp2 = value[2] &amp; 0xFF;
+         int temp3 = value[3] &amp; 0xFF;
+         return ((temp0 &lt;&lt; 24) + (temp1 &lt;&lt; 16) + (temp2 &lt;&lt; 8) + temp3);
+     }</code></p>
+</li>
+<li>
+<p>Byte[]转long</p>
+<p>```
+ public long bytes2Long(byte[] value) {
+         long result = 0;
+         int len = value.length;
+         int temp;
+         for (int i = 0; i &lt; len; i++) {
+             temp = (len - 1 - i) * 8;
+             if (temp == 0) {
+                 result += (value[i] &amp; 0x0ff);
+             } else {
+                 result += (value[i] &amp; 0x0ff) &lt;&lt; temp;
+             }
+         }
+         return result;
+     }</p>
+<pre><code> //把一个长整形改为byte数组
+ public byte[] longToBytes(long value) {
+     return longToBytes(value, 8);
+ }
+ //把一个长整形改为指定长度byte数组
+ public byte[] longToBytes(long value, int len) {
+     byte[] result = new byte[len];
+     int temp;
+     for (int i = 0; i &lt; len; i++) {
+         temp = (len - 1 - i) * 8;
+         if (temp == 0) {
+             result[i] += (value &amp; 0x0ff);
+         } else {
+             result[i] += (value &gt;&gt;&gt; temp) &amp; 0x0ff;
+         }
+     }
+     return result;
+ }
+</code></pre>
+<p>```</p>
+</li>
+</ol>
+</li>
+</ol></div>
             </div>
         </div>
 
