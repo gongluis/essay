@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>ConText - 小巩的网站</title>
+        <title>Android webview - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -45,7 +45,7 @@
                             <li class="navitem">
                                 <a href="../sdk/" class="nav-link">sdk笔记</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -136,7 +136,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="./" class="dropdown-item active">ConText</a>
+    <a href="../context/" class="dropdown-item">ConText</a>
 </li>
     </ul>
   </li>
@@ -207,16 +207,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../adaption/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../test/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -235,70 +225,137 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            
-            
-            
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h5 id="important-points">important points：</h5>
-<ol>
-<li>It is the context of the current state of the application.  </li>
-<li>It can be used to get information regarding the activity and application.</li>
-<li>It can be used to get access to resources, databases, and shared preferences, and etc.</li>
-<li>Both the Activity and Application classes extend the Context class.  </li>
-</ol>
-<h5 id="mainly-two-types-of-context">Mainly two types of context</h5>
+<h3 id="android-js">Android 原生调用 JS 中的方法</h3>
+<p>Android 调用 JS 有两种方式，都是通过 WebView 的方法：<br />
+1. webview.loadUrl()
+2. webview.evaluateJavascript()  </p>
 <blockquote>
-<p>Wrong use of Context can easily lead to memory leaks in an android application.  </p>
+<p>二者区别：1. loadUrl() 会刷新页面，evaluateJavascript() 则不会使页面刷新，所以 evaluateJavascript() 的效率更高2. loadUrl() 得不到 js 的返回值，evaluateJavascript() 可以获取返回值。3. evaluateJavascript() 在 Android 4.4 之后才可以使用  </p>
 </blockquote>
-<ol>
-<li>Application Context: It is the application and we are present in Application. For example - MyApplication(which extends Application class). It is an instance of MyApplication only.  </li>
-</ol>
-<pre><code>It is an instance that is the singleton and can be accessed in activity via getApplicationContext().
-This context is tied to the lifecycle of an application. 
-The application context can be used where you need a context whose lifecycle is separate from 
-the current context or when you are passing a context beyond the scope of activity.
-
-
-Example Use: If you have to create a singleton object for your application and that object needs a context, 
-always pass the application context.
-
-If you pass the activity context here, it will lead to the memory leak as it will keep the 
-reference to the activity and activity will not be garbage collected.
-
-In case, when you have to initialize a library in an activity, always pass the 
-application context, not the activity context.
-
-You only use getApplicationContext() when you know you need a 
-Context for something that may live longer than any other likely 
-Context you have at your disposal.
+<p>要实现目标：在安卓原生中改变js中一个文本并接收js回传的值。<br />
+Vue中的代码：  </p>
+<pre><code>mounted() {
+    //将要给原生调用的方法挂载到 window 上面
+    window.callJsFunction = this.callJsFunction
+},
+data() {
+    return {
+        msg: &quot;哈哈&quot;
+    }
+},
+methods: {
+    callJsFunction(str) {
+        this.msg = &quot;我通过原生方法改变了文字&quot; + str
+        return &quot;js调用成功&quot;
+    }
+}
 </code></pre>
+<p>在 methods 中定义一个供 Android 调用的方法 callJsFunction(str) , 并可接收一个参数 str。<br />
+如果只是在 methods 中定义方法，原生调用会找不到这个方法。所以要在页面加载的时候将方法挂载在 window 上，这样 WebView 就可以拿到此方法了。注意，这步很重要一定要写！<br />
+注意一个细节，this.callJsFunction 后面不要加括号 ()，加括号相当于直接调用了。<br />
+总结起来 Vue 中要做的事情就两步：</p>
 <ol>
-<li>Activity Context: It is the activity and we are present in Activity. For example - MainActivity. It is an instance of MainActivity only.    </li>
+<li>在 methods 中定义方法</li>
+<li>在 mounted 中将方法挂载在 window 上  </li>
 </ol>
-<pre><code>This context is available in an activity. This context is tied to the lifecycle of an activity. 
-The activity context should be used when you are passing the context in the scope of an activity
-or you need the context whose lifecycle is attached to the current context.
-
-Example Use: If you have to create an object whose lifecycle is attached to an activity,
- you can use the activity context.
+<p>Android 中代码：<br />
+ loadUrl实现：<br />
+ ```
+ tbsWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url, headerMap);
+                return true;
+            }</p>
+<pre><code>        @Override
+        public void onPageFinished(WebView webView, String s) {
+            super.onPageFinished(webView, s);
+            //安卓调用js方法。注意需要在 onPageFinished 回调里调用
+            tbsWebView.post(new Runnable() {
+                @Override
+                public void run() {
+                    tbsWebView.loadUrl("javascript:callJsFunction('soloname')");
+                }
+            });
+        }
+    });
+}
 </code></pre>
-<h5 id="contentprovider">ContentProvider</h5>
-<p>This context is the application context and can be used as the application context. 
-You can get it using the getContext() method.</p>
-<h5 id="when-to-use-which-context">When to use which Context?</h5>
-<p>always remember, in case of Singleton(lifecycle is attached to the application lifecycle), 
-always use the Application Context.</p>
-<p>Whenever you are in Activity, for any UI operations like showing toast, dialogs, 
-and etc, use the Activity Context.</p>
-<p>Always try to use the nearest context which is available to you. When you are in Activity, the nearest context is Activity context. When you are in Application, the nearest context is the Application context. If Singleton, use the Application Context.</p>
-<h5 id="_1">参考链接</h5>
-<pre><code>https://blog.mindorks.com/understanding-context-in-android-application-330913e32514
-</code></pre></div>
+<p>});</p>
+<p>```  </p>
+<p>如果不需要传参数，把参数去掉即可 tbsWebView.loadUrl("javascript:callJsFunction()");  </p>
+<p>evaluateJavascript()实现<br />
+ 其他地方跟loadUrl()一样，只是把 tbsWebView.loadUrl("javascript:callJsFunction('soloname')"); 替换掉<br />
+<code>@Override
+public void onPageFinished(WebView webView, String s) {
+    super.onPageFinished(webView, s);
+    //安卓调用js方法。注意需要在 onPageFinished 回调里调用
+    tbsWebView.post(new Runnable() {
+        @Override
+        public void run() {
+            tbsWebView.evaluateJavascript("javascript:callJsFunction('soloname')", new ValueCallback&lt;String&gt;() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Logger.d("js返回的结果： " + s);
+                }
+            });
+        }
+    });
+}</code>  </p>
+<p>### js调用安卓原生的方法<br />
+ 对于JS调用Android代码的方法有3种：<br />
+ 1. 通过 WebView 的 addJavascriptInterface() 进行对象映射
+2. 通过 WebViewClient 的 shouldOverrideUrlLoading()方法回调拦截 url
+3. 通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt()方法回调拦截JS对话框alert()、confirm()、prompt() 消息<br />
+4. 
+由于目前的设备系统版本基本都在 4.2 以上，所以用第一种就可以了，简单快捷。  </p>
+<p>实现目标：<br />
+点击js的控件调用安卓中的Toast  </p>
+<p>Vue代码:  </p>
+<pre><code>methods: {
+  showAndroidToast() {
+    $App.showToast(&quot;哈哈，我是js调用的&quot;)
+  }
+}
+</code></pre>
+<p>Android代码：<br />
+新建类 JsJavaBridge  </p>
+<pre><code>public class JsJavaBridge {
+
+    private Activity activity;
+    private WebView webView;
+
+    public JsJavaBridge(Activity activity, WebView webView) {
+        this.activity = activity;
+        this.webView = webView;
+    }
+
+    @JavascriptInterface
+    public void onFinishActivity() {
+        activity.finish();
+    }
+
+    @JavascriptInterface
+    public void showToast(String msg) {
+        ToastUtils.show(msg);
+    }
+}
+</code></pre>
+<p>然后通过 WebView 设置 Android 类与 JS 代码的映射  </p>
+<pre><code>tbsWebView.addJavascriptInterface(new JsJavaBridge(this, tbsWebView), &quot;$App&quot;);
+</code></pre>
+<p>这里将类 JsJavaBridge 在 JS 中映射为了 $App，所以在 Vue 中可以这样调用 $App.showToast("哈哈，我是js调用的")。  </p>
+<h4 id="_1">注入风险</h4>
+<p>4.2版本以下，js利用android获取到的一些危险权限，解决方法，通过js与java交互的promp等方法传递信息然后通过反射调用具体方法。</p>
+<h4 id="_2">内存泄漏</h4>
+<p>js连续几个页面申请native的堆内存的内存过大导致保存页面元素，并且为了打开和返回页面较快前面占用的内存可能也不会释放。可以将处理js的页面activity放到单独进程中，监测这个进程，一旦内存超出预定值，退出这个进程。  </p>
+<h4 id="webview">webview缓存</h4>
+<p>可设置缓存策略</p></div>
             </div>
         </div>
 
