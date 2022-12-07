@@ -1,6 +1,6 @@
 #### [java基础-基础数据类型](https://gongluis.github.io/essay/basicDataType/)
 
-了解java中基础的数据类型
+了解java中基础的数据类型。
 
 #### [java基础-集合](https://gongluis.github.io/essay/collection/)  
 
