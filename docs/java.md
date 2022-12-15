@@ -22,7 +22,7 @@
 
 了解常用算法原理。
 
-#### [java基础-队列的使用](https://gongluis.github.io/essay/queue/)  
+#### [java基础-队列的简单使用](https://gongluis.github.io/essay/queue/)  
 
 了解常见队列的使用。
 
