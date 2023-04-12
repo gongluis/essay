@@ -54,6 +54,7 @@ nav:
          - 一些常见功能的思考:
             - 登录: login.md
          - 单元测试Monkey: test.md
+         - apk升级: UpdateApp.md
   - Flutter插件: 
          - 什么是flutter插件及作用: whyflutterplugin.md 
          - 如何配置flutter环境: howflutterenvironment.md 
