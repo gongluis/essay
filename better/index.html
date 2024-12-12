@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,15 @@
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>APP整体优化 - 小巩的网站</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -25,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand" href="..">小巩的网站</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,20 +34,20 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href=".." class="nav-link">介绍</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../audioVideo/" class="nav-link">音视频</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../java/" class="nav-link">JAVA</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../sdk/" class="nav-link">sdk笔记</a>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Android</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -120,7 +121,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">APP整体优化</a>
+    <a href="./" class="dropdown-item active" aria-current="page">APP整体优化</a>
 </li>
                                     
 <li>
@@ -154,10 +155,14 @@
 <li>
     <a href="../test/" class="dropdown-item">单元测试Monkey</a>
 </li>
+                                    
+<li>
+    <a href="../UpdateApp/" class="dropdown-item">apk升级</a>
+</li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flutter插件 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Flutter插件</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -173,8 +178,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">git <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">git</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -190,8 +195,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">故障复盘记录 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">故障复盘记录</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -201,9 +206,9 @@
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -224,18 +229,18 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">性能优化</a>
+            <li class="nav-item" data-bs-level="2"><a href="#_1" class="nav-link">性能优化</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -543,6 +548,12 @@ AndroidManifest.xml 配置文件
 META-INFO 相关签名信息
 resource.arsc 资源文件映射表
 </code></pre>
+<p>该步主要目的是分析出哪些位置的文件大小占比较大，以及哪些位置还有优化的空间</p>
+<pre><code>如发现res文件夹有几十MB大小：就要考虑图片的优化，首先清除未引用图片，其次找到那些10K以上的图片进行转jpg或者webp的操作，然后进行无损压缩。
+如发现lib文件大小特别大：考虑cpu架构相关优化，点开lib文件夹看下所适配的cpu架构是否可以精简，其次一次打开v7a和其它文件夹，找到大小特别大的s0库，调研所引用的so库是否是全家桶，以及如何精简。
+如发现asset文件大小特别大：找到体积较大的进行分析优化
+.dex文件属于java文件编译的字节码文件，删除未引用代码资源这些即可
+</code></pre>
 <h5 id="_21">优化方案</h5>
 <ol>
 <li>使用minifyEnable混淆代码  </li>
@@ -572,10 +583,16 @@ shrinkResource必须与minifyResource同时开启才有效。
 </code></pre>
 <ol>
 <li>删除项目中未使用到的资源文件
-通过androidstudio提供的lint工具，analyze-run inspection by name然后输入unused resource查找未使用的资源文件，然后删除。</li>
+通过androidstudio提供的lint工具，code-Analyze Code-Run inspection by name然后输入unused resource查找未使用的资源文件，确认无引用后删除。
+一般需要执行多次上述步骤进行清理（xml中引用资源文件首次扫不出来），注意反射的情况。</li>
+</ol>
+<pre><code>经多个项目经验，该步骤优化效果不是太明显（因为是纯代码的优化，近百兆项目大概0.5M左右的空间），
+但是实际意义是大于最终效果的，项目的维护性，规范和简洁性有很大提升。
+</code></pre>
+<ol>
 <li>
 <p>删除项目中未使用的代码<br />
-analyze-run inspection by name然后输入unused declearation 找到无用代码对其删除</p>
+code-Analyze Code-Run inspection by name然后输入unused declearation 找到无用代码对其删除</p>
 <blockquote>
 <p>通过反射引用的方法或者类，lint识别不了，也会给检查出来，删除的时候通过反射引用的方法或者类千万不能删除</p>
 </blockquote>
@@ -603,7 +620,7 @@ android {
 }
 </code></pre>
 <ol>
-<li>so库操作，在引入第三方sdk难免要引入对应的so库，一般给到的so库分好多架构（armeabi, armeabi-v7a, x86等等）
+<li>so库操作（慎重，建立在充分调研基础上），在引入第三方sdk难免要引入对应的so库，一般给到的so库分好多架构（armeabi, armeabi-v7a, x86等等）
 Android系统 目前支持以下七种不同的CPU架构：  </li>
 </ol>
 <pre><code>ARMv5
@@ -613,6 +630,16 @@ MIPS
 ARMv8
 MIPS64
 x86_64
+</code></pre>
+<pre><code>分析：
+1. 如果只适配armeabi
+基本上适配了所有得cpu架构，除了mips和mips64
+2.如果只适配armeabi-v7a
+漏掉一部分老设备，在性能性和兼容性中比较均衡
+3.如果只适配arm64-v8a
+性能最佳，但是只能运行在v8a的设备上
+
+总结：考虑兼容性换性能就abi,均衡点就v7a，追求性能就v8a
 </code></pre>
 <p>所有的架构设备x86,x8664,armeabi-v7a,arm64-v8a都支持armeabi架构的.so文件，所以可以根据自己的业务需求选择使用armeabi或者armeabi-v7a  </p>
 <p>微信、qq、网易云音乐等都只保留了armeabi-v7a</p>
@@ -631,19 +658,20 @@ x86_64
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -663,7 +691,7 @@ x86_64
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>apk升级 - 小巩的网站</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">小巩的网站</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">介绍</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../audioVideo/" class="nav-link">音视频</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../java/" class="nav-link">JAVA</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../sdk/" class="nav-link">sdk笔记</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Android</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../fourcomponent/" class="dropdown-item">四大组件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">设计模式</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../designpattern/singleInstance/" class="dropdown-item">单例</a>
+</li>
+            
+<li>
+    <a href="../designpattern/factory/" class="dropdown-item">工厂</a>
+</li>
+            
+<li>
+    <a href="../designpattern/builder/" class="dropdown-item">Builder</a>
+</li>
+            
+<li>
+    <a href="../designpattern/observer/" class="dropdown-item">观察者</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">自定义控件</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../customView/customCombinationView/" class="dropdown-item">自定义组合控件</a>
+</li>
+            
+<li>
+    <a href="../customView/customView/" class="dropdown-item">自定义View</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">APP架构</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../constructure/mvc/" class="dropdown-item">MVC</a>
+</li>
+            
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVP</a>
+</li>
+            
+<li>
+    <a href="../constructure/font_updown.md" class="dropdown-item">MVvm</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../touchEvent/" class="dropdown-item">事件分发</a>
+</li>
+                                    
+<li>
+    <a href="../handler/" class="dropdown-item">Handler原理</a>
+</li>
+                                    
+<li>
+    <a href="../sdkversion/" class="dropdown-item">Android版本对应SDK版本</a>
+</li>
+                                    
+<li>
+    <a href="../better/" class="dropdown-item">APP整体优化</a>
+</li>
+                                    
+<li>
+    <a href="../app_start_process/" class="dropdown-item">APP启动流程</a>
+</li>
+                                    
+<li>
+    <a href="../adaption/" class="dropdown-item">屏幕适配</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">一些小的点</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../context/" class="dropdown-item">ConText</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">一些常见功能的思考</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../login.md" class="dropdown-item">登录</a>
+</li>
+    </ul>
+  </li>
+                                    
+<li>
+    <a href="../test/" class="dropdown-item">单元测试Monkey</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">apk升级</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Flutter插件</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../whyflutterplugin/" class="dropdown-item">什么是flutter插件及作用</a>
+</li>
+                                    
+<li>
+    <a href="../howflutterenvironment/" class="dropdown-item">如何配置flutter环境</a>
+</li>
+                                    
+<li>
+    <a href="../flutterplugincoding/" class="dropdown-item">flutter插件开发</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">git</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../git_scenes/" class="dropdown-item">常见场景操作</a>
+</li>
+                                    
+<li>
+    <a href="../git_client_steps/" class="dropdown-item">Android端git版本管理</a>
+</li>
+                                    
+<li>
+    <a href="../git_commit_log/" class="dropdown-item">commit log</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">故障复盘记录</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../sdkexception/" class="dropdown-item">AndroidSDK故障记录</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../test/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../whyflutterplugin/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            
+            
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h4 id="_1">一、如何设计应用升级功能</h4>
+<ol>
+<li>
+<p>在您的应用中添加检查更新的代码。这可以通过在应用启动时向服务器发出请求来实现。服务器将返回应用的最新版本号和下载链接等信息。您可以将这些信息与当前安装的应用版本号进行比较，以确定是否需要更新应用。</p>
+</li>
+<li>
+<p>在服务器端为应用生成数字签名，并计算出 APK 文件的 MD5 值。当应用请求更新时，服务器将返回 APK 文件的下载链接和对应的 MD5 值。</p>
+</li>
+<li>
+<p>在应用中实现下载功能。您可以使用 Android 提供的 DownloadManager 类来下载文件，并在下载完成后校验文件的 MD5 值以确保文件的完整性。如果文件校验失败，应该取消更新并提示用户重新下载。</p>
+</li>
+<li>
+<p>在应用中实现安装功能。当下载完成后，您需要使用 Intent 将 APK 文件发送给系统的应用安装程序，以完成应用的安装。</p>
+</li>
+<li>
+<p>添加用户提示。当应用检测到新版本可用时，您应该向用户显示提示信息，以便用户选择是否更新应用。</p>
+</li>
+<li>
+<p>测试和发布。在完成上述功能后，您应该对应用进行全面测试，并将更新后的应用发布到应用商店或您的服务器上供用户下载。</p>
+</li>
+</ol>
+<p>需要注意的是，在实现应用更新功能时，您需要注意安全性和稳定性。例如，您应该确保从服务器下载的 APK 文件是可靠的，并且用户数据不会在更新过程中丢失或受到破坏。另外，您应该为用户提供详细的更新说明，以避免出现用户不愿意更新的情况。</p>
+<h4 id="_2">检查更新接口如何设计</h4>
+<p>在设计 App 检查更新接口时，需要考虑以下几个方面：</p>
+<ol>
+<li>
+<p>返回最新版本信息：接口应该返回应用的最新版本信息，例如版本号、更新日志、下载链接等。</p>
+</li>
+<li>
+<p>确认当前版本：客户端应该在请求接口时提供当前安装的应用版本号，服务器可以通过比较客户端提供的版本号和最新版本号来确定是否需要更新。</p>
+</li>
+<li>
+<p>安全性校验：为了保证应用的安全性，接口应该返回数字签名和 APK 文件的 MD5 值，客户端可以使用 MD5 值来校验下载的 APK 文件的完整性，确保文件未被篡改。</p>
+</li>
+</ol>
+<pre><code>请求参数：
+
+响应接口字段值：
+{
+    &quot;versionCode&quot;: 2001,
+    &quot;versionName&quot;: &quot;2.0.1&quot;,
+    &quot;updateLog&quot;: &quot;1. 修复了若干 BUG \n2. 增加了新功能&quot;,
+    &quot;apkUrl&quot;: &quot;https://example.com/app-release.apk&quot;,
+    &quot;md5&quot;: &quot;2a45f20b16f3e9e9d4c4ab79ef4a7c02&quot;,
+    &quot;signature&quot;: &quot;MIIEpQIBAAKCAQEA...CpYnlaDEe/dCayg==&quot;
+}
+</code></pre>
+<h4 id="_3">检查更新的频率</h4>
+<p>在设计检查更新的时机和频率时，需要考虑以下几个因素：</p>
+<ol>
+<li>
+<p>用户体验：应该尽量减少对用户的干扰，避免频繁的检查更新。一般情况下，建议在用户启动应用程序时检查更新，如果有新版本可用，提示用户更新即可。</p>
+</li>
+<li>
+<p>应用类型：应用的类型也是影响检查更新频率的一个因素。对于一些紧急修复、安全漏洞等问题比较严重的应用，应该及时推送更新，不建议用户手动选择是否更新，而对于一些普通的应用程序，可以考虑更长时间间隔进行检查更新。</p>
+</li>
+<li>
+<p>用户数量：用户数量是影响检查更新频率的另一个因素。如果您的应用程序用户数量较小，则可以更频繁地检查更新，以便尽早修复任何问题。但是如果用户数量较大，则应该更加谨慎地进行更新，以避免对服务器造成不必要的压力。</p>
+</li>
+</ol>
+<p>基于以上考虑，我们可以考虑以下策略来设计检查更新的时机和频率：</p>
+<ol>
+<li>
+<p>启动时检查更新：建议在用户启动应用程序时检查更新，如果有新版本可用，提示用户更新即可。</p>
+</li>
+<li>
+<p>定期检查更新：根据应用的类型和用户数量，可以考虑每天、每周或每月检查一次更新。在检查更新之前，最好在服务器端存储上次检查的时间戳，以便更好地管理更新频率。</p>
+</li>
+<li>
+<p>特定事件时检查更新：例如，当应用程序进入后台或网络发生变化时，可以触发检查更新操作。但是需要注意，频繁的检查更新可能会导致用户体验受到影响，因此需要权衡利弊。</p>
+</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
