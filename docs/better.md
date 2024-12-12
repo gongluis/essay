@@ -235,6 +235,13 @@ AndroidManifest.xml 配置文件
 META-INFO 相关签名信息
 resource.arsc 资源文件映射表
 ```  
+该步主要目的是分析出哪些位置的文件大小占比较大，以及哪些位置还有优化的空间
+```
+如发现res文件夹有几十MB大小：就要考虑图片的优化，首先清除未引用图片，其次找到那些10K以上的图片进行转jpg或者webp的操作，然后进行无损压缩。
+如发现lib文件大小特别大：考虑cpu架构相关优化，点开lib文件夹看下所适配的cpu架构是否可以精简，其次一次打开v7a和其它文件夹，找到大小特别大的s0库，调研所引用的so库是否是全家桶，以及如何精简。
+如发现asset文件大小特别大：找到体积较大的进行分析优化
+.dex文件属于java文件编译的字节码文件，删除未引用代码资源这些即可
+```
 ##### 优化方案  
 1. 使用minifyEnable混淆代码  
 ```
@@ -261,9 +268,14 @@ shrinkResource必须与minifyResource同时开启才有效。
 注意：采用该方法其实无用的资源并没有被移除掉，而是被体积更小的占位符替代了
 ```
 3. 删除项目中未使用到的资源文件
-通过androidstudio提供的lint工具，analyze-run inspection by name然后输入unused resource查找未使用的资源文件，然后删除。
+通过androidstudio提供的lint工具，code-Analyze Code-Run inspection by name然后输入unused resource查找未使用的资源文件，确认无引用后删除。
+一般需要执行多次上述步骤进行清理（xml中引用资源文件首次扫不出来），注意反射的情况。
+```
+经多个项目经验，该步骤优化效果不是太明显（因为是纯代码的优化，近百兆项目大概0.5M左右的空间），
+但是实际意义是大于最终效果的，项目的维护性，规范和简洁性有很大提升。
+```
 4. 删除项目中未使用的代码  
-analyze-run inspection by name然后输入unused declearation 找到无用代码对其删除
+code-Analyze Code-Run inspection by name然后输入unused declearation 找到无用代码对其删除
 > 通过反射引用的方法或者类，lint识别不了，也会给检查出来，删除的时候通过反射引用的方法或者类千万不能删除
 
 5. 对图片进行压缩
@@ -284,7 +296,7 @@ android {
     }
 }
 ```
-8. so库操作，在引入第三方sdk难免要引入对应的so库，一般给到的so库分好多架构（armeabi, armeabi-v7a, x86等等）
+8. so库操作（慎重，建立在充分调研基础上），在引入第三方sdk难免要引入对应的so库，一般给到的so库分好多架构（armeabi, armeabi-v7a, x86等等）
 Android系统 目前支持以下七种不同的CPU架构：  
 ```
 ARMv5
@@ -295,6 +307,17 @@ ARMv8
 MIPS64
 x86_64
 ```  
+```
+分析：
+1. 如果只适配armeabi
+基本上适配了所有得cpu架构，除了mips和mips64
+2.如果只适配armeabi-v7a
+漏掉一部分老设备，在性能性和兼容性中比较均衡
+3.如果只适配arm64-v8a
+性能最佳，但是只能运行在v8a的设备上
+
+总结：考虑兼容性换性能就abi,均衡点就v7a，追求性能就v8a
+```
 所有的架构设备x86,x8664,armeabi-v7a,arm64-v8a都支持armeabi架构的.so文件，所以可以根据自己的业务需求选择使用armeabi或者armeabi-v7a  
 
 微信、qq、网易云音乐等都只保留了armeabi-v7a
